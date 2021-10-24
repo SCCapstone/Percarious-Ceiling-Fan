@@ -5,7 +5,7 @@
 In order to build this project you first have to install:
 
 * [Node.js](https://nodejs.org/en/)
-*[mySQL](https://www.mysql.com/)
+* [mySQL](https://www.mysql.com/)
 
 ## Setup
 
