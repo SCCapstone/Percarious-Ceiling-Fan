@@ -8,7 +8,9 @@ class HomePage extends React.Component{
 		.then(response => {console.log(response)})
 };
 	render() {
+		return (
 		<div>Hello world from the client side!!</div>
+		)
 	}
 };
 
