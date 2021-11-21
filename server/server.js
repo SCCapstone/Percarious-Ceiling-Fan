@@ -12,6 +12,18 @@ app.get('/', (req, res) => {
   res.send('server and client are connected')
 })
 
+//Builds an sql query for multiple substrings
+function substringSearch(field, words){
+	let first = true;
+	let out = `SELECT * FROM bookdata WHERE `;
+	for(let i in words){
+		if(!first) out+= "OR "
+		out += `${field} LIKE "%${words[i]}%" `;
+		first = false
+	}
+	return out+";";
+}
+
 //Test Query
 
 // app.get("/test", (req, res) => {
