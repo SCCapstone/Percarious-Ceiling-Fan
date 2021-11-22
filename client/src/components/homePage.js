@@ -4,7 +4,8 @@ import axios from "axios"; //for SQL command stuff
 class HomePage extends React.Component{
 	state = {
 		connection: "",
-		search: ""
+		search: "",
+		results: []
 	}
 
 	componentDidMount() {
@@ -18,7 +19,9 @@ class HomePage extends React.Component{
 			 }
 		})
 		.then((response) => response.data)
-		.then(response => {this.setState({connection: response})}) //placeholder, TODO
+		.then(response => {this.setState({results: response})}) //results from basicSearch
+
+		//need to route to results page with this.results info
 	}
 
 	render() {
