@@ -12,18 +12,14 @@ class HomePage extends React.Component{
 	}
 
 	onSubmitClick = () => {
-		axios.post('http://localhost:3001/basicSearch',{ //TO DO
-			search: this.state.search
+		axios.get('http://localhost:3001/basicSearch',{
+			params: {
+				search: this.state.search
+			 }
 		})
-		this.getBasicSearchResult();
-	}
-
-	//get the results and round them to results page here
-	getBasicSearchResult = () => {
-		axios.get('http://localhost:3001/basicSearch')
 		.then((response) => response.data)
 		.then(response => {this.setState({connection: response})}) //placeholder, TODO
-};
+	}
 
 	render() {
 		console.log(this.state.search);

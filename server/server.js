@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const cors = require("cors");
-//const connection = require('./db');
+const connection = require('./db');
 const bodyParser = require('body-parser');
 
 app.use(cors());
@@ -24,15 +24,16 @@ function substringSearch(field, words){
 	return out+";";
 }
 
-//Test Query
-
-// app.get("/test", (req, res) => {
-// 	const GET_QUERY = `SELECT title FROM bookdata WHERE title LIKE "%bible%"`;
-// 	connection.query(GET_QUERY, (err, response)=>{
-// 		if(err) console.log(err)
-// 		else res.send(response)
-// 	})
-//   })
+//basic search query
+app.get("/basicSearch", (req, res) => {
+	var words = (`${req.query.search}`).split(" ");
+	const GET_QUERY = substringSearch('title',words);
+	console.log(GET_QUERY);
+	connection.query(GET_QUERY, (err, response)=>{
+		if(err) console.log(err)
+		else res.send(response)
+	})
+  })
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
