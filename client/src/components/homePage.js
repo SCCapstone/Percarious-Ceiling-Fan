@@ -18,7 +18,6 @@ class HomePage extends React.Component{
 };
 	render() {
 		return (
-		this.state.connection
 		)
 	}
 };
