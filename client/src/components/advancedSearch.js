@@ -15,7 +15,8 @@ class AdvancedSearch extends React.Component{
 		axios.get('http://localhost:3001/')
 		.then((response) => response.data)
 		.then(response => {this.setState({connection: response})})
-};
+	};
+	sendSearch = () => {}
 
 
 	render() {
@@ -24,38 +25,38 @@ class AdvancedSearch extends React.Component{
 		<title>Advanced Search</title>
 		<body>
 			<div id="search list">
-				<div attribute="search terms">
+				<div attribute="searchTerms">
 					
 				</div>
-				<div attribute="search terms">
-					<p attribute="search prompt">Any of these words:</p>
-					<input attribute = "search input"></input>
+				<div attribute="searchTerms">
+					<p attribute="searchPrompt">Any of these words:</p>
+					<input attribute = "searchInput" id= "anyWords"></input>
 				</div>
-				<div attribute="search terms">
-					<p attribute="search prompt">Exact words or phrases</p>
-					<input attribute = "search input"></input>
+				<div attribute="searchTerms">
+					<p attribute="searchPrompt">Exact words or phrases</p>
+					<input attribute = "searchInput"></input>
 				</div>
-				<div attribute="search terms">
-					<p attribute="search prompt">None of these words:</p>
-					<input attribute = "search input"></input>
+				<div attribute="searchTerms">
+					<p attribute="searchPrompt">None of these words:</p>
+					<input attribute = "searchInput"></input>
 				</div>
-				<div attribute="search terms">
-					<p attribute="search prompt">Tags to query:</p>
-					<input attribute = "search input"></input>
+				<div attribute="searchTerms">
+					<p attribute="searchPrompt">Tags to query:</p>
+					<input attribute = "searchInput"></input>
 				</div>
-				<div attribute="search terms">
-					<p attribute="search prompt">Year range</p>
-					<input attribute = "search input"></input>
-					<p attribute = "search prompt">to</p>
-					<input attribute = "search input"></input>
+				<div attribute="searchTerms">
+					<p attribute="searchPrompt">Year range</p>
+					<input attribute = "searchInput"></input>
+					<p attribute = "searchPrompt">to</p>
+					<input attribute = "searchInput"></input>
 				</div>
-				<div attribute="search terms">
-					<p attribute="search prompt">Languages:</p>
-					<input attribute = "search input"></input>
+				<div attribute="searchTerms">
+					<p attribute="searchPrompt">Languages:</p>
+					<input attribute = "searchInput"></input>
 				</div>
-				<div attribute="search terms">
-					<p attribute="search prompt">Region:</p>
-					<input attribute = "search input"></input>
+				<div attribute="searchTerms">
+					<p attribute="searchPrompt">Region:</p>
+					<input attribute = "searchInput"></input>
 				</div>
 			</div>
 			<div id="search button">
