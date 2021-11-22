@@ -18,7 +18,7 @@ class HomePage extends React.Component{
 };
 	render() {
 		return (
-		this.state.connection
+		<div>unga bunga</div>
 		)
 	}
 };
