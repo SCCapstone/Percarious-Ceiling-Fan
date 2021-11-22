@@ -18,6 +18,12 @@ class HomePage extends React.Component{
 };
 	render() {
 		return (
+			<div>
+			<div className="ui input">
+			<input value={this.state.example} onChange={e => this.setState({ example: e.target.value})} placeholder="Search"/>
+			</div>
+			<button className= "ui large primary button" onClick={() => this.onSubmitClick()}>Add</button>
+			</div>
 		)
 	}
 };
