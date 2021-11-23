@@ -15,7 +15,6 @@ app.get('/', (req, res) => {
 //Builds an sql query for multiple substrings
 function substringSearch(field, words){
 	let first = true;
-	console.log(words)
 	let out = `SELECT * FROM bookdata WHERE `;
 	for(let i in words){
 		if(!first) out+= "OR "
