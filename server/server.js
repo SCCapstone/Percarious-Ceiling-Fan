@@ -24,6 +24,17 @@ function substringSearch(field, words){
 	return out+";";
 }
 
+function excludeSearch(field, words){
+	let out = `SELECT * FROM bookdata WHERE title NOT IN (`;
+	for(let i in words){
+		if(i != words.length-1)
+		out += `'${words[i]}', `;
+		else
+		out += `'${words[i]}'`;
+	}
+	return out+");";
+}
+
 //basic search query
 app.get("/basicSearch", (req, res) => {
 	var strings = (`${req.query.search}`).split(",");
