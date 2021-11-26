@@ -1,6 +1,17 @@
 import React from 'react';
 import axios from "axios"; //for SQL command stuff
 
+function getDecades(data){
+	decades = {};
+	for(let i = 0; i < data.length; i++){
+		year = data[i].control_string.substring(7,11);
+		dec = Math.trunc(year/10)*10;
+		if(!decades[dec]) decades[dec] = 0;
+		decades[dec]++;
+	}
+	return decades;
+}
+
 class Results extends React.Component{
     state = {
         connection: ""
@@ -28,8 +39,8 @@ class Results extends React.Component{
 					<div class="main-body">
 						<h1>Welcome to The Precarious Search System</h1>
 					</div>
-					
-					
+
+
 					<div class="bottom-nav-bar">
 						<div class="left-side">
 							<p class="goal-header">Our goal:</p>
