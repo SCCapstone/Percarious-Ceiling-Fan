@@ -34,6 +34,7 @@ function get008Loc(data){
 	}
 	return locs;
 }
+
 //Function takes in sql response, returns dictionary of country code:count. Not normalized, but can be much more specific than 008.
 function get260Loc(data){
 	locs = {};
