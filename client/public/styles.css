@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(233, 233, 241);
+  background-color: #efefef;
   margin: auto;
   overflow: hidden;
 }
@@ -9,7 +9,7 @@ body {
 }
 
 .nav-bar-wrapper {
-  background-color: rgb(62, 62, 133);
+  background-color: #3a2f7d;
   font-size: 1.2em;
   color: whitesmoke;
   height: 60px;
@@ -52,4 +52,12 @@ body {
 
 .right-side {
   text-align: right;
+}
+
+/** Home page stylings **/
+
+.decor {
+  font-weight: lighter;
+  font-size: 1.2em;
+  letter-spacing: 0.5px;
 }
