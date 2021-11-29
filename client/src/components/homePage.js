@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from "axios"; //for SQL command stuff
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 class HomePage extends React.Component{
 	state = {
@@ -57,37 +58,14 @@ class HomePage extends React.Component{
 		}
 		return (
 			<div>
-				<div class="content-wrapper">
-					<div class="nav-bar-wrapper">
-						<div class="menu-icon"></div>
-						<p class="header">Home</p>
-					</div>
-					<div class="main-body">
+			<div class="main-body">
 						<h1>Welcome to The Precarious Search System</h1>
 					</div>
 					<div class="ui-input">
 						<input style = {inputStylingBasic} value={this.state.search} onChange={e => this.setState({ search: e.target.value})} placeholder="Enter your Search Here"/> 
+						<button style= {buttonStyling} class = "ui-large-primary-button" onClick={() => this.onSubmitClick()}>Search</button>
 					</div>
-					<button style= {buttonStyling} class = "ui-large-primary-button" onClick={() => this.onSubmitClick()}>Search</button>
-					<div class="decor">
-							<p>OR</p>
-					</div>
-					<div class="ui-input">
-						<input style = {inputStylingAdvanced} value={this.state.search} onChange={e => this.setState({ search: e.target.value})} placeholder="Use Advanced Search" placeholderTextColor = "#FFFFFF"/> 
-					</div>
-					<button style= {buttonStyling} class = "ui-large-primary-button" onClick={() => this.onSubmitClick()}>Search</button>
-					<div class="bottom-nav-bar">
-						<div class="left-side">
-							<p class="goal-header">Our goal:</p>
-							<p>blah blah blah info info info</p>
-						</div>
-						<div class="right-side">
-							<p class="contact-header">Contact Us:</p>
-							<p>#2709 : testEmail@gmail.com</p>
-							<p>#</p>
-						</div>
-					</div>
-    			</div>
+					<button style= {buttonStyling} class = "ui-large-primary-button" onClick={() => this.onSubmitClick()}>Advanced Search</button>
 			</div>
 		)
 	}
