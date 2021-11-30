@@ -5,11 +5,13 @@ class Results extends React.Component{
 	
 	constructor(props){
 		super(props);
-		this.state = {data: [], layout: {}, frames: [], config: {}};
+		this.state = {data: [], layout: {}, frames: [], config: {}, render: false};
 	}
 
     render(){
+		if(this.state.render) {
 		const { results } = this.props.location.state
+		}
         return (
 			<Plot 
 			data={this.state.date}

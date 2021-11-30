@@ -25,7 +25,25 @@ class AdvancedSearch extends React.Component{
 		.then((response) => response.data)
 		.then(response => {this.setState({connection: response})})
 	};
-	sendSearch = () => {}
+
+	onSubmitClick = () => {
+		axios.get('http://localhost:3001/advancedSearch',{
+			params: {
+				anyWords: this.state.anyWords,
+				exactPhrase: this.state.exactPhrase,
+				exclude: this.state.exclude,
+				tags: this.state.tags,
+				startYear: this.state.startYear,
+				endYear: this.state.endYear,
+				languages: this.state.languages,
+				regions: this.state.regions
+			}
+		})
+		.then((response) => response.data)
+		.then(response => {this.setState({results: response})}) //results from basicSearch
+
+		//need to route to results page with this.results info
+	}
 
 
 	render() {
