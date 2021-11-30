@@ -79,11 +79,11 @@ body {
   height: 90px;
 }
 
-.home-link {
+.home-link > link {
   color: whitesmoke !important;
 }
 
-.home-link:visited {
+.home-link > link:visited {
   color: whitesmoke !important;
 }
 
@@ -102,4 +102,10 @@ body {
   font-weight: lighter;
   font-size: 1.2em;
   letter-spacing: 0.5px;
+}
+
+/** Advanced page stylings **/
+
+.advanced-search-body {
+  margin-bottom: 110px;
 }
