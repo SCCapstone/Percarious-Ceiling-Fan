@@ -109,3 +109,12 @@ body {
 .advanced-search-body {
   margin-bottom: 110px;
 }
+
+.year-range {
+	flex-direction: row;
+
+}
+
+.years {
+	flex-direction: row;
+}

@@ -59,7 +59,7 @@ class AdvancedSearch extends React.Component{
 					<input attribute = "searchInput" id= "anyWords" value={this.state.anyWords} onChange={e => this.setState({ anyWords: e.target.value})}></input>
 				</div>
 				<div attribute="searchTerms" class = "exact-words">
-					<p attribute="searchPrompt">Exact words or phrases</p>
+					<p attribute="searchPrompt">Exact words or phrases:</p>
 					<input attribute = "searchInput" id="exactPhrase" value={this.state.exactPhrase} onChange={e => this.setState({ exactPhrase: e.target.value})}></input>
 				</div>
 				<div attribute="searchTerms" class ="exclude-words">
@@ -71,10 +71,14 @@ class AdvancedSearch extends React.Component{
 					<input attribute = "searchInput" id="tags" value={this.state.tags} onChange={e => this.setState({ tags: e.target.value})}></input>
 				</div>
 				<div attribute="searchTerms" class ="year-range">
-					<p attribute="searchPrompt">Year range</p>
+					<div class='years'>
+					<p attribute="searchPrompt">Year range:</p>
 					<input attribute = "searchInput" id="startYear" value={this.state.startYear} onChange={e => this.setState({ startYear: e.target.value})}></input>
-					<p attribute = "searchPrompt">to</p>
+					</div>
+					<div class= 'years'>
+					<p attribute = "searchPrompt">to:</p>
 					<input attribute = "searchInput" id="endYear" value={this.state.endYear} onChange={e => this.setState({ endYear: e.target.value})}></input>
+					</div>
 				</div>
 				<div attribute="searchTerms" class = "languages">
 					<p attribute="searchPrompt">Languages:</p>
