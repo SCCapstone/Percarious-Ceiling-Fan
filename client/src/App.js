@@ -26,7 +26,7 @@ function App() {
 								<p class = "goal-text">To provide an interface to graph results from the OCLC Catalog to use for research</p>
 							</div>
 							<div class ="col center">Contact us: testEmail@gmail.com</div>
-							<div class = "col right">Copyright:2021 hi evan</div>
+							<div class = "col right">Copyright : 2021</div>
 						</footer>
 						</div>
 				</div>
