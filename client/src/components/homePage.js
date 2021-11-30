@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from "axios"; //for SQL command stuff
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class HomePage extends React.Component{
 	state = {
@@ -65,7 +65,7 @@ class HomePage extends React.Component{
 						<input style = {inputStylingBasic} value={this.state.search} onChange={e => this.setState({ search: e.target.value})} placeholder="Enter your Search Here"/> 
 						<button style= {buttonStyling} class = "ui-large-primary-button" onClick={() => this.onSubmitClick()}>Search</button>
 					</div>
-					<button style= {buttonStyling} class = "ui-large-primary-button" onClick={() => this.onSubmitClick()}>Advanced Search</button>
+					<Link to="/advancedsearch">Advanced Search</Link>
 			</div>
 		)
 	}

@@ -1,25 +1,25 @@
 import './App.css';
-import { BrowserRouter, Route, Routes} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes,Link} from 'react-router-dom';
 import HomePage from "./components/homePage";
 import AdvancedSearch from './components/advancedSearch';
 import Results from './components/results';
 
 function App() {
   return (
-    <div className="App">
-		<div>
-		<div class="content-wrapper">
-		<div class="nav-bar-wrapper">
-		<div class="menu-icon"></div>
-		</div>
-		<BrowserRouter>
-		<Routes>
-          <Route exact path="/" element={<HomePage />} />
-          <Route path="/advancedsearch" element={<AdvancedSearch />} />
-		  <Route path="/results" element={<Results />} />
-        </Routes>
-      </BrowserRouter>
-					<div class="bottom-nav-bar">
+	  <Router>
+		<div className="App">
+			<div>
+				<div class="content-wrapper">
+					<div class="nav-bar-wrapper">
+					<nav><Link to="/">Home</Link></nav>
+						<div class="menu-icon"></div>
+						</div>
+						<Routes>
+							<Route path="/" element={<HomePage />} />
+							<Route path="/advancedsearch" element={<AdvancedSearch />} />
+							<Route path="/results" element={<Results />} />
+						</Routes>
+						<div class="bottom-nav-bar">
 						<div class="left-side">
 							<p class="goal-header">Our goal:</p>
 							<p>blah blah blah info info info</p>
@@ -30,9 +30,10 @@ function App() {
 							<p>#</p>
 						</div>
 					</div>
-    			</div>
+				</div>
 			</div>
-	</div>
+		</div>
+	</Router>
   );
 }
 
