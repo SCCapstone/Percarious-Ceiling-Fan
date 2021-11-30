@@ -56,7 +56,7 @@ class HomePage extends React.Component{
 		}
 		return (
 			<div>
-			<div class="main-body">
+			<div class="content-wrapper">
 						<h1>Welcome to The Precarious Search System</h1>
 					</div>
 					<div class="ui-input">

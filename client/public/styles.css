@@ -5,7 +5,9 @@ body {
 }
 
 .content-wrapper {
-  font-family: fantasy;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: lighter;
+  letter-spacing: 0.8px;
 }
 
 .nav-bar-wrapper {
@@ -43,33 +45,38 @@ body {
   height: 90px;
   background-color: rgb(63, 62, 62);
   justify-content: space-between;
-  padding: 10px;
+  padding: 5px;
 }
 
 .left {
   display: inline-block;
   text-align: left;
-  border-right: 1px solid grey;
-  padding: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
   letter-spacing: 0.8px;
-  font-weight: lighter;
 }
 
 .center {
-  padding: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
   display: inline-block;
   text-align: center;
   letter-spacing: 0.8px;
-  font-weight: lighter;
 }
 
 .right {
   letter-spacing: 0.8px;
-  padding: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
   display: inline-block;
   text-align: right;
-  border-left: 1px solid grey;
-  font-weight: lighter;
+}
+
+.col {
+  float: left;
+  width: 30%;
+  border-left: 1px solid rgb(82, 81, 81);
+  height: 90px;
 }
 
 .home-link {
@@ -78,6 +85,16 @@ body {
 
 .home-link:visited {
   color: whitesmoke !important;
+}
+
+.goal-header {
+  text-decoration: underline;
+  text-align: center;
+  margin-top: 2px;
+}
+
+.goal-text {
+  margin-top: 0px;
 }
 /** Home page stylings **/
 
