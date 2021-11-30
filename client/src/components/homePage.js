@@ -21,8 +21,6 @@ class HomePage extends React.Component{
 		})
 		.then((response) => response.data)
 		.then(response => {this.setState({results: response})}) //results from basicSearch
-
-		//need to route to results page with this.results info
 	}
 
 	render() {
@@ -63,7 +61,12 @@ class HomePage extends React.Component{
 					</div>
 					<div class="ui-input">
 						<input style = {inputStylingBasic} value={this.state.search} onChange={e => this.setState({ search: e.target.value})} placeholder="Enter your Search Here"/> 
-						<button style= {buttonStyling} class = "ui-large-primary-button" onClick={() => this.onSubmitClick()}>Search</button>
+						<Link to={{
+							pathname: '/results',
+							state: this.state.results
+						}}  onClick={() => {this.onSubmitClick(); }}>
+							<button style= {buttonStyling} class = "ui-large-primary-button">Search</button>
+						</Link>
 					</div>
 					<Link to="/advancedsearch">Advanced Search</Link>
 			</div>
