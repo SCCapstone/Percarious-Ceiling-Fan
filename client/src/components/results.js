@@ -4,7 +4,8 @@ import Plot from 'react-plotly.js';
 
 class Results extends React.Component{
     state = {
-        connection: ""
+        connection: "",
+		resultArray: this.props.location.state //this should access the results sent from basic search
     }
 
     componentDidMount() {
