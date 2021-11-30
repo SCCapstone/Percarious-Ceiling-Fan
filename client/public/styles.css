@@ -46,14 +46,39 @@ body {
   padding: 10px;
 }
 
-.left-side {
+.left {
+  display: inline-block;
   text-align: left;
+  border-right: 1px solid grey;
+  padding: 10px;
+  letter-spacing: 0.8px;
+  font-weight: lighter;
 }
 
-.right-side {
+.center {
+  padding: 10px;
+  display: inline-block;
+  text-align: center;
+  letter-spacing: 0.8px;
+  font-weight: lighter;
+}
+
+.right {
+  letter-spacing: 0.8px;
+  padding: 10px;
+  display: inline-block;
   text-align: right;
+  border-left: 1px solid grey;
+  font-weight: lighter;
 }
 
+.home-link {
+  color: whitesmoke !important;
+}
+
+.home-link:visited {
+  color: whitesmoke !important;
+}
 /** Home page stylings **/
 
 .decor {

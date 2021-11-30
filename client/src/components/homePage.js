@@ -61,12 +61,14 @@ class HomePage extends React.Component{
 					</div>
 					<div class="ui-input">
 						<input style = {inputStylingBasic} value={this.state.search} onChange={e => this.setState({ search: e.target.value})} placeholder="Enter your Search Here"/> 
-						<Link to={{
-							pathname: '/results',
-							state: this.state.results
-						}}  onClick={() => {this.onSubmitClick(); }}>
-							<button style= {buttonStyling} class = "ui-large-primary-button">Search</button>
-						</Link>
+							<button style= {buttonStyling} class = "ui-large-primary-button" onClick={() => {this.onSubmitClick(); }}>
+								<Link to={{
+									pathname: '/results',
+									state: this.state.results
+								}}>
+									Search
+								</Link>
+							</button>
 					</div>
 					<Link to="/advancedsearch">Advanced Search</Link>
 			</div>

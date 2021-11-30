@@ -11,7 +11,7 @@ function App() {
 			<div>
 				<div class="content-wrapper">
 					<div class="nav-bar-wrapper">
-					<nav><Link to="/">Home</Link></nav>
+					<nav class = "home-link"><Link to="/">Home</Link></nav>
 						<div class="menu-icon"></div>
 						</div>
 						<Routes>
@@ -19,17 +19,13 @@ function App() {
 							<Route path="/advancedsearch" element={<AdvancedSearch />} />
 							<Route path="/results" element={<Results />} />
 						</Routes>
-						<div class="bottom-nav-bar">
-						<div class="left-side">
-							<p class="goal-header">Our goal:</p>
-							<p>blah blah blah info info info</p>
+						<div class = "bottom-nav-bar">
+						<footer>
+							<p class ="left">Our Goal: FILL IN </p>
+							<p class ="center">Contact us: testEmail@gmail.com</p>
+							<p class = "right">Copyright:2021</p>
+						</footer>
 						</div>
-						<div class="right-side">
-							<p class="contact-header">Contact Us:</p>
-							<p>#2709 : testEmail@gmail.com</p>
-							<p>#</p>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
