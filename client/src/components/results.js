@@ -22,7 +22,7 @@ class Results extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {data: [], layout: {}, frames: [], config: {}};
-	};
+	}
 
     render(){
         return (
