@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from "axios"; //for SQL command stuff
+import Plot from 'react-plotly.js';
 
 class Results extends React.Component{
     state = {
@@ -15,11 +16,23 @@ class Results extends React.Component{
 		axios.get('http://localhost:3001/')
 		.then((response) => response.data)
 		.then(response => {this.setState({connection: response})})
+	}
+	
+	constructor(props){
+		super(props);
+		this.state = {data: [], layout: {}, frames: [], config: {}};
 	};
 
     render(){
         return (
-			<h>put stuff here</h>
+			<Plot 
+			data={this.state.date}
+			layout={this.state.layout}
+			frames={this.state.frames}
+			config={this.state.config}
+			onInitialized={(figure) => this.setState(figure)}
+			onUpdate={(figure)=> this.setState(figure)}
+			/>
 		)
     }
 }
