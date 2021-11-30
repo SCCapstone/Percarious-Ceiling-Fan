@@ -39,8 +39,8 @@ The tests will have to be run through Node.js while the server is running.
 
 # Authors
 
-Evan Bryer email: ebryer@email.sc.edu
-Casey Blue email: ceblue@email.sc.edu
-Tyron Schultz email: tschultz@email.sc.edu
-Rebekah Soard email: rsoard@email.sc.edu
+* Evan Bryer email: ebryer@email.sc.edu
+* Casey Blue email: ceblue@email.sc.edu
+* Tyron Schultz email: tschultz@email.sc.edu
+* Rebekah Soard email: rsoard@email.sc.edu
 
