@@ -48,6 +48,7 @@ class AdvancedSearch extends React.Component{
 
 	render() {
 		return (
+			
 		<div>
 		<title>Advanced Search</title>
 		<body>
@@ -88,7 +89,7 @@ class AdvancedSearch extends React.Component{
 				</div>
 			</div>
 			<div id="search button">
-				<button>Search</button>
+				<button class = "advanced-search-button">Search</button>
 			</div>
 			</div>
 		</body>
