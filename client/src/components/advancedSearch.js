@@ -18,7 +18,7 @@ class AdvancedSearch extends React.Component{
 	componentDidMount() {
 		console.log('this runs');
 		this.getConnectionTest();
-	}
+	};
 
 	getConnectionTest = () => {
 		axios.get('http://localhost:3001/')
@@ -40,11 +40,9 @@ class AdvancedSearch extends React.Component{
 			}
 		})
 		.then((response) => response.data)
-		.then(response => {this.setState({results: response})}) //results from basicSearch
-
+		.then(response => {this.setState({results: response})}) //results from advancedSearch
 		//need to route to results page with this.results info
 	}
-
 
 	render() {
 		return (
