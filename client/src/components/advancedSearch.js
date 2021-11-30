@@ -45,8 +45,15 @@ class AdvancedSearch extends React.Component{
 	}
 
 	render() {
+		let buttonStyling = {
+			padding: '1px',
+			outline: 'none',
+			margin: '10px',
+			height: '40px',
+			width: '100px',
+			backgroundColor: 'white'
+		}
 		return (
-			
 		<div>
 		<title>Advanced Search</title>
 		<body>
@@ -91,7 +98,7 @@ class AdvancedSearch extends React.Component{
 				</div>
 			</div>
 			<div id="search button">
-				<button class = "advanced-search-button">Search</button>
+				<button  style={buttonStyling}>Search</button>
 			</div>
 			</div>
 		</body>
