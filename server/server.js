@@ -3,7 +3,7 @@ const app = express()
 const cors = require("cors");
 const connection = require('./db');
 const bodyParser = require('body-parser');
-
+//const mysql = require('mysql2/promise');
 app.use(cors());
 
 app.use(bodyParser.json());
@@ -82,18 +82,24 @@ function excludeSearch(field, words){
 }
 
 //basic search query
-app.get("/basicSearch", (req, res) => {
+app.get("/basicSearch", async(req, res) => {
 	var strings = (`${req.query.search}`).split(",");
 	const GET_QUERY = substringSearch('title',strings);
 	console.log(GET_QUERY);
-	connection.query(GET_QUERY, (err, response)=>{
-		console.log(response);
-		if(err) console.log(err)
-		else{
-		 response = getDecades(response);
-		 res.send(response);
-		 }
-	})
+		
+			connection.query(GET_QUERY, (err, response)=>{
+			if(err) console.log(err)
+			else{
+			console.log("yo it about to send the stuff to react")
+			//response = getDecades(response);
+			console.log("got past getDecades");
+			console.log(response);
+			res.send(response);
+			
+			console.log('sent');
+			}
+		})
+	
   })
 
 const PORT = process.env.PORT || 3001;

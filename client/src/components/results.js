@@ -12,8 +12,11 @@ class Results extends React.Component{
 	componentDidMount = () => {
 		console.log('reached');
 		if(this.props.location !== undefined) {
+			setTimeout(function () {
 			console.log('reached, not undefined');
 			console.log(this.props.location.state);
+			},1000);
+			
 			}
 	}
 
