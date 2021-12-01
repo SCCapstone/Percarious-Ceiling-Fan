@@ -109,3 +109,12 @@ body {
 .advanced-search-body {
   margin-bottom: 120px;
 }
+
+.searchTerms > p {
+  display: inline-block;
+  padding: 5px;
+}
+
+.searchTerms > input {
+  display: inline-block;
+}
