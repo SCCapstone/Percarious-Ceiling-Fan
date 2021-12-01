@@ -1,23 +1,10 @@
 import React from 'react';
-import axios from "axios"; //for SQL command stuff
 import { Link } from 'react-router-dom';
 
 class HomePage extends React.Component{
 	state = {
 		connection: "",
-		search: "",
-		results: []
-	}
-
-	onSubmitClick = () => {
-		 axios.get('http://localhost:3001/basicSearch',{
-			params: {
-				search: this.state.search
-			 }
-		})
-		.then((response) => response.data)
-		.then(response => {this.setState({results: response})}) //results from basicSearch
-		console.log('results' + ' ' +this.state.results);
+		search: ""
 	}
 
 	render() {
@@ -58,10 +45,10 @@ class HomePage extends React.Component{
 					</div>
 					<div class="ui-input">
 						<input style = {inputStylingBasic} value={this.state.search} onChange={e => this.setState({ search: e.target.value})} placeholder="Enter your Search Here"/> 
-							<button style= {buttonStyling} class = "ui-large-primary-button" onClick={() => {this.onSubmitClick(); }}>
+							<button style= {buttonStyling} class = "ui-large-primary-button">
 								<Link to={{
 									pathname: '/results',
-									state: this.state.results
+									state: this.state.search
 								}}>
 									Search
 								</Link>
