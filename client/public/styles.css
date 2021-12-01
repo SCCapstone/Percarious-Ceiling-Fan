@@ -119,12 +119,11 @@ body {
   display: inline-block;
 }
 
-.year-range {
-  flex: auto;
-  flex-wrap: nowrap;
+.years {
+  display: inline-block;
 }
 
-.years {
-  flex-direction: row;
-  flex-wrap: nowrap;
+.years > p {
+  display: inline-block;
+  padding: 5px;
 }
