@@ -9,10 +9,6 @@ class HomePage extends React.Component{
 		results: []
 	}
 
-	componentDidMount() {
-		console.log('this runs');
-	}
-
 	onSubmitClick = () => {
 		axios.get('http://localhost:3001/basicSearch',{
 			params: {
@@ -20,7 +16,8 @@ class HomePage extends React.Component{
 			 }
 		})
 		.then((response) => response.data)
-		.then(response => {this.setState({results: response})}) //results from basicSearch
+		.then(response => {this.setState({results: response.data})}) //results from basicSearch
+		console.log(this.state.results);
 	}
 
 	render() {
@@ -56,7 +53,7 @@ class HomePage extends React.Component{
 		}
 		return (
 			<div>
-			<div class="content-wrapper">
+			<div class="main-body">
 						<h1>Welcome to The Precarious Search System</h1>
 					</div>
 					<div class="ui-input">
