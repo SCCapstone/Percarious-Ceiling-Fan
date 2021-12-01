@@ -9,8 +9,8 @@ class Results extends React.Component{
 	}
 
     render(){
-		if(this.state.render) {
-		const { results } = this.props.location.state
+		if(this.state) {
+		const { results } = this.state
 		}
         return (
 			<Plot 
