@@ -61,7 +61,7 @@ function get260Loc(data){
 //Builds an sql query for multiple substrings
 function substringSearch(field, words){
 	let first = true;
-	let out = `SELECT * FROM bookdatacut WHERE `;
+	let out = `SELECT * FROM bookdata WHERE `;
 	for(let i in words){
 		if(!first) out+= "OR "
 		out += `${field} LIKE "%${words[i]}%" `;

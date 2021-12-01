@@ -16,6 +16,7 @@ class Results extends React.Component{
 			console.log('reached, not undefined');
 			console.log(this.props.location.state);
 			this.getResults();
+			console.log(this.state.results);
 			}
 	}
 
@@ -31,14 +32,25 @@ class Results extends React.Component{
 
     render(){
         return (
-			<Plot 
-			data={this.state.date}
-			layout={this.state.layout}
-			frames={this.state.frames}
-			config={this.state.config}
-			onInitialized={(figure) => this.setState(figure)}
-			onUpdate={(figure)=> this.setState(figure)}
-			/>
+			<div>
+			<hr />
+				{this.state.results.map((result) => (
+				<div className="card">
+				<div className="meta">{result.title}</div>
+				<p></p>
+					<hr />
+				</div>
+				))}
+			</div>
+
+			// <Plot 
+			// data={this.state.date}
+			// layout={this.state.layout}
+			// frames={this.state.frames}
+			// config={this.state.config}
+			// onInitialized={(figure) => this.setState(figure)}
+			// onUpdate={(figure)=> this.setState(figure)}
+			// />
 		)
     }
 }
