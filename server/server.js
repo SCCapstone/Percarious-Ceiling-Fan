@@ -61,7 +61,7 @@ function get260Loc(data){
 //Builds an sql query for multiple substrings
 function substringSearch(field, words){
 	let first = true;
-	let out = `SELECT * FROM bookdata WHERE `;
+	let out = `SELECT * FROM bookdatacut WHERE `;
 	for(let i in words){
 		if(!first) out+= "OR "
 		out += `${field} LIKE "%${words[i]}%" `;
@@ -71,7 +71,7 @@ function substringSearch(field, words){
 }
 
 function excludeSearch(field, words){
-	let out = `SELECT * FROM bookdata WHERE title NOT IN (`;
+	let out = `SELECT * FROM bookdatacut WHERE title NOT IN (`;
 	for(let i in words){
 		if(i != words.length-1)
 		out += `'${words[i]}', `;
@@ -86,7 +86,7 @@ app.get("/basicSearch", async(req, res) => {
 	var strings = (`${req.query.search}`).split(",");
 	const GET_QUERY = substringSearch('title',strings);
 	console.log(GET_QUERY);
-		
+
 			connection.query(GET_QUERY, (err, response)=>{
 			if(err) console.log(err)
 			else{
@@ -95,11 +95,11 @@ app.get("/basicSearch", async(req, res) => {
 			console.log("got past getDecades");
 			console.log(response);
 			res.send(response);
-			
+
 			console.log('sent');
 			}
 		})
-	
+
   })
 
 const PORT = process.env.PORT || 3001;

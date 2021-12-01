@@ -108,15 +108,22 @@ body {
 
 .advanced-search-body {
   margin-bottom: 120px;
-
 }
 
-.year-range {
-	flex: auto;
-	flex-wrap: nowrap;
+.searchTerms > p {
+  display: inline-block;
+  padding: 5px;
+}
+
+.searchTerms > input {
+  display: inline-block;
 }
 
 .years {
-	flex-direction: row;
-	flex-wrap:nowrap;
+  display: inline-block;
+}
+
+.years > p {
+  display: inline-block;
+  padding: 5px;
 }
