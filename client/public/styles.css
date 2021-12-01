@@ -118,3 +118,13 @@ body {
 .searchTerms > input {
   display: inline-block;
 }
+
+.year-range {
+  flex: auto;
+  flex-wrap: nowrap;
+}
+
+.years {
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
