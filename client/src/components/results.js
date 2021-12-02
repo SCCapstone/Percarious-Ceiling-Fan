@@ -32,6 +32,7 @@ class Results extends React.Component{
 
     render(){
         return (
+			<>
 			<div>
 			<hr />
 				{this.state.results.map((result) => (
@@ -43,14 +44,15 @@ class Results extends React.Component{
 				))}
 			</div>
 
-			// <Plot 
-			// data={this.state.date}
-			// layout={this.state.layout}
-			// frames={this.state.frames}
-			// config={this.state.config}
-			// onInitialized={(figure) => this.setState(figure)}
-			// onUpdate={(figure)=> this.setState(figure)}
-			// />
+			<Plot 
+			data={this.state.date}
+			layout={this.state.layout}
+			frames={this.state.frames}
+			config={this.state.config}
+			onInitialized={(figure) => this.setState(figure)}
+			onUpdate={(figure)=> this.setState(figure)}
+			/>
+			</>
 		)
     }
 }
