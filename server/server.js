@@ -61,7 +61,7 @@ function get260Loc(data){
 //Builds an sql query for multiple substrings
 function substringSearch(field, words){
 	let first = true;
-	let out = `SELECT * FROM bookdata WHERE `;
+	let out = `SELECT * FROM bookdatacut WHERE `;
 	for(let i in words){
 		if(!first) out+= "OR "
 		out += `${field} LIKE "%${words[i]}%" `;
@@ -91,6 +91,7 @@ app.get("/basicSearch", async(req, res) => {
 			if(err) console.log(err)
 			else{
 			console.log("yo it about to send the stuff to react")
+			if(response.length > 0)
 			response = getDecades(response);
 			console.log("got past getDecades");
 			console.log(response);
