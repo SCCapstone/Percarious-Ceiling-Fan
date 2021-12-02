@@ -91,7 +91,7 @@ app.get("/basicSearch", async(req, res) => {
 			if(err) console.log(err)
 			else{
 			console.log("yo it about to send the stuff to react")
-			//response = getDecades(response);
+			response = getDecades(response);
 			console.log("got past getDecades");
 			console.log(response);
 			res.send(response);

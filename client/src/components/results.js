@@ -45,7 +45,13 @@ class Results extends React.Component{
 			</div>
 
 			<Plot 
-			data={this.state.date}
+			data={
+					this.state.data
+					[{
+						x: Object.keys(this.state.results),
+						y: Object.value(this.state.results),
+					}]
+				}
 			layout={this.state.layout}
 			frames={this.state.frames}
 			config={this.state.config}
