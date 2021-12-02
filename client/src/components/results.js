@@ -50,6 +50,8 @@ class Results extends React.Component{
 					[{
 						x: Object.keys(this.state.results),
 						y: Object.value(this.state.results),
+						type: 'bar',
+						marker: {color: 'blue'},
 					}]
 				}
 			layout={this.state.layout}
