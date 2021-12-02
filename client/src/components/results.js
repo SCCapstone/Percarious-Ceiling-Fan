@@ -54,10 +54,11 @@ class Results extends React.Component{
 					}]
 				}
 			layout={{title: 'results'}}
-			frames={this.state.frames}
-			config={this.state.config}
-			onInitialized={(figure) => this.setState(figure)}
-			onUpdate={(figure)=> this.setState(figure)}
+			//frames={this.state.frames}
+			//config={this.state.config}
+			//onInitialized={(figure) => this.setState(figure)}
+			//onUpdate={(figure)=> this.setState(figure)}
+			//used for future development 
 			/>
 			</>
 		)
