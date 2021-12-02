@@ -46,15 +46,14 @@ class Results extends React.Component{
 
 			<Plot 
 			data={
-					this.state.data
 					[{
 						x: Object.keys(this.state.results),
-						y: Object.value(this.state.results),
+						y: Object.values(this.state.results),
 						type: 'bar',
-						marker: {color: 'blue'},
+						marker: {color: 'blue'}
 					}]
 				}
-			layout={this.state.layout}
+			layout={{title: 'results'}}
 			frames={this.state.frames}
 			config={this.state.config}
 			onInitialized={(figure) => this.setState(figure)}
