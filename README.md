@@ -1,3 +1,5 @@
+# Connect to the website [HERE](http://10.173.131.12:3000/) if you are on the school network!
+
 # OCLC Early Middle European Catalog Search
 
 This project entails a graphical user interface to query the OCLC MARC21 data-set, allowing not only to get only the specific desired information out of a large and complex record, but also allowing for advanced search tools such as AND/OR operators, allowing for additional words to separate the words of a search string, and fuzzy matching, as well as being able to produce graphs of different aspects of the results such as graphing the number of results by the decade they were published, graphing the language distribution of results, etc. Time permitting, we may even be able to look into methods of search optimization and other higher-level problems that the unique data set provides, but these are more secondary to the main goal of creating a user friendly tool to get the desired information out of a dirty, expansive, and complicated data set.
