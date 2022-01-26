@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha 'tests/**/*.js' --recursive --timeout 60000 --exit",
     "start": "nodemon server.js"
   },
   "proxy": "http://localhost:3001",
@@ -20,6 +20,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mysql2": "^2.3.3-rc.0",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "unit.js": "^2.1.1"
   }
 }
