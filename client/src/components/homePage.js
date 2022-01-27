@@ -44,8 +44,8 @@ class HomePage extends React.Component{
 						<h1>Welcome to The Precarious Search System</h1>
 					</div>
 					<div class="ui-input">
-						<input style = {inputStylingBasic} value={this.state.search} onChange={e => this.setState({ search: e.target.value})} placeholder="Enter your Search Here"/> 
-							<button style= {buttonStyling} class = "ui-large-primary-button">
+						<input id="search" style = {inputStylingBasic} value={this.state.search} onChange={e => this.setState({ search: e.target.value})} placeholder="Enter your Search Here"/> 
+							<button id="searchbutton" style= {buttonStyling} class = "ui-large-primary-button">
 								<Link to={{
 									pathname: '/results',
 									state: this.state.search
