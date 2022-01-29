@@ -32,9 +32,10 @@ The unit tests will be in `server/tests/`.
 These tests will be used to confirm the queries performed produce the expected results. This will be done by performing the queries manually and comparing the results to the results of the automatically built query.
 
 Behavioral Testing
-  -Step 1: Install Selenium [Selenium Download](https://www.selenium.dev/downloads/)
-  -Step 2: Bring up the website locally [HERE](http://10.173.131.12:3000/)
-  -step 3: run 'python behave.py' in terminal 
+
+  * Step 1: Install Selenium [Selenium Download](https://www.selenium.dev/downloads/)
+  * Step 2: Bring up the website locally [HERE](http://10.173.131.12:3000/)
+  * step 3: run 'python behave.py' in terminal 
   
   
 ## Testing Technology
