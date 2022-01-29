@@ -35,7 +35,7 @@ These tests will be used to confirm the queries performed produce the expected r
 
   * Step 1: Install Selenium [Selenium Download](https://www.selenium.dev/downloads/)
   * Step 2: Bring up the website locally [HERE](http://10.173.131.12:3000/)
-  * step 3: run 'python behave.py' in terminal 
+  * step 3: run 'python behave.py' in terminal (Website must be ran on school VPN and running to preform test)
   
   
 ## Testing Technology
