@@ -6,7 +6,7 @@ driver = webdriver.Chrome()
 
 #initial address
 
-driver.get("http://localhost:3000/")
+driver.get("http://10.173.131.12:3000/")
 
 #find element on page and send keys
 elem = driver.find_element_by_id("search")
