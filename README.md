@@ -39,7 +39,7 @@ For behavioral testing we use Selenium.
 
 ## Running Tests
 
-To run unit tests, navigate into `server/tests/` and run "npm test" in terminal.
+To run unit tests, run the express server locally ("npm start" in `server/`) navigate into `server/tests/` and run "npm test" in terminal.
 
 To run behavioral tests bring up the website locally [HERE](http://10.173.131.12:3000/) and run 'python behave.py' in terminal.
 (Website must be ran on school VPN and running to perform test)
