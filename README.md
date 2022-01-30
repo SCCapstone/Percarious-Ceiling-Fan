@@ -27,24 +27,22 @@ Because our webapp will be utilizing Nodemon, the react app will automatically r
 
 # Testing
 
-The unit tests will be in `server/tests/`.
-
-These tests will be used to confirm the queries performed produce the expected results. This will be done by performing the queries manually and comparing the results to the results of the automatically built query.
-
-## Behavioral Testing:
-
-  * Step 1: Install Selenium [Selenium Download](https://www.selenium.dev/downloads/)
-  * Step 2: Bring up the website locally [HERE](http://10.173.131.12:3000/)
-  * step 3: run 'python behave.py' in terminal (Website must be ran on school VPN and running to preform test)
-  
+all tests are in `server/tests/`.
   
 ## Testing Technology
 
-These tests will not require additional technology.
+For unit testing we use Mocha and Unit.js (npm install).
+ * In terminal run "npm install -g mocha"
+
+For behavioral testing we use Selenium.
+  * Install Selenium [Selenium Download](https://www.selenium.dev/downloads/)
 
 ## Running Tests
 
-The tests will have to be run through Node.js while the server is running.
+To run unit tests, navigate into `server/tests/` and run "npm test" in terminal.
+
+To run behavioral tests bring up the website locally [HERE](http://10.173.131.12:3000/) and run 'python behave.py' in terminal.
+(Website must be ran on school VPN and running to perform test)
 
 # Authors
 
