@@ -71,7 +71,7 @@ function substringSearch(field, words){
 }
 
 function excludeSearch(field, words){
-	let out = `SELECT * FROM bookdatacut WHERE title NOT IN (`;
+	let out = `SELECT * FROM bookdatacut WHERE ${field} NOT IN (`;
 	for(let i in words){
 		if(i != words.length-1)
 		out += `'${words[i]}', `;
