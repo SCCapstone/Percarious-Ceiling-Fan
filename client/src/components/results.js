@@ -33,7 +33,7 @@ class Results extends React.Component{
     render(){
         return (
 			<>
-			<div>
+			{/* <div>
 			<hr />
 				{this.state.results.map((result) => (
 				<div className="card">
@@ -42,7 +42,7 @@ class Results extends React.Component{
 					<hr />
 				</div>
 				))}
-			</div>
+			</div> */}
 
 			<Plot 
 			data={
