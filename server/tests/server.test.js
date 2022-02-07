@@ -1,5 +1,6 @@
 var test = require('unit.js');
-test.httpAgent('http://localhost:3000')
+
+test.httpAgent('http://localhost:3001')
 .get('/')
 .expect('server and client are connected')
 .end(function(err, res){
@@ -7,6 +8,7 @@ test.httpAgent('http://localhost:3000')
         test.fail(err.message);
     }
 });
+
 //test app.get (??)
 //test app.listen (??)
 //test getDecades
