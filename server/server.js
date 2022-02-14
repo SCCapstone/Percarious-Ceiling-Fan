@@ -84,7 +84,8 @@ function excludeSearch(field, words){
 //basic search query
 app.get("/basicSearch", async(req, res) => {
 	var strings = (`${req.query.search}`).split(",");
-	const GET_QUERY = substringSearch('title',strings);
+	var field = (`${req.query.field}`);
+	const GET_QUERY = substringSearch(field,strings);
 	console.log(GET_QUERY);
 
 			connection.query(GET_QUERY, (err, response)=>{

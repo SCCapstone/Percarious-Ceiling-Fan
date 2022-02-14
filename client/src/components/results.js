@@ -15,15 +15,16 @@ class Results extends React.Component{
 		if(this.props.location !== undefined) {
 			console.log('reached, not undefined');
 			console.log(this.props.location.state);
-			this.getResults();
+			this.getBasicResults();
 			console.log(this.state.results);
 			}
 	}
 
-	getResults = () => {
+	getBasicResults = () => {
 		axios.get('http://localhost:3001/basicSearch',{
 			params: {
-				search: this.props.location.state
+				search: this.props.location.state,
+				field: "title" //Depending on final button set up decision will alter
 			 }
 		})
 		.then((response) => response.data)
