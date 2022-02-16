@@ -45,9 +45,9 @@ class HomePage extends React.Component{
 			<div class="main-body">
 						<h1>Welcome to The Precarious Search System</h1>
 					</div>
-					<ReactComment text = {'here is where the dropdowns for picking field and chart type can be added, set them to update like this.setState({field: "whatever user picks here"})'}/>
+					{/*here is where the dropdowns for picking field and chart type can be added, set them to update like this.setState({field: "whatever user picks here"})*/}
 					<div class="ui-input">
-						<input id="search" style = {inputStylingBasic} value={this.state.search} onChange={e => this.setState({ search: e.target.value})} placeholder="Enter your Search Here"/> 
+						<input id="search" style = {inputStylingBasic} value={this.state.search} onChange={e => this.setState({search: e.target.value})} placeholder="Enter your Search Here"/> 
 							<button id="searchbutton" style= {buttonStyling} class = "ui-large-primary-button">
 								<Link to={{
 									pathname: '/results',

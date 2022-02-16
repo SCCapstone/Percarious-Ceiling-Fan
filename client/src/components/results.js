@@ -11,20 +11,19 @@ class Results extends React.Component{
 	}
 
 	componentDidMount = () => {
-		console.log('reached');
 		if(this.props.location !== undefined) {
-			console.log('reached, not undefined');
+			console.log(this.props.location.search);
+			console.log(this.props.location.field);
 			console.log(this.props.location.chart);
 			this.setState({chart: this.props.location.chart})
 			this.getBasicResults();
-			console.log(this.state.results);
 			}
 	}
 
 	getBasicResults = () => {
 		axios.get('http://localhost:3001/basicSearch',{
 			params: {
-				search: this.props.location.search,
+				search: this.props.location.search.substring(1),
 				field: this.props.location.field
 			 }
 		})
