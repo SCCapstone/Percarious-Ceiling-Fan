@@ -7,14 +7,15 @@ class Results extends React.Component{
 	
 	constructor(props){
 		super(props);
-		this.state = {data: [], layout: {}, frames: [], config: {}, results: []};
+		this.state = {data: [], layout: {}, frames: [], config: {}, results: [], chart: ""};
 	}
 
 	componentDidMount = () => {
 		console.log('reached');
 		if(this.props.location !== undefined) {
 			console.log('reached, not undefined');
-			console.log(this.props.location.state);
+			console.log(this.props.location.chart);
+			this.setState({chart: this.props.location.chart})
 			this.getBasicResults();
 			console.log(this.state.results);
 			}
@@ -23,8 +24,8 @@ class Results extends React.Component{
 	getBasicResults = () => {
 		axios.get('http://localhost:3001/basicSearch',{
 			params: {
-				search: this.props.location.state,
-				field: "title" //Depending on final button set up decision will alter
+				search: this.props.location.search,
+				field: this.props.location.field
 			 }
 		})
 		.then((response) => response.data)
@@ -50,7 +51,7 @@ class Results extends React.Component{
 					[{
 						x: Object.keys(this.state.results),
 						y: Object.values(this.state.results),
-						type: 'bar',
+						type: this.state.chart,
 						marker: {color: 'blue'}
 					}]
 				}
