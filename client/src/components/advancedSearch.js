@@ -1,6 +1,8 @@
 //import '../../public/styles.css'
 import React from 'react';
 import axios from "axios"; //for SQL command stuff
+import { Link } from 'react-router-dom';
+//import TagSelector from './tagsComponent';
 
 class AdvancedSearch extends React.Component {
 	state = {
@@ -8,13 +10,21 @@ class AdvancedSearch extends React.Component {
 		anyWords: "",
 		exactPhrase: "",
 		exclude: "",
-		tags: "",
+		author: "",
+		title: "",
+		publisher: "",//author, title
 		startYear: "",
+		tags: "",
 		endYear: "",
 		languages: "",
-		regions: ""
+		regions: "",
+		genre: ""
+		//fullArray: [connection, anyWords, exactPhrase]
 	}
 
+	  
+	
+	
 	componentDidMount() {
 		console.log('this runs');
 		this.getConnectionTest();
@@ -37,6 +47,9 @@ class AdvancedSearch extends React.Component {
 				endYear: this.state.endYear,
 				languages: this.state.languages,
 				regions: this.state.regions
+				//author: this.state.author,
+				//title: this.state.title,
+				//publisher: this.state.publisher,
 			}
 		})
 		.then((response) => response.data)
@@ -72,9 +85,26 @@ class AdvancedSearch extends React.Component {
 								<p className="searchPrompt">None of these words:</p>
 								<input className = "searchInput" id="exclude" value={this.state.exclude} onChange={e => this.setState({ exclude: e.target.value})}></input>
 							</div>
+							
+							
 							<div className="searchTerms query-tag">
 								<p className="searchPrompt">Tags to query:</p>
-								<input className = "searchInput" id="tags" value={this.state.tags} onChange={e => this.setState({ tags: e.target.value})}></input>
+								<input className = "searchInput" id="tags" placeholder="'Author' 'Title' and/or 'Publisher'" value={this.state.tags} onChange={e => this.setState({ tags: e.target.tags})}></input>
+								{/*
+								<tagSelector>
+
+								</tagSelector>
+								<p className="searchPrompt">Author:</p>
+								<input type = "checkbox" 
+									className = "searchInput" 
+									id="author" 
+									value={this.state.author} 
+									onChange={e => this.setState({ author: e.target.value}), console.log('author change'+this.state.author)}></input>
+								<p className="searchPrompt">Title:</p>
+								<input type = "checkbox" className = "searchInput" id="title" value={this.state.title} onChange={e => this.setState({ title: e.target.value})}></input>
+								<p className="searchPrompt">Publisher:</p>
+								<input type = "checkbox" className = "searchInput" id="publisher" value={this.state.publisher} onChange={e => this.setState({ publisher: e.target.value})}></input>
+								*/}
 							</div>
 							<div className="searchTerms year-range">
 								<div className='years'>
@@ -96,7 +126,20 @@ class AdvancedSearch extends React.Component {
 							</div>
 						</div>
 						<div id="search button">
-							<button  style={buttonStyling}>Search</button>
+							<button  style={buttonStyling}>
+							    <Link to={{
+									pathname: '/results',
+									anyWords: this.state.anyWords,
+									exactPhrase: this.state.exactPhrase,
+									exclude: this.state.exclude,
+									tags: this.state.tags,
+									startYear: this.state.startYear,
+									endYear: this.state.endYear,
+									languages: this.state.languages,
+									regions: this.state.regions
+								}}>Search
+								</Link>
+							</button>
 						</div>
 					</div>
 				</body>
