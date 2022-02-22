@@ -11,7 +11,7 @@ function App() {
 			<div>
 				<div class="content-wrapper">
 					<div class="nav-bar-wrapper">
-					<nav class = "home-link"><Link to="/" style = {{textDecoration: 'none', color: 'white'}}>Home</Link></nav>
+					<nav class = "home-link"><Link to="/" style = {{textDecoration: 'none', color: 'white', float: 'left', marginTop: '15px', marginLeft: '25px', textTransform: 'uppercase'}}>Home</Link></nav>
 						<div class="menu-icon"></div>
 						</div>
 						<Switch>

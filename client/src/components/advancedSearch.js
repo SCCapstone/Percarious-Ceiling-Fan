@@ -40,12 +40,26 @@ class AdvancedSearch extends React.Component {
 
 	render() {
 		let buttonStyling = {
-			padding: '1px',
-			outline: 'none',
+			padding: '10px',
 			margin: '10px',
-			height: '40px',
-			width: '100px',
-			backgroundColor: 'white'
+			backgroundColor: '#6675b0',
+			borderRadius: '10px',
+			color: 'white',
+			width: '200px',
+			outline: 'none'
+		}
+		let optionStyling = {
+			backgroundColor: 'white',
+			borderRadius: '20px',
+			height: '150px',
+			width: '30%',
+			margin: 'auto'
+		}
+		let containerStyling = {
+			display: 'grid',
+			fontSize: '0.85em',
+			fontWeight: 'bold',
+			color: '#6675b0'
 		}
 		return (
 			<div>
@@ -53,11 +67,11 @@ class AdvancedSearch extends React.Component {
 				<body>
 
 					<div className = "advanced-search-body">
-						<div id="search-list">
+						<div id="search-list" style={containerStyling}>
 							<div className = "any-words searchTerms">
 								<p className="searchPrompt">Any of these words:</p>
 								<input className = "searchInput" id= "anyWords" value={this.state.anyWords} onChange={e => this.setState({ anyWords: e.target.value})}></input>
-							</div>
+							</div> 
 							<div  className = "searchTerms exact-words">
 								<p className="searchPrompt">Exact words or phrases:</p>
 								<input className = "searchInput" id="exactPhrase" value={this.state.exactPhrase} onChange={e => this.setState({ exactPhrase: e.target.value})}></input>
@@ -68,7 +82,7 @@ class AdvancedSearch extends React.Component {
 							</div>
 							
 							
-							<div className="searchTerms query-tag">
+							<div className="searchTerms query-tag" style = {optionStyling}>
 								<p className="searchPrompt">Tags to query:</p>
 								<div>
 									<span class='searchPrompt'>Author:</span>
@@ -102,7 +116,7 @@ class AdvancedSearch extends React.Component {
 						</div>
 						<div id="search button">
 							<button  style={buttonStyling}>
-							    <Link to={{
+							    <Link style= {{textDecoration: 'none', color: 'white', padding: '5px'}} to={{
 									pathname: '/results',
 									anyWords: this.state.anyWords,
 									exactPhrase: this.state.exactPhrase,

@@ -44,7 +44,7 @@ class Results extends React.Component{
 				</div>
 				))}
 			</div> */}
-
+			<div style = {{}}> <h3>Search Output:</h3> </div>
 			<Plot 
 			data={
 					[{
@@ -54,7 +54,7 @@ class Results extends React.Component{
 						marker: {color: 'blue'}
 					}]
 				}
-			layout={{title: 'results'}}
+			layout={{title: 'Results'}}
 			//frames={this.state.frames}
 			//config={this.state.config}
 			//onInitialized={(figure) => this.setState(figure)}
