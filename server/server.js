@@ -26,7 +26,7 @@ function build(anyWords, exactPhrase, exclude, author, title, publisher, startYe
 	if(title) fields[fields.length] = "title";
 	if(author) fields[fields.length] = "author";
 	if(publisher) fields[fields.length] = "pubname";
-	out = "SELECT * from bookdatacut WHERE ((";
+	out = "SELECT * from bookdata WHERE ((";
 	for(f = 0; f < fields.length; f++){
 		field = fields[f];
 		any = anyWords.split(",");
@@ -165,6 +165,34 @@ app.get("/basicSearch", async(req, res) => {
 	var strings = (`${req.query.search}`).split(",");
 	var field = (`${req.query.field}`);
 	const GET_QUERY = substringSearch(field,strings);
+	console.log(GET_QUERY);
+
+			connection.query(GET_QUERY, (err, response)=>{
+			if(err) console.log(err)
+			else{
+			if(response.length > 0)
+			response = getDecades(response);
+			console.log(response);
+			res.send(response);
+
+			console.log('sent');
+			}
+		})
+  })
+
+//advanced search query
+  app.get("/advancedSearch", async(req, res) => {
+	var anyWords = (`${req.query.anyWords}`);
+	var exactPhrase = (`${req.query.exactPhrase}`);
+	var exclude = (`${req.query.exclude}`);
+	var author = (`${req.query.author}`);
+	var title = (`${req.query.title}`);
+	var publisher = (`${req.query.publisher}`);
+	var startYear = (`${req.query.startYear}`);
+	var endYear = (`${req.query.anyWords}`);
+	var languages = (`${req.query.languages}`);
+	var regions = (`${req.query.regions}`);
+	const GET_QUERY = build(anyWords, exactPhrase, exclude, author, title, publisher, startYear, endYear, languages, regions);
 	console.log(GET_QUERY);
 
 			connection.query(GET_QUERY, (err, response)=>{

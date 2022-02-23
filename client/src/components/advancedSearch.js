@@ -20,7 +20,8 @@ class AdvancedSearch extends React.Component {
 		endYear: "",
 		languages: "",
 		regions: "",
-		genre: ""
+		genre: "", 
+		chart: "bar"
 	}
 
 	  
@@ -91,16 +92,6 @@ class AdvancedSearch extends React.Component {
 						<option onChange={e =>this.setState({chart: "line"})}>Line</option>
 					</select>
 					</div>
-					<div style = {dropdownStyling }>
-					<label for="field-options">Search For:   </label>
-					<select name ="field-options">
-						<option onChange={e =>this.setState({field: "title"})}>Title</option>
-						<option onChange={e =>this.setState({field: "author"})}>Author</option>
-						<option onChange={e =>this.setState({field: "year"})}>Year</option>
-						<option onChange={e =>this.setState({field: "genre"})}>Genre</option>
-						<option onChange={e =>this.setState({field: "language"})}>Language</option>
-					</select>
-					</div>
 					</div>
 						<div id="search-list" style={containerStyling}>
 							<div className = "any-words searchTerms">
@@ -162,7 +153,8 @@ class AdvancedSearch extends React.Component {
 									startYear: this.state.startYear,
 									endYear: this.state.endYear,
 									languages: this.state.languages,
-									regions: this.state.regions
+									regions: this.state.regions,
+									chart: this.state.chart
 								}}>Search
 								</Link>
 							</button>
