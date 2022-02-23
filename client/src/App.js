@@ -5,6 +5,7 @@ import AdvancedSearch from './components/advancedSearch';
 import SignIn from './components/signIn';
 import Results from './components/results';
 import { initializeApp } from "firebase/app";
+import {auth} from 'firebase/auth';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 
 const firebaseConfig = {
@@ -17,7 +18,7 @@ const firebaseConfig = {
 	measurementId: "G-NPEH2715VT"
   };
   const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+  const auth = app.auth();
 
 function App() {
   return (
