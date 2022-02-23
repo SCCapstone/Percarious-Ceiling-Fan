@@ -61,6 +61,21 @@ class AdvancedSearch extends React.Component {
 			fontWeight: 'bold',
 			color: '#6675b0'
 		}
+		let dropdownStyling = {
+			padding:'10px'
+		}
+
+		let optionContainer = {
+			padding: '5px',
+			backgroundColor: 'white',
+			margin:'auto',
+			width: '40%',
+			textAlign: 'center',
+			borderRadius: '10px',
+			outline: '2px dotted #6675b0',
+			fontWeight: 'bolder'
+		}
+		
 		return (
 			<div>
 				<title>Advanced Search</title>
@@ -114,6 +129,26 @@ class AdvancedSearch extends React.Component {
 								<input className = "searchInput" id="regions" value={this.state.regions} onChange={e => this.setState({ regions: e.target.value})}></input>
 							</div>
 						</div>
+						<div class="option-container" style = {optionContainer}>
+						<div style = {dropdownStyling}>
+					<label for="graph-options">Graph Type:     </label>
+					<select name ="graph-options">
+						<option onChange={e =>this.setState({chart: "bar"})}>Bar</option>
+						<option onChange={e =>this.setState({chart: "pie"})}>Pie</option>
+						<option onChange={e =>this.setState({chart: "line"})}>Line</option>
+					</select>
+					</div>
+					<div style = {dropdownStyling }>
+					<label for="field-options">Search For:   </label>
+					<select name ="field-options">
+						<option onChange={e =>this.setState({field: "title"})}>Title</option>
+						<option onChange={e =>this.setState({field: "author"})}>Author</option>
+						<option onChange={e =>this.setState({field: "year"})}>Year</option>
+						<option onChange={e =>this.setState({field: "genre"})}>Genre</option>
+						<option onChange={e =>this.setState({field: "language"})}>Language</option>
+					</select>
+					</div>
+					</div>
 						<div id="search button">
 							<button  style={buttonStyling}>
 							    <Link style= {{textDecoration: 'none', color: 'white', padding: '5px'}} to={{

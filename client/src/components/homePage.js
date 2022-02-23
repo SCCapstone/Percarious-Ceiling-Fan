@@ -79,19 +79,19 @@ class HomePage extends React.Component{
 						<div style = {optionStyling}>
 					<label for="graph-options">Graph Type:     </label>
 					<select name ="graph-options">
-						<option value ="">Bar</option>
-						<option value ="">Pie</option>
-						<option value ="">Line</option>
+						<option onChange={e =>this.setState({chart: "bar"})}>Bar</option>
+						<option onChange={e =>this.setState({chart: "pie"})}>Pie</option>
+						<option onChange={e =>this.setState({chart: "line"})}>Line</option>
 					</select>
 					</div>
 					<div style = {optionStyling }>
 					<label for="field-options">Search For:   </label>
 					<select name ="field-options">
-						<option value ="">Title</option>
-						<option value ="">Author</option>
-						<option value ="">Year</option>
-						<option value ="">Genre</option>
-						<option value ="">Language</option>
+						<option onChange={e =>this.setState({field: "title"})}>Title</option>
+						<option onChange={e =>this.setState({field: "author"})}>Author</option>
+						<option onChange={e =>this.setState({field: "year"})}>Year</option>
+						<option onChange={e =>this.setState({field: "genre"})}>Genre</option>
+						<option onChange={e =>this.setState({field: "language"})}>Language</option>
 					</select>
 					</div>
 					</div>
