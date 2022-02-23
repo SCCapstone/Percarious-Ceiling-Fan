@@ -91,6 +91,7 @@ function build(anyWords, exactPhrase, exclude, author, title, publisher, startYe
 	return out;
 
 }
+
 //Function takes in sql response, returns dictionary of decade:count
 function getDecades(data){
 	decades = {};
