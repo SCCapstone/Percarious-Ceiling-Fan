@@ -18,7 +18,7 @@ const firebaseConfig = {
 	measurementId: "G-NPEH2715VT"
   };
   const app = initializeApp(firebaseConfig);
-  const auth = app.auth();
+  //const auth = app.auth();
 
 function App() {
   return (
