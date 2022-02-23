@@ -12,7 +12,85 @@ app.get('/', (req, res) => {
   res.send('server and client are connected')
 })
 
+//Functions for advanced search sql string building
+function fander(ander, out){
+	if(ander){
+		ander = false;
+		out+= ") AND (";
+	}
+	return ander,out;
+}
 
+function build(anyWords, exactPhrase, exclude, author, title, publisher, startYear, endYear, languages, regions){
+	fields = [];
+	if(title) fields[fields.length] = "title";
+	if(author) fields[fields.length] = "author";
+	if(publisher) fields[fields.length] = "pubname";
+	out = "SELECT * from bookdatacut WHERE ((";
+	for(f = 0; f < fields.length; f++){
+		field = fields[f];
+		any = anyWords.split(",");
+		ander = false;
+		for(word = 0; word < any.length; word++){
+			ander = true;
+			out+= `${field} like \"%` +any[word] + "%\""
+			if(word != any.length-1)
+				out+= ") OR ("
+		}
+		exac = exactPhrase.split(",");
+		ander,out = fander(ander,out);
+		for(word = 0; word < exac.length; word++){
+			ander = true;
+			out+= `${field}  like \"%` +exac[word] + "%\""
+			if(word != exac.length-1)
+				out+= ") AND ("
+		}
+		exc = exclude.split(",");
+		ander,out = fander(ander,out);
+		for(word = 0; word < exc.length; word++){
+			ander = true;
+			out+= `${field} NOT LIKE "%${exc[word]}%"`
+			if(word != exc.length-1)
+				out+= ") AND ("
+		}
+
+		out+=")"
+		if(f != fields.length-1) out+= ") OR ((";
+	}
+	out+=")"
+	sy = 0
+	if(startYear.length > 1) sy=parseInt(startYear);
+	ey = 0
+	if(endYear.length > 1) ey=parseInt(endYear);
+	if(sy != 0){
+		out+= ` AND SUBSTR(control_string,8,4) > ${sy}`
+	}
+	if(ey != 0){
+		out+= ` AND SUBSTR(control_string,8,4) < ${ey}`
+	}
+	lang = []
+	if(languages.length > 1){
+		out += " AND SUBSTR(control_string,36,3) IN (";
+		lang = languages.split(",")
+		for(let i = 0; i < lang.length; i++){
+			out+= `"${lang[i]}"`;
+			if(i != lang.length-1) out+=",";
+		}
+		out+=")";
+	}
+	if(regions.length > 1){
+		out += " AND SUBSTR(control_string,16,3) IN (";
+		reg = regions.split(",")
+		for(let i = 0; i < reg.length; i++){
+			out+= `"${reg[i]}"`;
+			if(i != reg.length-1) out+=",";
+		}
+		out+=")";
+	}
+	out+=";"
+	return out;
+
+}
 //Function takes in sql response, returns dictionary of decade:count
 function getDecades(data){
 	decades = {};
