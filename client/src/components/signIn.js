@@ -1,12 +1,12 @@
 import React, { useRef, useState } from "react"
 import { Form, Button, Card, Alert } from "react-bootstrap"
-import { useAuth } from "../contexts/AuthContext"
+import { UseAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 
 export default function Login() {
   const usernameRef = useRef()
   const passwordRef = useRef()
-  const { login } = useAuth()
+  //const { login } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
@@ -17,7 +17,8 @@ export default function Login() {
     try {
       setError("")
       setLoading(true)
-      await login(usernameRef.current.value, passwordRef.current.value)
+	  console.log(usernameRef.current.value+"@percariouscielingfan.com"+passwordRef.current.value);
+      await UseAuth(usernameRef.current.value+"@percariouscielingfan.com", passwordRef.current.value)
       history.push("/")
     } catch {
       setError("Failed to log in")
@@ -45,9 +46,6 @@ export default function Login() {
               Log In
             </Button>
           </Form>
-          <div className="w-100 text-center mt-3">
-            <Link to="/forgot-password">Forgot Password?</Link>
-          </div>
         </Card.Body>
       </Card>
     </>
