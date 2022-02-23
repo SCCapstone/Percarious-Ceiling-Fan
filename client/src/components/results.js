@@ -34,17 +34,8 @@ class Results extends React.Component{
     render(){
         return (
 			<>
-			{/* <div>
-			<hr />
-				{this.state.results.map((result) => (
-				<div className="card">
-				<div className="meta">{result.title}</div>
-				<p></p>
-					<hr />
-				</div>
-				))}
-			</div> */}
-			<div style = {{}}> <h3>Search Output:</h3> </div>
+		
+			<div> <h3>Search Output:</h3> </div>
 			<Plot 
 			data={
 					[{
@@ -55,11 +46,6 @@ class Results extends React.Component{
 					}]
 				}
 			layout={{title: 'Results'}}
-			//frames={this.state.frames}
-			//config={this.state.config}
-			//onInitialized={(figure) => this.setState(figure)}
-			//onUpdate={(figure)=> this.setState(figure)}
-			//used for future development 
 			/>
 			</>
 		)
