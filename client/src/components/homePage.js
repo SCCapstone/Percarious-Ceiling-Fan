@@ -20,8 +20,7 @@ class HomePage extends React.Component{
 			outlineStyle:'none',
 			border: 'none',
 			borderRadius: '20px',
-			color: 'black',
-			marginBottom: '30px'
+			color: 'black'
 		}
 
 		let inputStylingAdvanced = {
@@ -31,7 +30,7 @@ class HomePage extends React.Component{
 			height: '30px',
 			borderRadius: '20px',
 			backgroundColor: '#6675b0',
-			marginTop:'30px'
+			marginTop:'10px'
 		}
 		let buttonStyling = {
 			padding: '10px',
@@ -53,7 +52,8 @@ class HomePage extends React.Component{
 			textAlign: 'center',
 			borderRadius: '10px',
 			outline: '2px dotted #6675b0',
-			fontWeight: 'bolder'
+			fontWeight: 'bolder',
+			marginBottom: '20px'
 		}
 		
 		return (
@@ -66,11 +66,12 @@ class HomePage extends React.Component{
 						<div style = {optionStyling}>
 					<label for="graph-options">Graph Type:     </label>
 					<select name ="graph-options">
-						<option onChange={e =>this.setState({chart: "bar"})}>Bar</option>
+						<option value = " "onChange={e =>this.setState({chart: "bar"})}>Bar</option>
 						<option onChange={e =>this.setState({chart: "pie"})}>Pie</option>
 						<option onChange={e =>this.setState({chart: "line"})}>Line</option>
 					</select>
 					</div>
+					{/*Change check marks to radio buttons*/}
 					<div style = {optionStyling }>
 					<label for="field-options">Search For:   </label>
 					<select name ="field-options">
@@ -95,6 +96,7 @@ class HomePage extends React.Component{
 								</Link>
 							</button>
 					</div>
+					<div><h2>OR</h2></div>
 					<div class = "advanced-link" style = {inputStylingAdvanced}>
 					<Link to="/advancedsearch" style ={{textDecoration:'none', color: 'white'}}>Advanced Search</Link>
 					</div>

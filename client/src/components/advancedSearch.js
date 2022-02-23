@@ -53,6 +53,7 @@ class AdvancedSearch extends React.Component {
 			borderRadius: '20px',
 			height: '150px',
 			width: '30%',
+			outline: '2px dotted #6675b0',
 			margin: 'auto'
 		}
 		let containerStyling = {
@@ -73,14 +74,15 @@ class AdvancedSearch extends React.Component {
 			textAlign: 'center',
 			borderRadius: '10px',
 			outline: '2px dotted #6675b0',
-			fontWeight: 'bolder'
+			fontWeight: 'bolder',
+			marginTop: "30px"
 		}
 		
 		return (
 			<div>
 				<title>Advanced Search</title>
 				<body>
-
+					<h1 style={{fontSize: "2em"}}>Advanced Search</h1>
 					<div className = "advanced-search-body">
 					<div class="option-container" style = {optionContainer}>
 						<div style = {dropdownStyling}>
