@@ -47,7 +47,9 @@ class Results extends React.Component{
 				}
 			layout={{title: 'Results'}}
 			/>
+			<button id="exportBtn" type='button' text="Export" onClick={Plotly.toImage(gd,{format: "png", height:"300", width:"300"})}>Export</button>
 			</>
+			
 		)
     }
 }
