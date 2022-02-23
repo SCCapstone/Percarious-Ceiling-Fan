@@ -61,19 +61,6 @@ class HomePage extends React.Component{
 			<div class="main-body">
 						<h1>Welcome to The Precarious Search System</h1>
 					</div>
-					<div class="ui-input">
-						<input id="search" style = {inputStylingBasic} value={this.state.search} onChange={e => this.setState({search: e.target.value})} placeholder="Enter your Search Here"/> 
-							<button id="searchbutton" style= {buttonStyling} class = "ui-large-primary-button">
-								<Link style ={{textDecoration:'none', color: 'black'}} to={{
-									pathname: '/results',
-									search: this.state.search,
-									field: this.state.field,
-									chart: this.state.chart
-								}}>
-									Search
-								</Link>
-							</button>
-					</div>
 					{/*here is where the dropdowns for picking field and chart type can be added, set them to update like this.setState({field: "whatever user picks here"})*/}
 					<div class="option-container" style = {optionContainer}>
 						<div style = {optionStyling}>
@@ -94,6 +81,19 @@ class HomePage extends React.Component{
 						<option onChange={e =>this.setState({field: "language"})}>Language</option>
 					</select>
 					</div>
+					</div>
+					<div class="ui-input">
+						<input id="search" style = {inputStylingBasic} value={this.state.search} onChange={e => this.setState({search: e.target.value})} placeholder="Enter your Search Here"/> 
+							<button id="searchbutton" style= {buttonStyling} class = "ui-large-primary-button">
+								<Link style ={{textDecoration:'none', color: 'black'}} to={{
+									pathname: '/results',
+									search: this.state.search,
+									field: this.state.field,
+									chart: this.state.chart
+								}}>
+									Search
+								</Link>
+							</button>
 					</div>
 					<div class = "advanced-link" style = {inputStylingAdvanced}>
 					<Link to="/advancedsearch" style ={{textDecoration:'none', color: 'white'}}>Advanced Search</Link>
