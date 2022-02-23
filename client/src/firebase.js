@@ -2,10 +2,9 @@
 import firebase from 'firebase/app'
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+//import 'firebase/auth'
 
-import 'firebase/auth'
-
-const app = firebase.initializeApp({
+const firebaseConfig = {
     
         apiKey: "AIzaSyApxySs35Gvjx5ImJpPsi5YQgLGUIGuA9Q",
         authDomain: "oclc-advanced-search-system.firebaseapp.com",
@@ -15,8 +14,8 @@ const app = firebase.initializeApp({
         appId: "1:683111933545:web:48f08c8e006652439224f8",
         measurementId: "G-NPEH2715VT"
       
-})
+};
 
-const app = initializeApp(firebaseConfig);
-export const auth = app.auth()
+firebase.initializeApp(firebaseConfig);
+export const auth = firebase.auth()
 export default app
