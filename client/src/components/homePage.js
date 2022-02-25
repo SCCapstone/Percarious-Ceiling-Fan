@@ -9,8 +9,23 @@ class HomePage extends React.Component{
 		chart: "bar"
 	}
 
+	chartCheck = (e) =>{
+		this.setState({
+			chart: e.target.value
+		})
+	}
+
+	fieldCheck = (e) =>{
+		this.setState({
+			field: e.target.value
+		})
+	}
+	
+
 	render() {
 		console.log(this.state.search);
+		console.log(this.state.chart);
+		console.log(this.state.field);
 		let inputStylingBasic = {
 			backgroundColor:  '#FFFFFF',
 			textAlign: 'center',
@@ -65,30 +80,29 @@ class HomePage extends React.Component{
 					<div class="option-container" style = {optionContainer}>
 						<div style = {optionStyling}>
 						<p className="searchPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Graph Type:</p>
-								<div onChange={e =>this.onChangeValue} style={{display: 'flex', justifyContent: 'center'}}>
+								<div style={{display: 'flex', justifyContent: 'center'}}>
 									<span class='searchPrompt'>Bar:</span>
-									<input type="radio" name = "searchInput"  value="bar"/> <br/>
+									<input type="radio" name = "searchInput"  value="bar"  onChange={this.chartCheck}/> <br/>
 									<span class='searchPrompt'>Pie:</span>
-									<input type="radio" name = "searchInput" value="pie"/> <br/>
+									<input type="radio" name = "searchInput" value="pie" onChange={this.chartCheck}/> <br/>
 									<span class='searchPrompt'>Line:</span>
-									<input type="radio" name = "searchInput"  value="line"/> <br/>
-									
+									<input type="radio" name = "searchInput"  value="line" onChange={this.chartCheck}/> <br/>
 								</div>
 					</div>
 					{/*Change check marks to radio buttons*/}
 					<div style = {optionStyling }>
 					<p className="searchPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Search for:</p>
-								<div onChange={e =>this.onChangeValue} style={{display: 'flex', justifyContent: 'center'}}>
+								<div onChange={e =>this.state.onChangeValue} style={{display: 'flex', justifyContent: 'center'}}>
 									<span class='searchPrompt'>Title:</span>
-									<input type="radio" name = "searchInput"  value="bar"/> <br/>
+									<input type="radio" name = "searchInput"  value="title" onChange={this.fieldCheck} /> <br/>
 									<span class='searchPrompt'>Author:</span>
-									<input type="radio" name = "searchInput" value="pie"/> <br/>
+									<input type="radio" name = "searchInput" value="author" onChange={this.fieldCheck} /> <br/>
 									<span class='searchPrompt'>Year:</span>
-									<input type="radio" name = "searchInput"  value="line"/> <br/>
+									<input type="radio" name = "searchInput"  value="year" onChange={this.fieldCheck} /> <br/>
 									<span class='searchPrompt'>Genre:</span>
-									<input type="radio" name = "searchInput" value="pie"/> <br/>
+									<input type="radio" name = "searchInput" value="genre"onChange={this.fieldCheck} /> <br/>
 									<span class='searchPrompt'>Language:</span>
-									<input type="radio" name = "searchInput"  value="line"/> <br/>
+									<input type="radio" name = "searchInput"  value="language"onChange={this.fieldCheck} /> <br/>
 								</div>
 					</div>
 					</div>
