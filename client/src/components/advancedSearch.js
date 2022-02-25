@@ -71,7 +71,7 @@ class AdvancedSearch extends React.Component {
 			padding: '5px',
 			backgroundColor: 'white',
 			margin:'auto',
-			width: '40%',
+			width: '30%',
 			textAlign: 'center',
 			borderRadius: '10px',
 			outline: '2px dotted #6675b0',
@@ -87,12 +87,16 @@ class AdvancedSearch extends React.Component {
 					<div className = "advanced-search-body">
 					<div class="option-container" style = {optionContainer}>
 						<div style = {dropdownStyling}>
-					<label for="graph-options">Graph Type:     </label>
-					<select name ="graph-options">
-						<option onChange={e =>this.setState({chart: "bar"})}>Bar</option>
-						<option onChange={e =>this.setState({chart: "pie"})}>Pie</option>
-						<option onChange={e =>this.setState({chart: "line"})}>Line</option>
-					</select>
+						<p className="searchPrompt" style={{marginTop: '0px'}}>Graph Type:</p>
+								<div onChange={e =>this.onChangeValue} style={{display: 'flex', textAlign:'center', width:'20%'}}>
+									<span class='searchPrompt'>Bar:</span>
+									<input type="radio" name = "searchInput"  value="bar"/> <br/>
+									<span class='searchPrompt'>Pie:</span>
+									<input type="radio" name = "searchInput" value="pie"/> <br/>
+									<span class='searchPrompt'>Line:</span>
+									<input type="radio" name = "searchInput"  value="line"/> <br/>
+									
+								</div>
 					</div>
 					</div>
 						<div id="search-list" style={containerStyling}>
