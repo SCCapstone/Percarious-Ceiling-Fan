@@ -32,14 +32,22 @@ class AdvancedSearch extends React.Component {
           var selectedTag=e.tags;
           return selectedTag[name]=checked;
         });
-      };
-	
+    };
+
+	chartCheck = (e) =>{
+		this.setState({
+			chart: e.target.value
+		})
+	}
+
 	componentDidMount() {
 		console.log('this runs');
 		
 	};
 
 	render() {
+		console.log(this.state.chart);
+		console.log(this.state.tags);
 		let buttonStyling = {
 			padding: '10px',
 			margin: '10px',
@@ -88,13 +96,13 @@ class AdvancedSearch extends React.Component {
 					<div class="option-container" style = {optionContainer}>
 						<div style = {dropdownStyling}>
 						<p className="searchPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Graph Type:</p>
-								<div onChange={e =>this.onChangeValue} style={{display: 'flex', justifyContent: 'center', padding:'10px' }}>
+								<div style={{display: 'flex', justifyContent: 'center', padding:'10px' }}>
 									<span class='searchPrompt'>Bar:</span>
-									<input type="radio" name = "searchInput"  value="bar"/> <br/>
+									<input type="radio" name = "searchInput"  value="bar" onChange={this.chartCheck} /> <br/>
 									<span class='searchPrompt'>Pie:</span>
-									<input type="radio" name = "searchInput" value="pie"/> <br/>
+									<input type="radio" name = "searchInput" value="pie" onChange={this.chartCheck}/> <br/>
 									<span class='searchPrompt'>Line:</span>
-									<input type="radio" name = "searchInput"  value="line"/> <br/>
+									<input type="radio" name = "searchInput"  value="line" onChange={this.chartCheck}/> <br/>
 									
 								</div>
 					</div>
