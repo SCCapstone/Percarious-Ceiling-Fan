@@ -1,30 +1,27 @@
 import React, { useRef, useState } from "react"
 import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuthContext } from "../contexts/AuthContext"
-import { Link, useHistory } from "react-router-dom"
+import { Link } from "react-router-dom"
 
-export default function Login() {
+const SignIn = () => {
   const usernameRef = useRef()
   const passwordRef = useRef()
+  const { signIn } = useAuthContext();
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
-  const history = useHistory()
 
-  async function HandleSubmit(e) {
-    e.preventDefault()
-
+  const HandleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
     try {
-      setError("")
-      setLoading(true)
-	  console.log(usernameRef.current.value+"@percariouscielingfan.com"+passwordRef.current.value);
-      await useAuthContext(usernameRef.current.value+"@percariouscielingfan.com", passwordRef.current.value)
-	  
-    } catch {
-      setError("Failed to log in")
+		setLoading(true)
+		console.log(usernameRef.current.value+"@percariouscielingfan.com"+" "+passwordRef.current.value);
+		await signIn(usernameRef.current.value+"@percariouscielingfan.com", passwordRef.current.value)
+    } catch (err) {
+      setError("Failed to log in");
     }
-
-    setLoading(false)
-  }
+	setLoading(false)
+  };
 
   return (
     <>
@@ -55,4 +52,6 @@ export default function Login() {
       </Card>
     </>
   )
-}
+};
+
+export default SignIn;
