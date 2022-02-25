@@ -1,14 +1,15 @@
 import React, { useRef, useState } from "react"
 import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuthContext } from "../contexts/AuthContext"
-import { Link } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 
 const SignIn = () => {
   const usernameRef = useRef()
   const passwordRef = useRef()
-  const  signIn  = useAuthContext();
+  const  logIn  = useAuthContext();
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
+  const history = useHistory()
 
   const HandleSubmit = async (e) => {
     e.preventDefault();
@@ -16,7 +17,8 @@ const SignIn = () => {
     try {
 		setLoading(true)
 		console.log(usernameRef.current.value+"@percariouscielingfan.com"+" "+passwordRef.current.value);
-		await signIn(usernameRef.current.value+"@percariouscielingfan.com", passwordRef.current.value)
+		await logIn(usernameRef.current.value+"@percariouscielingfan.com", passwordRef.current.value)
+		history.push("/")
     } catch (err) {
       setError("Failed to log in");
     }

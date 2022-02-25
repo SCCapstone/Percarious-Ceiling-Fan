@@ -4,6 +4,7 @@ import HomePage from "./components/homePage";
 import AdvancedSearch from './components/advancedSearch';
 import SignIn from './components/signIn';
 import Results from './components/results';
+import { AuthContextProvider } from './contexts/AuthContext';
 
 function App() {
   return (
@@ -16,12 +17,14 @@ function App() {
 					<nav class = "home-link"><Link to="/signIn" style = {{textDecoration: 'none', color: 'white', float: 'left', marginTop: '15px', marginLeft: '35px', textTransform: 'uppercase'}}>Sign In</Link></nav>
 						<div class="menu-icon"></div>
 						</div>
+						<AuthContextProvider>
 						<Switch>
 							<Route path="/advancedSearch"> <AdvancedSearch /> </Route>
 							<Route path="/results"> <Results /> </Route>
 							<Route path="/signIn"> <SignIn /> </Route>
 							<Route path="/"> <HomePage /> </Route>
 						</Switch>
+						</AuthContextProvider>
 						<div class = "bottom-nav-bar">
 						<footer>
 							<div class ="col left">
