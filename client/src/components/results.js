@@ -64,6 +64,7 @@ class Results extends React.Component{
 	};
 
     render(){
+		console.log(this.state.chart)
         return (
 			<>
 		

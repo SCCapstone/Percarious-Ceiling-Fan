@@ -79,34 +79,37 @@ class HomePage extends React.Component{
 					{/*here is where the dropdowns for picking field and chart type can be added, set them to update like this.setState({field: "whatever user picks here"})*/}
 					<div class="option-container" style = {optionContainer}>
 						<div style = {optionStyling}>
+						<form>
 						<p name="chartPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Graph Type:</p>
 								<div style={{display: 'flex', justifyContent: 'center'}}>
-								
-									<span class='chartPrompt'>Bar:</span>
+									<label class='chartPrompt'>Bar:</label>
 									<input type="radio" name = "searchInput"  value="bar" defaultChecked={this.chartCheck} onChange={this.chartCheck}/> <br/>
-									<span class='chartPrompt'>Pie:</span>
+									<label class='chartPrompt'>Pie:</label>
 									<input type="radio" name = "searchInput" value="pie" onChange={this.chartCheck}/> <br/>
-									<span class='chartPrompt'>Line:</span>
+									<label class='chartPrompt'>Line:</label>
 									<input type="radio" name = "searchInput"  value="line" onChange={this.chartCheck}/> <br/>
 								</div>
+							</form>
 					</div>
 					{/*Change check marks to radio buttons*/}
 					<div style = {optionStyling }>
+					<form>
 					<p name="searchPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Search for:</p>
 								<div onChange={e =>this.state.onChangeValue} style={{display: 'flex', justifyContent: 'center'}}>
-									<span class='searchPrompt'>Title:</span>
+									<label class='searchPrompt'>Title:</label>
 									<input type="radio" name = "searchInput"  value="title" onChange={this.fieldCheck} /> <br/>
-									<span class='searchPrompt'>Author:</span>
+									<label class='searchPrompt'>Author:</label>
 									<input type="radio" name = "searchInput" value="author" onChange={this.fieldCheck} /> <br/>
-									<span class='searchPrompt'>Year:</span>
+									<label class='searchPrompt'>Year:</label>
 									<input type="radio" name = "searchInput"  value="year" onChange={this.fieldCheck} /> <br/>
-									<span class='searchPrompt'>Genre:</span>
+									<label class='searchPrompt'>Genre:</label>
 									<input type="radio" name = "searchInput" value="genre"onChange={this.fieldCheck} /> <br/>
-									<span class='searchPrompt'>Language:</span>
+									<label class='searchPrompt'>Language:</label>
 									<input type="radio" name = "searchInput"  value="language"onChange={this.fieldCheck} /> <br/>
-									
 								</div>
+								</form>
 					</div>
+					
 					</div>
 					<div class="ui-input">
 						<input id="search" style = {inputStylingBasic} value={this.state.search} onChange={e => this.setState({search: e.target.value})} placeholder="Enter your Search Here"/> 

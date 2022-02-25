@@ -123,6 +123,7 @@ class AdvancedSearch extends React.Component {
 							
 							
 							<div className="searchTerms query-tag" style = {optionStyling}>
+								<form>
 								<p className="searchPrompt" style={{ textDecoration:'underline'}}>Tags to query:</p>
 								<div>
 									<span class='searchPrompt'>Author:</span>
@@ -133,7 +134,7 @@ class AdvancedSearch extends React.Component {
 									<input type="checkbox" className = "searchInput" name="publisher"onChange={this.checkChange}/> <br/>
 									
 								</div>
-								
+								</form>
 							</div>
 							<div className="searchTerms year-range">
 								<div className='years'>
