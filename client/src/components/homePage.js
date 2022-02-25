@@ -81,21 +81,19 @@ class HomePage extends React.Component{
 						<div style = {optionStyling}>
 						<p name="chartPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Graph Type:</p>
 								<div style={{display: 'flex', justifyContent: 'center'}}>
-									<fieldset name="chartPrompt">
+								
 									<span class='chartPrompt'>Bar:</span>
 									<input type="radio" name = "searchInput"  value="bar" defaultChecked={this.chartCheck} onChange={this.chartCheck}/> <br/>
 									<span class='chartPrompt'>Pie:</span>
 									<input type="radio" name = "searchInput" value="pie" onChange={this.chartCheck}/> <br/>
 									<span class='chartPrompt'>Line:</span>
 									<input type="radio" name = "searchInput"  value="line" onChange={this.chartCheck}/> <br/>
-									</fieldset>
 								</div>
 					</div>
 					{/*Change check marks to radio buttons*/}
 					<div style = {optionStyling }>
 					<p name="searchPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Search for:</p>
 								<div onChange={e =>this.state.onChangeValue} style={{display: 'flex', justifyContent: 'center'}}>
-									<fieldset name="searchPrompt">
 									<span class='searchPrompt'>Title:</span>
 									<input type="radio" name = "searchInput"  value="title" onChange={this.fieldCheck} /> <br/>
 									<span class='searchPrompt'>Author:</span>
@@ -106,7 +104,7 @@ class HomePage extends React.Component{
 									<input type="radio" name = "searchInput" value="genre"onChange={this.fieldCheck} /> <br/>
 									<span class='searchPrompt'>Language:</span>
 									<input type="radio" name = "searchInput"  value="language"onChange={this.fieldCheck} /> <br/>
-									</fieldset>
+									
 								</div>
 					</div>
 					</div>
