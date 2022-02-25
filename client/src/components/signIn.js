@@ -6,7 +6,7 @@ import { Link, useHistory } from "react-router-dom"
 export default function Login() {
   const usernameRef = useRef()
   const passwordRef = useRef()
-  //const { login } = useAuth()
+  const login  = UseAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
@@ -18,7 +18,8 @@ export default function Login() {
       setError("")
       setLoading(true)
 	  console.log(usernameRef.current.value+"@percariouscielingfan.com"+passwordRef.current.value);
-      await UseAuth(usernameRef.current.value+"@percariouscielingfan.com", passwordRef.current.value)
+      await login(usernameRef.current.value+"@percariouscielingfan.com", passwordRef.current.value)
+      console.log("made it past the sending part")
       history.push("/")
     } catch {
       setError("Failed to log in")
