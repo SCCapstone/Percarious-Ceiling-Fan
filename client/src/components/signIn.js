@@ -18,7 +18,7 @@ export default function Login() {
       setLoading(true)
 	  console.log(usernameRef.current.value+"@percariouscielingfan.com"+passwordRef.current.value);
       await useAuthContext(usernameRef.current.value+"@percariouscielingfan.com", passwordRef.current.value)
-      history.push("/")
+	  
     } catch {
       setError("Failed to log in")
     }

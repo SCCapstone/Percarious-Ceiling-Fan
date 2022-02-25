@@ -17,7 +17,13 @@ export function AuthContextProvider({ children }) {
 			 unsubscribe();
 		 }
 	}, []);
-	return <authContext.Provider value={}>{ children }</authContext.Provider>
+	return (
+		<authContext.Provider
+      value={{ user, logIn, logOut }}
+    >
+      {children}
+    </authContext.Provider>
+	);
 }
 
 export function useAuthContext() {
