@@ -6,7 +6,7 @@ import { Link } from "react-router-dom"
 const SignIn = () => {
   const usernameRef = useRef()
   const passwordRef = useRef()
-  const { signIn } = useAuthContext();
+  const  signIn  = useAuthContext();
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
 
