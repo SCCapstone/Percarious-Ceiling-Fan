@@ -1,11 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import FirebaseService from "../services/firebase.service";
 
-class SavedSearches extends React.Component {
-	render() {
-		return (
-		<div></div>
-		)
-	}
-}
+const SavedSearches = () => {
+  const [searches, setSearches] = useState([]);
+  useEffect(() => {
+    getSearches();
+  }, []);
 
-export default SavedSearches
+  const getSearches = async () => {
+    const data = await FirebaseService.getSearches();
+    console.log(data.docs);
+    setSearches(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  };
+
+  return (
+	<div>
+		{searches.map((search) => (
+		<div className="card">
+		<div className="meta">{search.search}</div>
+		<p></p>
+		</div>
+		))}
+	</div>
+  );
+};
+
+export default SavedSearches;
