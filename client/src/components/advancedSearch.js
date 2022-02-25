@@ -20,7 +20,8 @@ class AdvancedSearch extends React.Component {
 		endYear: "",
 		languages: "",
 		regions: "",
-		genre: ""
+		genre: "", 
+		chart: "bar"
 	}
 
 	  
@@ -53,6 +54,7 @@ class AdvancedSearch extends React.Component {
 			borderRadius: '20px',
 			height: '150px',
 			width: '30%',
+			outline: '2px dotted #6675b0',
 			margin: 'auto'
 		}
 		let containerStyling = {
@@ -69,37 +71,32 @@ class AdvancedSearch extends React.Component {
 			padding: '5px',
 			backgroundColor: 'white',
 			margin:'auto',
-			width: '40%',
+			width: '30%',
 			textAlign: 'center',
 			borderRadius: '10px',
 			outline: '2px dotted #6675b0',
-			fontWeight: 'bolder'
+			fontWeight: 'bolder',
+			marginTop: "30px"
 		}
 		
 		return (
 			<div>
 				<title>Advanced Search</title>
 				<body>
-
+					<h1 style={{fontSize: "2em"}}>Advanced Search</h1>
 					<div className = "advanced-search-body">
 					<div class="option-container" style = {optionContainer}>
 						<div style = {dropdownStyling}>
-					<label for="graph-options">Graph Type:     </label>
-					<select name ="graph-options">
-						<option onChange={e =>this.setState({chart: "bar"})}>Bar</option>
-						<option onChange={e =>this.setState({chart: "pie"})}>Pie</option>
-						<option onChange={e =>this.setState({chart: "line"})}>Line</option>
-					</select>
-					</div>
-					<div style = {dropdownStyling }>
-					<label for="field-options">Search For:   </label>
-					<select name ="field-options">
-						<option onChange={e =>this.setState({field: "title"})}>Title</option>
-						<option onChange={e =>this.setState({field: "author"})}>Author</option>
-						<option onChange={e =>this.setState({field: "year"})}>Year</option>
-						<option onChange={e =>this.setState({field: "genre"})}>Genre</option>
-						<option onChange={e =>this.setState({field: "language"})}>Language</option>
-					</select>
+						<p className="searchPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Graph Type:</p>
+								<div onChange={e =>this.onChangeValue} style={{display: 'flex', justifyContent: 'center', padding:'10px' }}>
+									<span class='searchPrompt'>Bar:</span>
+									<input type="radio" name = "searchInput"  value="bar"/> <br/>
+									<span class='searchPrompt'>Pie:</span>
+									<input type="radio" name = "searchInput" value="pie"/> <br/>
+									<span class='searchPrompt'>Line:</span>
+									<input type="radio" name = "searchInput"  value="line"/> <br/>
+									
+								</div>
 					</div>
 					</div>
 						<div id="search-list" style={containerStyling}>
@@ -118,7 +115,7 @@ class AdvancedSearch extends React.Component {
 							
 							
 							<div className="searchTerms query-tag" style = {optionStyling}>
-								<p className="searchPrompt">Tags to query:</p>
+								<p className="searchPrompt" style={{ textDecoration:'underline'}}>Tags to query:</p>
 								<div>
 									<span class='searchPrompt'>Author:</span>
 									<input type="checkbox" className = "searchInput" id='author' name="author" onChange={this.checkChange}/> <br/>
@@ -162,7 +159,8 @@ class AdvancedSearch extends React.Component {
 									startYear: this.state.startYear,
 									endYear: this.state.endYear,
 									languages: this.state.languages,
-									regions: this.state.regions
+									regions: this.state.regions,
+									chart: this.state.chart
 								}}>Search
 								</Link>
 							</button>

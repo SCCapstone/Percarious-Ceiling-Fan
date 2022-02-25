@@ -12,13 +12,45 @@ class Results extends React.Component{
 
 	componentDidMount = () => {
 		if(this.props.location !== undefined) {
-			console.log(this.props.location.search);
-			console.log(this.props.location.field);
+			console.log(this.props.location.pathname);
 			console.log(this.props.location.chart);
 			this.setState({chart: this.props.location.chart})
-			this.getBasicResults();
+			if(!this.props.location.search){
+				console.log(this.props.location.anyWords);
+				console.log(this.props.location.exactPhrase);
+				console.log(this.props.location.exclude);
+				console.log("Author: "+this.props.location.author+" Title: "+this.props.location.title+" Publisher: "+this.props.location.publisher);
+				console.log(this.props.location.startYear+" to "+this.props.location.endYear);
+				console.log(this.props.location.languages);
+				console.log(this.props.location.regions);
+				this.getAdvancedResults();
 			}
+			else {
+				console.log(this.props.location.search);
+				console.log(this.props.location.field);
+				this.getBasicResults();
+			}
+		}
 	}
+
+	getAdvancedResults = () => {
+		axios.get('http://localhost:3001/advancedSearch',{
+			params: {
+				anyWords: this.props.location.anyWords,
+				exactPhrase: this.props.location.exactPhrase,
+				exclude: this.props.location.exclude,
+				author: this.props.location.author,
+				title: this.props.location.title,
+				publisher: this.props.location.publisher,
+				startYear: this.props.location.startYear,
+				endYear: this.props.location.endYear,
+				languages: this.props.location.languages,
+				regions: this.props.location.regions
+			 }
+		})
+		.then((response) => response.data)
+		.then(response => {this.setState({results: response})}) //results from advancedSearch
+	};
 
 	getBasicResults = () => {
 		axios.get('http://localhost:3001/basicSearch',{

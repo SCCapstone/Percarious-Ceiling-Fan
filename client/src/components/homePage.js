@@ -20,8 +20,7 @@ class HomePage extends React.Component{
 			outlineStyle:'none',
 			border: 'none',
 			borderRadius: '20px',
-			color: 'black',
-			marginBottom: '30px'
+			color: 'black'
 		}
 
 		let inputStylingAdvanced = {
@@ -31,7 +30,7 @@ class HomePage extends React.Component{
 			height: '30px',
 			borderRadius: '20px',
 			backgroundColor: '#6675b0',
-			marginTop:'30px'
+			marginTop:'10px'
 		}
 		let buttonStyling = {
 			padding: '10px',
@@ -53,7 +52,8 @@ class HomePage extends React.Component{
 			textAlign: 'center',
 			borderRadius: '10px',
 			outline: '2px dotted #6675b0',
-			fontWeight: 'bolder'
+			fontWeight: 'bolder',
+			marginBottom: '20px'
 		}
 		
 		return (
@@ -64,22 +64,32 @@ class HomePage extends React.Component{
 					{/*here is where the dropdowns for picking field and chart type can be added, set them to update like this.setState({field: "whatever user picks here"})*/}
 					<div class="option-container" style = {optionContainer}>
 						<div style = {optionStyling}>
-					<label for="graph-options">Graph Type:     </label>
-					<select name ="graph-options">
-						<option onChange={e =>this.setState({chart: "bar"})}>Bar</option>
-						<option onChange={e =>this.setState({chart: "pie"})}>Pie</option>
-						<option onChange={e =>this.setState({chart: "line"})}>Line</option>
-					</select>
+						<p className="searchPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Graph Type:</p>
+								<div onChange={e =>this.onChangeValue} style={{display: 'flex', justifyContent: 'center'}}>
+									<span class='searchPrompt'>Bar:</span>
+									<input type="radio" name = "searchInput"  value="bar"/> <br/>
+									<span class='searchPrompt'>Pie:</span>
+									<input type="radio" name = "searchInput" value="pie"/> <br/>
+									<span class='searchPrompt'>Line:</span>
+									<input type="radio" name = "searchInput"  value="line"/> <br/>
+									
+								</div>
 					</div>
+					{/*Change check marks to radio buttons*/}
 					<div style = {optionStyling }>
-					<label for="field-options">Search For:   </label>
-					<select name ="field-options">
-						<option onChange={e =>this.setState({field: "title"})}>Title</option>
-						<option onChange={e =>this.setState({field: "author"})}>Author</option>
-						<option onChange={e =>this.setState({field: "year"})}>Year</option>
-						<option onChange={e =>this.setState({field: "genre"})}>Genre</option>
-						<option onChange={e =>this.setState({field: "language"})}>Language</option>
-					</select>
+					<p className="searchPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Search for:</p>
+								<div onChange={e =>this.onChangeValue} style={{display: 'flex', justifyContent: 'center'}}>
+									<span class='searchPrompt'>Title:</span>
+									<input type="radio" name = "searchInput"  value="bar"/> <br/>
+									<span class='searchPrompt'>Author:</span>
+									<input type="radio" name = "searchInput" value="pie"/> <br/>
+									<span class='searchPrompt'>Year:</span>
+									<input type="radio" name = "searchInput"  value="line"/> <br/>
+									<span class='searchPrompt'>Genre:</span>
+									<input type="radio" name = "searchInput" value="pie"/> <br/>
+									<span class='searchPrompt'>Language:</span>
+									<input type="radio" name = "searchInput"  value="line"/> <br/>
+								</div>
 					</div>
 					</div>
 					<div class="ui-input">
@@ -95,6 +105,7 @@ class HomePage extends React.Component{
 								</Link>
 							</button>
 					</div>
+					<div><h2>OR</h2></div>
 					<div class = "advanced-link" style = {inputStylingAdvanced}>
 					<Link to="/advancedsearch" style ={{textDecoration:'none', color: 'white'}}>Advanced Search</Link>
 					</div>
