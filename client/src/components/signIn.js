@@ -10,7 +10,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false)
   const history = useHistory()
 
-  async function handleSubmit(e) {
+  async function HandleSubmit(e) {
     e.preventDefault()
 
     try {
@@ -33,7 +33,7 @@ export default function Login() {
           <div>
           <h2 className="text-center mb-4" style={{backgroundColor:'#6675a7', height: 'auto', width: '30%', margin: 'auto', padding: '5px', color: 'white', marginTop: '30px', marginBottom:'50px', borderRadius:'5px'}}>Log In</h2>
           {error && <Alert variant="danger">{error}</Alert>}
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={HandleSubmit}>
             <div>
             <Form.Group id="username">
               <Form.Label style={{fontWeight: 'bold', fontFamily: "monospace", fontSize: '1.2em'}}>Username: </Form.Label>

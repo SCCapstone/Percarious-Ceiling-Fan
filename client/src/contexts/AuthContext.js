@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect } from 'react'
 import { signInWithEmailAndPassword, signOut, onAuthStateChanged, createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from "../firebase";
-
+import { useState } from 'react';
 const authContext = createContext();
 
 export function AuthContextProvider({ children }) {
@@ -19,7 +19,7 @@ export function AuthContextProvider({ children }) {
 	}, []);
 	return (
 		<authContext.Provider
-      value={{ user, logIn, logOut }}
+      value={{ user, signInWithEmailAndPassword, signOut }}
     >
       {children}
     </authContext.Provider>
