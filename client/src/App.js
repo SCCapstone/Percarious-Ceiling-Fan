@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import HomePage from "./components/homePage";
 import AdvancedSearch from './components/advancedSearch';
 import SignIn from './components/signIn';
+import SavedSearches from './components/savedSearches';
 import Results from './components/results';
 import { AuthContextProvider } from './contexts/AuthContext';
 
@@ -22,6 +23,7 @@ function App() {
 							<Route path="/advancedSearch"> <AdvancedSearch /> </Route>
 							<Route path="/results"> <Results /> </Route>
 							<Route path="/signIn"> <SignIn /> </Route>
+							<Route path="/savedSearches"> <SavedSearches /> </Route>
 							<Route path="/"> <HomePage /> </Route>
 						</Switch>
 						</AuthContextProvider>

@@ -9,7 +9,6 @@ export function AuthContextProvider({ children }) {
 	const [user, setUser] = useState({});
 
 	function logIn(email,password) {
-		console.log("reached sign in");
 		return signInWithEmailAndPassword(auth, email, password);
 	}
 
@@ -38,6 +37,5 @@ export function AuthContextProvider({ children }) {
 }
 
 export function useAuthContext() {
-	console.log("reached useContext");
 	return useContext(authContext);
 }
