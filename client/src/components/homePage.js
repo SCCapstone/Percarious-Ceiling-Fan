@@ -64,8 +64,8 @@ class HomePage extends React.Component{
 					{/*here is where the dropdowns for picking field and chart type can be added, set them to update like this.setState({field: "whatever user picks here"})*/}
 					<div class="option-container" style = {optionContainer}>
 						<div style = {optionStyling}>
-						<p className="searchPrompt" style={{marginTop: '0px'}}>Graph Type:</p>
-								<div onChange={e =>this.onChangeValue} style={{display: 'flex', textAlign:'center', width:'20%'}}>
+						<p className="searchPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Graph Type:</p>
+								<div onChange={e =>this.onChangeValue} style={{display: 'flex', justifyContent: 'center'}}>
 									<span class='searchPrompt'>Bar:</span>
 									<input type="radio" name = "searchInput"  value="bar"/> <br/>
 									<span class='searchPrompt'>Pie:</span>
@@ -77,8 +77,8 @@ class HomePage extends React.Component{
 					</div>
 					{/*Change check marks to radio buttons*/}
 					<div style = {optionStyling }>
-					<p className="searchPrompt" style={{marginTop: '0px'}}>Graph Type:</p>
-								<div onChange={e =>this.onChangeValue} style={{display: 'flex', textAlign:'center', width:'20%'}}>
+					<p className="searchPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Search for:</p>
+								<div onChange={e =>this.onChangeValue} style={{display: 'flex', justifyContent: 'center'}}>
 									<span class='searchPrompt'>Title:</span>
 									<input type="radio" name = "searchInput"  value="bar"/> <br/>
 									<span class='searchPrompt'>Author:</span>

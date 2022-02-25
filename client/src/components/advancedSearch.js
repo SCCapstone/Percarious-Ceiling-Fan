@@ -87,8 +87,8 @@ class AdvancedSearch extends React.Component {
 					<div className = "advanced-search-body">
 					<div class="option-container" style = {optionContainer}>
 						<div style = {dropdownStyling}>
-						<p className="searchPrompt" style={{marginTop: '0px'}}>Graph Type:</p>
-								<div onChange={e =>this.onChangeValue} style={{display: 'flex', textAlign:'center', width:'20%'}}>
+						<p className="searchPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Graph Type:</p>
+								<div onChange={e =>this.onChangeValue} style={{display: 'flex', justifyContent: 'center', padding:'10px' }}>
 									<span class='searchPrompt'>Bar:</span>
 									<input type="radio" name = "searchInput"  value="bar"/> <br/>
 									<span class='searchPrompt'>Pie:</span>
@@ -115,7 +115,7 @@ class AdvancedSearch extends React.Component {
 							
 							
 							<div className="searchTerms query-tag" style = {optionStyling}>
-								<p className="searchPrompt">Tags to query:</p>
+								<p className="searchPrompt" style={{ textDecoration:'underline'}}>Tags to query:</p>
 								<div>
 									<span class='searchPrompt'>Author:</span>
 									<input type="checkbox" className = "searchInput" id='author' name="author" onChange={this.checkChange}/> <br/>
