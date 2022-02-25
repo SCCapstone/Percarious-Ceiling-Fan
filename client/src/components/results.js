@@ -1,5 +1,5 @@
 import React from 'react';
-import Plot from 'react-plotly.js';
+import Plotly from 'react-plotly.js';
 import { withRouter } from "react-router";
 import axios from "axios"; //for SQL command stuff
 
@@ -30,6 +30,48 @@ class Results extends React.Component{
 				console.log(this.props.location.field);
 				this.getBasicResults();
 			}
+		}
+
+		console.log('this is running')
+		var data, layout, plotlyDiv = document.getElementById('plotlyDiv')
+		var check = this.state.chart
+		console.log(check + 'from check graph')
+		
+		if(check === 'bar')
+		{
+			 data =[{
+				x: Object.keys(this.state.results),
+				y: Object.values(this.state.results),
+				type: this.props.location.chart,
+				marker: {color: 'blue'}
+			}];
+			 layout = {
+				title: 'Bar Graph'
+			}
+			console.log(data + '' + layout)
+		}
+		if(check === 'line'){
+			 data =[{
+				x : Object.keys(this.state.results),
+				y : Object.values(this.state.results),
+				type : this.props.location.chart,
+				marker : {color: 'blue'}
+			}];
+			 layout = {
+				title: 'Bar Graph'
+			}
+			console.log(data + '' + layout)
+		}
+		else{ //pie chart
+			 data =[{
+				labels : Object.keys(this.state.results),
+				values : Object.values(this.state.results),
+				type : this.props.location.chart
+			}];
+			 layout = {
+				title: 'Pie Chart'
+			}
+			console.log(data + '' + layout)
 		}
 	}
 
@@ -63,24 +105,18 @@ class Results extends React.Component{
 		.then(response => {this.setState({results: response})}) //results from basicSearch
 	};
 
+	
+	
     render(){
-		console.log(this.state.chart)
-        return (
-			<>
 		
+        return (
+			<div>
 			<div> <h3>Search Output:</h3> </div>
-			<Plot 
-			data={
-					[{
-						x: Object.keys(this.state.results),
-						y: Object.values(this.state.results),
-						type: this.state.chart,
-						marker: {color: 'blue'}
-					}]
-				}
-			layout={{title: 'Results'}}
-			/>
-			</>
+			
+			<div id = 'plotlyDiv'>
+				{/* Here is where plotly will graph things out */}
+			</div>
+			</div>
 			
 		)
     }
