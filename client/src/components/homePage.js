@@ -1,5 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import FirebaseService from "../services/firebase.service";
+import { useAuthContext } from "../contexts/AuthContext";
+
+const SaveBasicSearch = (name) => {
+	const { user } = useAuthContext();
+	const newSearch = {
+		userId: user.id, 
+		name: name, 
+		search: this.state.search, 
+		field: this.state.field, 
+		chart: this.state.chart
+	  };
+	FirebaseService.addSearch(newSearch);
+};
 
 class HomePage extends React.Component{
 	state = {

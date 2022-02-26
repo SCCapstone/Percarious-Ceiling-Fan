@@ -5,7 +5,6 @@ import AdvancedSearch from './components/advancedSearch';
 import SignIn from './components/signIn';
 import SavedSearches from './components/savedSearches';
 import Results from './components/results';
-import { AuthContextProvider } from './contexts/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {

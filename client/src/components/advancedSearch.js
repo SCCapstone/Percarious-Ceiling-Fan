@@ -1,7 +1,28 @@
 //import '../../public/styles.css'
 import React from 'react';
-import axios from "axios"; //for SQL command stuff
 import { Link } from 'react-router-dom';
+import FirebaseService from "../services/firebase.service";
+import { useAuthContext } from "../contexts/AuthContext";
+
+const SaveAdvancedSearch = (name) => {
+	const { user } = useAuthContext();
+	const newSearch = {
+		userId: user.id, 
+		name: name, 
+		anyWords: this.state.anyWords,
+		exactPhrase: this.state.exactPhrase,
+		exclude: this.state.exclude,
+		author: this.state.tags.author,
+		title: this.state.tags.title,
+		publisher: this.state.tags.publisher,
+		startYear: this.state.startYear,
+		endYear: this.state.endYear,
+		languages: this.state.languages,
+		regions: this.state.regions,
+		chart: this.state.chart
+	  };
+	FirebaseService.addSearch(newSearch);
+};
 
 
 class AdvancedSearch extends React.Component {
