@@ -8,9 +8,6 @@ import Results from './components/results';
 import { AuthContextProvider, useAuthContext } from './contexts/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 
-
-
-
 function App() {
   return (
 	  <Router>
