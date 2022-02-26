@@ -67,8 +67,6 @@ class AdvancedSearch extends React.Component {
 	};
 
 	render() {
-		console.log(this.state.chart);
-		console.log(this.state.tags);
 		let buttonStyling = {
 			padding: '10px',
 			margin: '10px',

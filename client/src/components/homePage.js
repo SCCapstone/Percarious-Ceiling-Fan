@@ -37,9 +37,6 @@ class HomePage extends React.Component{
 	
 
 	render() {
-		console.log(this.state.search);
-		console.log(this.state.chart);
-		console.log(this.state.field);
 		let inputStylingBasic = {
 			backgroundColor:  '#FFFFFF',
 			textAlign: 'center',
@@ -90,7 +87,6 @@ class HomePage extends React.Component{
 			<div class="main-body">
 						<h1>Welcome to The Precarious Search System</h1>
 					</div>
-					{/*here is where the dropdowns for picking field and chart type can be added, set them to update like this.setState({field: "whatever user picks here"})*/}
 					<div class="option-container" style = {optionContainer}>
 						<div style = {optionStyling}>
 						<form>

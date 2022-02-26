@@ -12,7 +12,6 @@ class Results extends React.Component{
 
 	componentDidMount = () => {
 		if(this.props.location !== undefined) {
-			console.log(this.props.location.pathname);
 			console.log(this.props.location.chart);
 			this.setState({chart: this.props.location.chart})
 			if(!this.props.location.search){
