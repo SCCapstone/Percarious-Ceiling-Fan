@@ -5,7 +5,7 @@ import AdvancedSearch from './components/advancedSearch';
 import SignIn from './components/signIn';
 import SavedSearches from './components/savedSearches';
 import Results from './components/results';
-import { AuthContextProvider, useAuthContext } from './contexts/AuthContext';
+import { AuthContextProvider } from './contexts/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
@@ -16,13 +16,10 @@ function App() {
 				<div class="content-wrapper">
 					<div class="nav-bar-wrapper">
 					<nav class = "home-link"><Link to="/" style = {{textDecoration: 'none', color: 'white', float: 'left', marginTop: '15px', marginLeft: '25px', textTransform: 'uppercase'}}>Home</Link></nav>
-					 <nav class = "home-link"><Link to="/signIn" style = {{textDecoration: 'none', color: 'white', float: 'left', marginTop: '15px', marginLeft: '35px', textTransform: 'uppercase'}}>Sign In</Link></nav> 
 					<ProtectedRoute>
-						<SavedSearches/>
 					</ProtectedRoute> 
 						<div class="menu-icon"></div>
 						</div>
-						<AuthContextProvider>
 						<Switch>
 							<Route path="/advancedSearch"> <AdvancedSearch /> </Route>
 							<Route path="/results"> <Results /> </Route>
@@ -30,7 +27,6 @@ function App() {
 							<Route path="/savedSearches"> <SavedSearches /> </Route>
 							<Route path="/"> <HomePage /> </Route>
 						</Switch>
-						</AuthContextProvider>
 						<div class = "bottom-nav-bar">
 						<footer>
 							<div class ="col left">
