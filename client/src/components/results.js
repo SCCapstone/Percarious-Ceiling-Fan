@@ -1,11 +1,10 @@
 import React from 'react';
-import Plotly from 'react-plotly.js';
+import Plot from 'react-plotly.js';
 import { withRouter } from "react-router";
 import axios from "axios"; //for SQL command stuff
-import Plot from 'react-plotly.js';
 
 class Results extends React.Component{
-	
+
 	constructor(props){
 		super(props);
 		this.state = {data: [], layout: {}, frames: [], config: {}, results: [], chart: ""};
@@ -29,44 +28,12 @@ class Results extends React.Component{
 			else {
 				console.log(this.props.location.search);
 				console.log(this.props.location.field);
+				if(this.props.location.chart == 'bar') this.state.chart = 'bar';
+				if(this.props.location.chart == 'line') this.state.chart = 'scatter';
+				if(this.props.location.chart == 'pie') this.state.chart = 'pie';
+				 console.log(this.state.results);
 				this.getBasicResults();
 			}
-		}
-
-		console.log('this is running')
-		var data, layout
-		var check = this.state.chart
-		console.log(check + 'from check graph')
-		
-		if(check === 'bar')
-		{
-			this.state.data =[{
-				x: Object.keys(this.state.results),
-				y: Object.values(this.state.results),
-				type: this.props.location.chart,
-				marker: {color: 'blue'}
-			}];
-			
-			console.log(data + '' + layout)
-		}
-		if(check === 'line'){
-			 this.state.data =[{
-				x : Object.keys(this.state.results),
-				y : Object.values(this.state.results),
-				type : this.props.location.chart,
-				marker : {color: 'blue'}
-			}];
-			
-			console.log(data + '' + layout)
-		}
-		else{ //pie chart
-			this.state.data =[{
-				labels : Object.keys(this.state.results),
-				values : Object.values(this.state.results),
-				type : this.props.location.chart
-			}];
-			
-			console.log(data + '' + layout)
 		}
 	}
 
@@ -100,23 +67,28 @@ class Results extends React.Component{
 		.then(response => {this.setState({results: response})}) //results from basicSearch
 	};
 
-	
-	
     render(){
-		
         return (
-			<div>
+			<>
+
 			<div> <h3>Search Output:</h3> </div>
-			
-			<div id = 'plotlyDiv'>
-				<>
-				<Plot
-					data={this.state.data}
-				/>
-				</>
-			</div>
-			</div>
-			
+			<Plot
+			data={
+					[{
+						labels: Object.keys(this.state.results).map(function(item) {
+							return String(item);
+						}),
+						values: Object.values(this.state.results),
+						x: Object.keys(this.state.results),
+						y: Object.values(this.state.results),
+						type: this.state.chart,
+						marker: {color: 'blue'}
+					}]
+				}
+			layout={{title: 'Results'}}
+			/>
+			</>
+
 		)
     }
 }

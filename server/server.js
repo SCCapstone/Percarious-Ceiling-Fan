@@ -101,6 +101,16 @@ function getDecades(data){
 		if(!decades[dec]) decades[dec] = 0;
 		decades[dec]++;
 	}
+	let sum = Object.values(decades).reduce((partialSum, a) => partialSum + a, 0);
+	for (const [key, value] of Object.entries(decades)) {
+	console.log(sum + " " + value + " " + value/sum);
+	decades[key] = value/sum;
+  	console.log(key, value);
+	}
+	for(let i = 0; i < decades.length; i++){
+
+		decades[i] = decades[i]/sum;
+	}
 	return decades;
 }
 
@@ -181,7 +191,7 @@ app.get("/basicSearch", async(req, res) => {
   })
 
 //advanced search query
-  app.get("/advancedSearch", async(req, res) => {
+app.get("/advancedSearch", async(req, res) => {
 	var anyWords = (`${req.query.anyWords}`);
 	var exactPhrase = (`${req.query.exactPhrase}`);
 	var exclude = (`${req.query.exclude}`);
