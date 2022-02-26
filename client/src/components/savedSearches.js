@@ -16,30 +16,24 @@ const SavedSearches = () => {
     try {
       await logOut();
       history.push("/")
-     // console.log(useAuthContext());
     } catch (err) {
       console.log(err)
     }
   };
 
   const getSearches = async () => {
-    //const data = await FirebaseService.getSearches();
+    const data = await FirebaseService.getSearches();
+	setSearches(data);
     //console.log(data.docs);
     //setSearches(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
 
   return (
 	<div>
-		{searches.map((search) => (
-		<div className="card">
-		<div className="meta">{search.search}</div>
-		<p></p>
+		{searches}
+		<div className="button">
+			<Button variant="primary" onClick={logoutHandler}>Log Out</Button>
 		</div>
-		))}
-
-    <div className="button">
-      <Button variant="primary" onClick={logoutHandler}>Log Out</Button>
-    </div>
 	</div>
   );
 };
