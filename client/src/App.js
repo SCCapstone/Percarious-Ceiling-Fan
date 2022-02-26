@@ -16,10 +16,10 @@ function App() {
 				<div class="content-wrapper">
 					<div class="nav-bar-wrapper">
 					<nav class = "home-link"><Link to="/" style = {{textDecoration: 'none', color: 'white', float: 'left', marginTop: '15px', marginLeft: '25px', textTransform: 'uppercase'}}>Home</Link></nav>
-					{/* <nav class = "home-link"><Link to="/signIn" style = {{textDecoration: 'none', color: 'white', float: 'left', marginTop: '15px', marginLeft: '35px', textTransform: 'uppercase'}}>Sign In</Link></nav> */}
-					<ProtectedRoute>
+					 <nav class = "home-link"><Link to="/signIn" style = {{textDecoration: 'none', color: 'white', float: 'left', marginTop: '15px', marginLeft: '35px', textTransform: 'uppercase'}}>Sign In</Link></nav> 
+					{/*<ProtectedRoute>
 						<SavedSearches />
-					</ProtectedRoute>
+					</ProtectedRoute> */}
 						<div class="menu-icon"></div>
 						</div>
 						<AuthContextProvider>

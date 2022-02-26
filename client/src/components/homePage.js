@@ -7,7 +7,7 @@ class HomePage extends React.Component{
 		search: "",
 		field: "title",
 		chart: "bar"
-	}
+	} 
 
 	chartCheck = (e) =>{
 		this.setState({
