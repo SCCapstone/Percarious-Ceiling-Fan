@@ -14,9 +14,11 @@ class FirebaseService {
 	getSearches = async () => {
 		const q = query(collection(db, "searches"), where("userId", "==", "Placeholder")); //GetCurrUser().id
 		const querySnapshot = await getDocs(q);
+		let searches = []
 		querySnapshot.forEach((doc) => {
-			console.log(doc.id, " => ", doc.data());
+			searches.push({...data.doc, id: doc.id})
 		});
+		return searches
 	}
 }
 
