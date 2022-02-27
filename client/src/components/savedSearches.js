@@ -3,29 +3,14 @@ import FirebaseService from "../services/firebase.service";
 import { useAuthContext } from "../contexts/AuthContext";
 import {Button} from "react-bootstrap"
 import { useHistory } from "react-router-dom"
-import {db} from "../firebase";
 
-
-  const SavedSearches = () => {
-    const { logOut } = useAuthContext();
-    const history = useHistory()
-    const [searches, setSearches] = useState([]);
-    
-    useEffect(() => {
-      
-      db.collection("searches").onSnapshot((querySnapshot) => {
-        const data = []
-        querySnapshot.forEach(doc => {
-          console.log("graph type", doc.data().Graph)
-          data.push({Graph: doc.data().Graph, Search: doc.data().Search })
-        })
-
-      })
-     // getSearches();
-     setData(data);
-     }, 
-
-  []);
+const SavedSearches = () => {
+  const { logOut } = useAuthContext();
+  const history = useHistory()
+  const [searches, setSearches] = useState([]);
+  useEffect(() => {
+    getSearches();
+  }, []);
 
   const logoutHandler = async () => {
     try {
@@ -34,9 +19,7 @@ import {db} from "../firebase";
     } catch (err) {
       console.log(err)
     }
-};
- 
-
+  };
 
   const getSearches = async () => {
     const data = await FirebaseService.getSearches();
@@ -47,10 +30,7 @@ import {db} from "../firebase";
 
   return (
 	<div>
-     <div className="container">
-      <h1>Answers:</h1>
-     
-    </div>
+		{searches}
 		<div className="button">
 			<Button variant="primary" onClick={logoutHandler}>Log Out</Button>
 		</div>
