@@ -4,10 +4,9 @@ import { useAuthContext } from "../contexts/AuthContext";
 import {Button} from "react-bootstrap"
 import { useHistory } from "react-router-dom"
 
-
-
 const SavedSearches = () => {
   const { logOut } = useAuthContext();
+  const { user } = useAuthContext();
   const history = useHistory()
   const [searches, setSearches] = useState([]);
   useEffect(() => {
@@ -24,21 +23,8 @@ const SavedSearches = () => {
   };
 
   const getSearches = async () => {
-    const data = await FirebaseService.getSearches();
+    const data = await FirebaseService.getSearches(user.uid);
 	setSearches(data);
-    //console.log(data);
-    //setSearches(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-  };
-
-  const searchList = document.getElementById('searchList')
-  const renderCafe = () => { // this will get called to create each element with a loop for each saved doc
-    let li = document.createElement('li');
-    let name = document.createElement('span');
-
-    name.textContent = FirebaseService().name //needs to change to get the save name variable
-    li.appendChild(name)
-    searchList.appendChild(li)
-
   };
 
   console.log(FirebaseService.getSearches().id)
