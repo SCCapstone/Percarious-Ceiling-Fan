@@ -23,14 +23,13 @@ const SavedSearches = () => {
   };
 
   const getSearches = async () => {
-    if(user){
-    const data = await FirebaseService.getSearches(user.uid);
-  	//setSearches(data);
-    }
+	if(user){
+		const data = await FirebaseService.getSearches(user.uid);
+		setSearches(data);
+		console.log(searches);
+	}
   };
 
-  console.log(searches)
- 
   return (
 	<div>
     <div className="containerWrapper">
