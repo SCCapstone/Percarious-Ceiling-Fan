@@ -23,13 +23,14 @@ function fander(ander, out){
 
 function build(anyWords, exactPhrase, exclude, author, title, publisher, startYear, endYear, languages, regions){
 	fields = [];
-	if(title) fields[fields.length] = "title";
-	if(author) fields[fields.length] = "author";
-	if(publisher) fields[fields.length] = "pubname";
+	if(title == "true") fields[fields.length] = "title";
+	if(author == "true") fields[fields.length] = "author";
+	if(publisher == "true") fields[fields.length] = "pubname";
 	out = "SELECT * from bookdata WHERE ((";
 	for(f = 0; f < fields.length; f++){
 		field = fields[f];
 		any = anyWords.split(",");
+		if(anyWords.length == 0) any = [];
 		ander = false;
 		for(word = 0; word < any.length; word++){
 			ander = true;
@@ -37,23 +38,27 @@ function build(anyWords, exactPhrase, exclude, author, title, publisher, startYe
 			if(word != any.length-1)
 				out+= ") OR ("
 		}
-		exac = exactPhrase.split(",");
-		ander,out = fander(ander,out);
-		for(word = 0; word < exac.length; word++){
-			ander = true;
-			out+= `${field}  like \"%` +exac[word] + "%\""
-			if(word != exac.length-1)
-				out+= ") AND ("
+		if(exactPhrase.length > 0){
+			exac = exactPhrase.split(",");
+			ander,out = fander(ander,out);
+			for(word = 0; word < exac.length; word++){
+				ander = true;
+				out+= `${field}  like \"%` +exac[word] + "%\""
+				if(word != exac.length-1)
+					out+= ") AND ("
+			}
 		}
-		exc = exclude.split(",");
-		ander,out = fander(ander,out);
-		for(word = 0; word < exc.length; word++){
-			ander = true;
-			out+= `${field} NOT LIKE "%${exc[word]}%"`
-			if(word != exc.length-1)
-				out+= ") AND ("
+		if(exclude.length > 0){
+			exc = exclude.split(",");
+			ander,out = fander(ander,out);
+			if(exclude.length == 0) exc = [];
+			for(word = 0; word < exc.length; word++){
+				ander = true;
+				out+= `${field} NOT LIKE "%${exc[word]}%"`
+				if(word != exc.length-1)
+					out+= ") AND ("
+			}
 		}
-
 		out+=")"
 		if(f != fields.length-1) out+= ") OR ((";
 	}
@@ -199,9 +204,10 @@ app.get("/advancedSearch", async(req, res) => {
 	var title = (`${req.query.title}`);
 	var publisher = (`${req.query.publisher}`);
 	var startYear = (`${req.query.startYear}`);
-	var endYear = (`${req.query.anyWords}`);
+	var endYear = (`${req.query.endYear}`);
 	var languages = (`${req.query.languages}`);
 	var regions = (`${req.query.regions}`);
+	console.log(anyWords, exactPhrase, exclude, author, title, publisher, startYear, endYear, languages, regions)
 	const GET_QUERY = build(anyWords, exactPhrase, exclude, author, title, publisher, startYear, endYear, languages, regions);
 	console.log(GET_QUERY);
 
