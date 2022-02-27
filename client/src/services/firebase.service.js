@@ -12,7 +12,7 @@ class FirebaseService {
 		const querySnapshot = await getDocs(q);
 		let searches = []
 		querySnapshot.forEach((doc) => {
-			searches.push({...doc.data, id: doc.id})
+			searches.push({...doc.data(), id: doc.id})
 		});
 		return searches
 	}
