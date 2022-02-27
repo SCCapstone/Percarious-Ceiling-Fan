@@ -7,6 +7,8 @@ class FirebaseService {
 		return addDoc(searchCollectionRef, newSearch);
 	}
 	getSearches = async (uid) => {
+		if(uid)
+		{
 		console.log(uid);
 		const q = query(collection(db, "searches"), where("userId", "==", uid));
 		const querySnapshot = await getDocs(q);
@@ -15,6 +17,7 @@ class FirebaseService {
 			searches.push(doc.data())
 		});
 		return searches
+	}
 	}
 }
 

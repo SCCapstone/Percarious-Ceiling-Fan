@@ -23,10 +23,9 @@ const SavedSearches = () => {
   };
 
   const getSearches = async () => {
-	if(user){
-		const data = await FirebaseService.getSearches(user.uid);
-		setSearches(data);
-		console.log(searches);
+    const data = await FirebaseService.getSearches(user.uid);
+	if(data){
+		setSearches(data);   
 	}
   };
 
@@ -35,12 +34,10 @@ const SavedSearches = () => {
     <div className="containerWrapper">
       <div style= {{backgroundColor:'white', width:'50%', margin: 'auto', borderRadius:'5px', outline: 'solid 3px #6675b0'}}><h1 style={{color:'#6675b0', padding: '10px'}}>Saved Searches:</h1></div>
     {searches.map((search) =>(
-        <hr>
           <div className = "card">
-            <div className="meta">{search.search}</div>
+            <div className="meta" style={{ width:'50%', margin: 'auto', borderRadius: '5px', backgroundColor: 'white'}}>{search.name}</div>
            <p></p>
           </div>
-        </hr>
     ))}
 		<div className="button">
 			<Button style= {{color:'white', backgroundColor:'#6675b0', padding: '10px', borderRadius: '5px'}} variant="primary" onClick={logoutHandler}>Log Out</Button>
