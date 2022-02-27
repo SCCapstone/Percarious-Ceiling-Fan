@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import FirebaseService from "../services/firebase.service";
 import { useAuthContext } from "../contexts/AuthContext";
+import Popup from 'reactjs-popup';
 
 const SaveBasicSearch = (name) => {
 	const { user } = useAuthContext();
@@ -60,9 +61,9 @@ class HomePage extends React.Component{
 		}
 		let buttonStyling = {
 			padding: '10px',
-			outline: '3px solid #6675b0',
+			color:'white',
 			margin: '10px',
-			backgroundColor: 'white',
+			backgroundColor: 'darkgrey',
 			borderRadius: '10px'
 		}
 
@@ -80,6 +81,15 @@ class HomePage extends React.Component{
 			outline: '2px dotted #6675b0',
 			fontWeight: 'bolder',
 			marginBottom: '20px'
+		}
+
+		
+		let formStyling ={
+		
+			padding: '20px',
+			backgroundColor:'white',
+			borderRadius:'20px',
+			outline:'2px dotted #6675b0'
 		}
 		
 		return (
@@ -124,7 +134,7 @@ class HomePage extends React.Component{
 					<div class="ui-input">
 						<input id="search" style = {inputStylingBasic} value={this.state.search} onChange={e => this.setState({search: e.target.value})} placeholder="Enter your Search Here"/> 
 							<button id="searchbutton" style= {buttonStyling} class = "ui-large-primary-button">
-								<Link style ={{textDecoration:'none', color: 'black'}} to={{
+								<Link style ={{textDecoration:'none', color: 'white'}} to={{
 									pathname: '/results',
 									search: this.state.search,
 									field: this.state.field,
@@ -133,6 +143,16 @@ class HomePage extends React.Component{
 									Search
 								</Link>
 							</button>
+							<Popup trigger={<button style={{borderRadius: '10px', padding: '5px', color: 'white', backgroundColor: '#6675b0'}}>Save Search</button>}>
+							<div id="myForm" class="formPopup" style={formStyling}>
+							<form action ="/action_page.php" class= "form-container" >
+								<h3 style={{textAlign:"center"}}>Save Search</h3>
+								<label for="saveName" style={{padding:'5px'}}><b>Save Name:</b></label>
+								<input type = 'text' placeholder='enter name' name="saveName" ></input>
+								<button type='submit' class="btn" style={{marginLeft:'5px', borderRadius:'20px', color:'white', backgroundColor: '#6675b0'}}>Submit</button>
+							</form>
+							</div>
+							</Popup>
 					</div>
 					<div><h2>OR</h2></div>
 					<div class = "advanced-link" style = {inputStylingAdvanced}>

@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import FirebaseService from "../services/firebase.service";
 import { useAuthContext } from "../contexts/AuthContext";
+import Popup from 'reactjs-popup';
 
 const SaveAdvancedSearch = (name) => {
 	const { user } = useAuthContext();
@@ -105,6 +106,14 @@ class AdvancedSearch extends React.Component {
 			fontWeight: 'bolder',
 			marginTop: "30px"
 		}
+
+		let formStyling ={
+		
+			padding: '20px',
+			backgroundColor:'white',
+			borderRadius:'20px',
+			outline:'2px dotted #6675b0'
+		}
 		
 		return (
 			<div>
@@ -193,6 +202,16 @@ class AdvancedSearch extends React.Component {
 								</Link>
 							</button>
 						</div>
+						<Popup trigger={<button style={{borderRadius: '10px', padding: '5px', color: 'white', backgroundColor: 'darkgrey'}}>Save Search</button>}>
+							<div id="myForm" class="formPopup" style={formStyling}>
+							<form action ="/action_page.php" class= "form-container" >
+								<h3 style={{textAlign:"center"}}>Save Search</h3>
+								<label for="saveName" style={{padding:'5px'}}><b>Save Name:</b></label>
+								<input type = 'text' placeholder='enter name' name="saveName" ></input>
+								<button type='submit' class="btn" style={{marginLeft:'5px', borderRadius:'20px', color:'white', backgroundColor: '#6675b0'}}>Submit</button>
+							</form>
+							</div>
+							</Popup>
 					</div>
 				</body>
 			</div>
