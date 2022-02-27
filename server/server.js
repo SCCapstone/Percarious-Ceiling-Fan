@@ -62,10 +62,10 @@ function build(anyWords, exactPhrase, exclude, author, title, publisher, startYe
 	if(startYear.length > 1) sy=parseInt(startYear);
 	ey = 0
 	if(endYear.length > 1) ey=parseInt(endYear);
-	if(sy != 0){
+	if(sy != 0 && !isNaN(sy)){
 		out+= ` AND SUBSTR(control_string,8,4) > ${sy}`
 	}
-	if(ey != 0){
+	if(ey != 0 && !isNaN(ey)){
 		out+= ` AND SUBSTR(control_string,8,4) < ${ey}`
 	}
 	lang = []
