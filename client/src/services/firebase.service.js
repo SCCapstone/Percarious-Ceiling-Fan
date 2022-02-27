@@ -1,6 +1,5 @@
 import { db } from "../firebase"
 import { collection, query, where, getDocs, addDoc} from "firebase/firestore"
-// import { useAuthContext } from "../contexts/AuthContext"
 
 const searchCollectionRef = collection(db, "searches");
 class FirebaseService {
@@ -8,11 +7,12 @@ class FirebaseService {
 		return addDoc(searchCollectionRef, newSearch);
 	}
 	getSearches = async (uid) => {
-		const q = query(collection(db, "searches"), where("userId", "==", uid)); //GetCurrUser().id
+		console.log(uid);
+		const q = query(collection(db, "searches"), where("userId", "==", uid));
 		const querySnapshot = await getDocs(q);
 		let searches = []
 		querySnapshot.forEach((doc) => {
-			searches.push({...doc.data, id: doc.id})
+			searches.push(doc.data())
 		});
 		return searches
 	}
