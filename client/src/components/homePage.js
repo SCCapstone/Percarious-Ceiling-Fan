@@ -1,27 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import FirebaseService from "../services/firebase.service";
-import { useAuthContext } from "../contexts/AuthContext";
-import Popup from 'reactjs-popup';
-
-const SaveBasicSearch = (name) => {
-	const { user } = useAuthContext();
-	const newSearch = {
-		userId: user.id, 
-		name: name, 
-		search: this.state.search, 
-		field: this.state.field, 
-		chart: this.state.chart
-	  };
-	FirebaseService.addSearch(newSearch);
-};
+import ProtectedBasicRoute from './ProtectedBasicRoute';
 
 class HomePage extends React.Component{
 	state = {
 		connection: "",
 		search: "",
 		field: "title",
-		chart: "bar"
+		chart: "bar",
+		name: ""
 	} 
 
 	chartCheck = (e) =>{
@@ -83,30 +70,21 @@ class HomePage extends React.Component{
 			marginBottom: '20px'
 		}
 
-		
-		let formStyling ={
-		
-			padding: '20px',
-			backgroundColor:'white',
-			borderRadius:'20px',
-			outline:'2px dotted #6675b0'
-		}
-		
 		return (
 			<div>
-			<div class="main-body">
+			<div className="main-body">
 						<h1>Welcome to The Precarious Search System</h1>
 					</div>
-					<div class="option-container" style = {optionContainer}>
+					<div className="option-container" style = {optionContainer}>
 						<div style = {optionStyling}>
 						<form>
 						<p name="chartPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Graph Type:</p>
 								<div style={{display: 'flex', justifyContent: 'center'}}>
-									<label class='chartPrompt'>Bar:</label>
+									<label className='chartPrompt'>Bar:</label>
 									<input type="radio" name = "searchInput"  value="bar" defaultChecked={this.chartCheck} onChange={this.chartCheck}/> <br/>
-									<label class='chartPrompt'>Pie:</label>
+									<label className='chartPrompt'>Pie:</label>
 									<input type="radio" name = "searchInput" value="pie" onChange={this.chartCheck}/> <br/>
-									<label class='chartPrompt'>Line:</label>
+									<label className='chartPrompt'>Line:</label>
 									<input type="radio" name = "searchInput"  value="line" onChange={this.chartCheck}/> <br/>
 								</div>
 							</form>
@@ -116,24 +94,24 @@ class HomePage extends React.Component{
 					<form>
 					<p name="searchPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Search for:</p>
 								<div onChange={e =>this.state.onChangeValue} style={{display: 'flex', justifyContent: 'center'}}>
-									<label class='searchPrompt'>Title:</label>
+									<label className='searchPrompt'>Title:</label>
 									<input type="radio" name = "searchInput"  value="title" onChange={this.fieldCheck} /> <br/>
-									<label class='searchPrompt'>Author:</label>
+									<label className='searchPrompt'>Author:</label>
 									<input type="radio" name = "searchInput" value="author" onChange={this.fieldCheck} /> <br/>
-									<label class='searchPrompt'>Year:</label>
+									<label className='searchPrompt'>Year:</label>
 									<input type="radio" name = "searchInput"  value="year" onChange={this.fieldCheck} /> <br/>
-									<label class='searchPrompt'>Genre:</label>
+									<label className='searchPrompt'>Genre:</label>
 									<input type="radio" name = "searchInput" value="genre"onChange={this.fieldCheck} /> <br/>
-									<label class='searchPrompt'>Language:</label>
+									<label className='searchPrompt'>Language:</label>
 									<input type="radio" name = "searchInput"  value="language"onChange={this.fieldCheck} /> <br/>
 								</div>
 								</form>
 					</div>
 					
 					</div>
-					<div class="ui-input">
+					<div className="ui-input">
 						<input id="search" style = {inputStylingBasic} value={this.state.search} onChange={e => this.setState({search: e.target.value})} placeholder="Enter your Search Here"/> 
-							<button id="searchbutton" style= {buttonStyling} class = "ui-large-primary-button">
+							<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button">
 								<Link style ={{textDecoration:'none', color: 'white'}} to={{
 									pathname: '/results',
 									search: this.state.search,
@@ -143,19 +121,10 @@ class HomePage extends React.Component{
 									Search
 								</Link>
 							</button>
-							<Popup trigger={<button style={{borderRadius: '10px', padding: '5px', color: 'white', backgroundColor: '#6675b0'}}>Save Search</button>}>
-							<div id="myForm" class="formPopup" style={formStyling}>
-							<form action ="/action_page.php" class= "form-container" >
-								<h3 style={{textAlign:"center"}}>Save Search</h3>
-								<label for="saveName" style={{padding:'5px'}}><b>Save Name:</b></label>
-								<input type = 'text' placeholder='enter name' name="saveName" ></input>
-								<button type='submit' class="btn" style={{marginLeft:'5px', borderRadius:'20px', color:'white', backgroundColor: '#6675b0'}}>Submit</button>
-							</form>
-							</div>
-							</Popup>
+							<ProtectedBasicRoute search={this.state.search} field={this.state.field} chart={this.state.chart}></ProtectedBasicRoute> 
 					</div>
 					<div><h2>OR</h2></div>
-					<div class = "advanced-link" style = {inputStylingAdvanced}>
+					<div className = "advanced-link" style = {inputStylingAdvanced}>
 					<Link to="/advancedsearch" style ={{textDecoration:'none', color: 'white'}}>Advanced Search</Link>
 					</div>
 			</div>

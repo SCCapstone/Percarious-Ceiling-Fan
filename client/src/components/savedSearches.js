@@ -44,9 +44,9 @@ const SavedSearches = () => {
   console.log(FirebaseService.getSearches().id)
   return (
 	<div>
-    <div class="containerWrapper">
+    <div className="containerWrapper">
       <div style= {{backgroundColor:'white', width:'50%', margin: 'auto', borderRadius:'5px', outline: 'solid 3px #6675b0'}}><h1 style={{color:'#6675b0', padding: '10px'}}>Saved Searches:</h1></div>
-		<div class ="savedWrapper" style={{}}>
+		<div className="savedWrapper" style={{}}>
     <ul id = "searchList">Access your saved Searches Here:</ul>
     </div>
 		<div className="button">

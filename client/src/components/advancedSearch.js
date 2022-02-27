@@ -1,30 +1,7 @@
 //import '../../public/styles.css'
 import React from 'react';
 import { Link } from 'react-router-dom';
-import FirebaseService from "../services/firebase.service";
-import { useAuthContext } from "../contexts/AuthContext";
-import Popup from 'reactjs-popup';
-
-const SaveAdvancedSearch = (name) => {
-	const { user } = useAuthContext();
-	const newSearch = {
-		userId: user.id, 
-		name: name, 
-		anyWords: this.state.anyWords,
-		exactPhrase: this.state.exactPhrase,
-		exclude: this.state.exclude,
-		author: this.state.tags.author,
-		title: this.state.tags.title,
-		publisher: this.state.tags.publisher,
-		startYear: this.state.startYear,
-		endYear: this.state.endYear,
-		languages: this.state.languages,
-		regions: this.state.regions,
-		chart: this.state.chart
-	  };
-	FirebaseService.addSearch(newSearch);
-};
-
+import ProtectedAdvancedRoute from './ProtectedAdvancedRoute';
 
 class AdvancedSearch extends React.Component {
 	state = {
@@ -61,11 +38,6 @@ class AdvancedSearch extends React.Component {
 			chart: e.target.value
 		})
 	}
-
-	componentDidMount() {
-		console.log('this runs');
-		
-	};
 
 	render() {
 		let buttonStyling = {
@@ -121,15 +93,15 @@ class AdvancedSearch extends React.Component {
 				<body>
 					<h1 style={{fontSize: "2em"}}>Advanced Search</h1>
 					<div className = "advanced-search-body">
-					<div class="option-container" style = {optionContainer}>
+					<div className="option-container" style = {optionContainer}>
 						<div style = {dropdownStyling}>
 						<p className="searchPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Graph Type:</p>
 								<div style={{display: 'flex', justifyContent: 'center', padding:'10px' }}>
-									<span class='searchPrompt'>Bar:</span>
+									<span className='searchPrompt'>Bar:</span>
 									<input type="radio" name = "searchInput"  value="bar" onChange={this.chartCheck} /> <br/>
-									<span class='searchPrompt'>Pie:</span>
+									<span className='searchPrompt'>Pie:</span>
 									<input type="radio" name = "searchInput" value="pie" onChange={this.chartCheck}/> <br/>
-									<span class='searchPrompt'>Line:</span>
+									<span className='searchPrompt'>Line:</span>
 									<input type="radio" name = "searchInput"  value="line" onChange={this.chartCheck}/> <br/>
 									
 								</div>
@@ -154,11 +126,11 @@ class AdvancedSearch extends React.Component {
 								<form>
 								<p className="searchPrompt" style={{ textDecoration:'underline'}}>Tags to query:</p>
 								<div>
-									<span class='searchPrompt'>Author:</span>
+									<span className='searchPrompt'>Author:</span>
 									<input type="checkbox" className = "searchInput" id='author' name="author" onChange={this.checkChange}/> <br/>
-									<span class='searchPrompt'>Title:</span>
+									<span className='searchPrompt'>Title:</span>
 									<input type="checkbox" className = "searchInput" name="title" defaultChecked={this.state.tags.title} onChange={this.checkChange}/> <br/>
-									<span class='searchPrompt'>Publisher:</span>
+									<span className='searchPrompt'>Publisher:</span>
 									<input type="checkbox" className = "searchInput" name="publisher"onChange={this.checkChange}/> <br/>
 									
 								</div>
@@ -201,17 +173,18 @@ class AdvancedSearch extends React.Component {
 								}}>Search
 								</Link>
 							</button>
+							<ProtectedAdvancedRoute anyWords={this.state.anyWords}
+									exactPhrase={this.state.exactPhrase}
+									exclude={this.state.exclude}
+									author={this.state.tags.author}
+									title={this.state.tags.title}
+									publisher={this.state.tags.publisher}
+									startYear={this.state.startYear}
+									endYear={this.state.endYear}
+									languages={this.state.languages}
+									regions={this.state.regions}
+									chart={this.state.chart}></ProtectedAdvancedRoute> 
 						</div>
-						<Popup trigger={<button style={{borderRadius: '10px', padding: '5px', color: 'white', backgroundColor: 'darkgrey'}}>Save Search</button>}>
-							<div id="myForm" class="formPopup" style={formStyling}>
-							<form action ="/action_page.php" class= "form-container" >
-								<h3 style={{textAlign:"center"}}>Save Search</h3>
-								<label for="saveName" style={{padding:'5px'}}><b>Save Name:</b></label>
-								<input type = 'text' placeholder='enter name' name="saveName" ></input>
-								<button type='submit' class="btn" style={{marginLeft:'5px', borderRadius:'20px', color:'white', backgroundColor: '#6675b0'}}>Submit</button>
-							</form>
-							</div>
-							</Popup>
 					</div>
 				</body>
 			</div>

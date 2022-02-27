@@ -12,12 +12,12 @@ function App() {
 	  <Router>
 		<div className="App">
 			<div>
-				<div class="content-wrapper">
-					<div class="nav-bar-wrapper">
-					<nav class = "home-link"><Link to="/" style = {{textDecoration: 'none', color: 'white', float: 'left', marginTop: '15px', marginLeft: '25px', textTransform: 'uppercase'}}>Home</Link></nav>
+				<div className="content-wrapper">
+					<div className="nav-bar-wrapper">
+					<nav className= "home-link"><Link to="/" style = {{textDecoration: 'none', color: 'white', float: 'left', marginTop: '15px', marginLeft: '25px', textTransform: 'uppercase'}}>Home</Link></nav>
 					<ProtectedRoute>
 					</ProtectedRoute> 
-						<div class="menu-icon"></div>
+						<div className="menu-icon"></div>
 						</div>
 						<Switch>
 							<Route path="/advancedSearch"> <AdvancedSearch /> </Route>
@@ -26,14 +26,14 @@ function App() {
 							<Route path="/savedSearches"> <SavedSearches /> </Route>
 							<Route path="/"> <HomePage /> </Route>
 						</Switch>
-						<div class = "bottom-nav-bar">
+						<div className= "bottom-nav-bar">
 						<footer>
-							<div class ="col left">
-								<p class ="goal-header">Our Goal:</p>
-								<p class = "goal-text">To provide an interface to graph results from the OCLC Catalog to use for research</p>
+							<div className="col left">
+								<p className="goal-header">Our Goal:</p>
+								<p className= "goal-text">To provide an interface to graph results from the OCLC Catalog to use for research</p>
 							</div>
-							<div class ="col center">Contact us: percariouscielingfan@gmail.com</div>
-							<div class = "col right">Copyright : 2021</div>
+							<div className="col center">Contact us: percariouscielingfan@gmail.com</div>
+							<div className= "col right">Copyright : 2021</div>
 						</footer>
 						</div>
 				</div>
