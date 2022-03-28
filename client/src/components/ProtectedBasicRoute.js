@@ -38,7 +38,7 @@ const ProtectedBasicRoute = (search) => {
 						<h3 style={{textAlign:"center"}}>Save Search</h3>
 						<label for="saveName" style={{padding:'5px'}}><b>Save Name:</b></label>
 						<input type = 'text' value={name} onChange={e => {setName(e.target.value)}} placeholder='enter name'></input>
-						<button type='button' className="btn" onClick={() => {SaveBasicSearch(user.uid,name,search.search,search.field,search.chart)}} style={{marginLeft:'5px', borderRadius:'20px', color:'white', backgroundColor: '#6675b0'}}>Submit</button>
+						<button type='submit' className="btn" onClick={() => {SaveBasicSearch(user.uid,name,search.search,search.field,search.chart)}} style={{marginLeft:'5px', borderRadius:'20px', color:'white', backgroundColor: '#6675b0'}}>Submit</button>
 					</form>
 				</div>
 			</Popup>
