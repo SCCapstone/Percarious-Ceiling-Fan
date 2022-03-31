@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import FirebaseService from "../services/firebase.service";
 import { useAuthContext } from "../contexts/AuthContext";
 import {Button} from "react-bootstrap"
-import { useHistory } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 
 const SavedSearches = () => {
   const { logOut } = useAuthContext();
@@ -29,14 +29,27 @@ const SavedSearches = () => {
 	}
   };
 
+  const deleteSearch = async (id) => {
+	  console.log("todo");
+  };
+
   return (
 	<div>
     <div className="containerWrapper">
       <div style= {{backgroundColor:'white', width:'50%', margin: 'auto', borderRadius:'5px', outline: 'solid 3px #6675b0'}}><h1 style={{color:'#6675b0', padding: '10px'}}>Saved Searches:</h1></div>
     {searches.map((search) =>(
           <div className = "card">
-            <div className="meta" style={{ width:'50%', margin: 'auto', borderRadius: '5px', backgroundColor: 'white'}}>{search.name}</div>
-           <p></p>
+			<Link style ={{textDecoration:'none', color: 'white'}} to={{
+				pathname: '/results',
+				saved: search
+				}}>
+            <div className="meta" style={{ width:'30%', margin: 'auto', borderRadius: '7px', backgroundColor: 'white', color: 'black'}}>
+				<h2>{search.name}</h2>
+				<p>Chart Type: {search.chart}</p>
+				<p>Searching For: {search.search}{search.anyWords}</p>
+			</div>
+			</Link>
+			<Button onClick={deleteSearch(search.id)}>Delete</Button>
           </div>
     ))}
 		<div className="button">

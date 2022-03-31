@@ -14,24 +14,45 @@ class Results extends React.Component{
 		if(this.props.location !== undefined) {
 			console.log(this.props.location.chart);
 			this.setState({chart: this.props.location.chart})
-			if(!this.props.location.search){
-				console.log(this.props.location.anyWords);
-				console.log(this.props.location.exactPhrase);
-				console.log(this.props.location.exclude);
-				console.log("Author: "+this.props.location.author+" Title: "+this.props.location.title+" Publisher: "+this.props.location.publisher);
-				console.log(this.props.location.startYear+" to "+this.props.location.endYear);
-				console.log(this.props.location.languages);
-				console.log(this.props.location.regions);
-				this.getAdvancedResults();
+			if(!this.props.location.saved){
+				if(!this.props.location.search){
+					console.log(this.props.location.anyWords);
+					console.log(this.props.location.exactPhrase);
+					console.log(this.props.location.exclude);
+					console.log("Author: "+this.props.location.author+" Title: "+this.props.location.title+" Publisher: "+this.props.location.publisher);
+					console.log(this.props.location.startYear+" to "+this.props.location.endYear);
+					console.log(this.props.location.languages);
+					console.log(this.props.location.regions);
+					this.getAdvancedResults();
+				}
+				else {
+					console.log(this.props.location.search);
+					console.log(this.props.location.field);
+					if(this.props.location.chart == 'bar') this.state.chart = 'bar';
+					if(this.props.location.chart == 'line') this.state.chart = 'scatter';
+					if(this.props.location.chart == 'pie') this.state.chart = 'pie';
+					this.getBasicResults();
+				}
 			}
 			else {
-				console.log(this.props.location.search);
-				console.log(this.props.location.field);
-				if(this.props.location.chart == 'bar') this.state.chart = 'bar';
-				if(this.props.location.chart == 'line') this.state.chart = 'scatter';
-				if(this.props.location.chart == 'pie') this.state.chart = 'pie';
-				 console.log(this.state.results);
-				this.getBasicResults();
+				if(!this.props.location.saved.search){
+					console.log(this.props.location.saved.anyWords);
+					console.log(this.props.location.saved.exactPhrase);
+					console.log(this.props.location.saved.exclude);
+					console.log("Author: "+this.props.location.saved.author+" Title: "+this.props.location.saved.title+" Publisher: "+this.props.location.saved.publisher);
+					console.log(this.props.location.saved.startYear+" to "+this.props.location.saved.endYear);
+					console.log(this.props.location.saved.languages);
+					console.log(this.props.location.saved.regions);
+					this.getSavedAdvancedResults();
+				}
+				else {
+					console.log(this.props.location.saved.search);
+					console.log(this.props.location.saved.field);
+					if(this.props.location.saved.chart == 'bar') this.state.chart = 'bar';
+					if(this.props.location.saved.chart == 'line') this.state.chart = 'scatter';
+					if(this.props.location.saved.chart == 'pie') this.state.chart = 'pie';
+					this.getSavedBasicResults();
+				}
 			}
 		}
 	}
@@ -61,6 +82,37 @@ class Results extends React.Component{
 				search: this.props.location.search.substring(1),
 				field: this.props.location.field,
 				chart: this.props.location.chart
+			 }
+		})
+		.then((response) => response.data)
+		.then(response => {this.setState({results: response})}) //results from basicSearch
+	};
+
+	getSavedAdvancedResults = () => {
+		axios.get('http://localhost:3001/advancedSearch',{
+			params: {
+				anyWords: this.props.location.saved.anyWords,
+				exactPhrase: this.props.location.saved.exactPhrase,
+				exclude: this.props.location.saved.exclude,
+				author: this.props.location.saved.author,
+				title: this.props.location.saved.title,
+				publisher: this.props.location.saved.publisher,
+				startYear: this.props.location.saved.startYear,
+				endYear: this.props.location.saved.endYear,
+				languages: this.props.location.saved.languages,
+				regions: this.props.location.saved.regions
+			 }
+		})
+		.then((response) => response.data)
+		.then(response => {this.setState({results: response})}) //results from advancedSearch
+	};
+
+	getSavedBasicResults = () => {
+		axios.get('http://localhost:3001/basicSearch',{
+			params: {
+				search: this.props.location.saved.search,
+				field: this.props.location.saved.field,
+				chart: this.props.location.saved.chart
 			 }
 		})
 		.then((response) => response.data)
