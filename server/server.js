@@ -98,7 +98,7 @@ function build(anyWords, exactPhrase, exclude, author, title, publisher, startYe
 }
 
 //Function takes in sql response, returns dictionary of decade:count
-function getDecades(data){
+function getDecades(data, chart){
 	decades = {};
 	for(let i = 0; i < data.length; i++){
 		year = data[i].control_string.substring(7,11);
@@ -106,15 +106,17 @@ function getDecades(data){
 		if(!decades[dec]) decades[dec] = 0;
 		decades[dec]++;
 	}
-	let sum = Object.values(decades).reduce((partialSum, a) => partialSum + a, 0);
-	for (const [key, value] of Object.entries(decades)) {
-	console.log(sum + " " + value + " " + value/sum);
-	decades[key] = value/sum;
-  	console.log(key, value);
-	}
-	for(let i = 0; i < decades.length; i++){
+	if(chart == "pie"){
+		let sum = Object.values(decades).reduce((partialSum, a) => partialSum + a, 0);
+		for (const [key, value] of Object.entries(decades)) {
+		console.log(sum + " " + value + " " + value/sum);
+		decades[key] = value/sum;
+	  	console.log(key, value);
+		}
+		for(let i = 0; i < decades.length; i++){
 
-		decades[i] = decades[i]/sum;
+			decades[i] = decades[i]/sum;
+		}
 	}
 	return decades;
 }
@@ -186,7 +188,7 @@ app.get("/basicSearch", async(req, res) => {
 			if(err) console.log(err)
 			else{
 			if(response.length > 0)
-			response = getDecades(response);
+			response = getDecades(response, req.query.chart);
 			console.log(response);
 			res.send(response);
 

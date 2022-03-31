@@ -59,7 +59,8 @@ class Results extends React.Component{
 		axios.get('http://localhost:3001/basicSearch',{
 			params: {
 				search: this.props.location.search.substring(1),
-				field: this.props.location.field
+				field: this.props.location.field,
+				chart: this.props.location.chart
 			 }
 		})
 		.then((response) => response.data)
