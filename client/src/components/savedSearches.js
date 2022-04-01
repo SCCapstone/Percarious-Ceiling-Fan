@@ -30,7 +30,8 @@ const SavedSearches = () => {
   };
 
   const deleteSearch = async (id) => {
-	  console.log("todo");
+	  console.log(id);
+	  FirebaseService.deleteSearch(id);
   };
 
   return (
@@ -39,17 +40,19 @@ const SavedSearches = () => {
       <div style= {{backgroundColor:'white', width:'50%', margin: 'auto', borderRadius:'5px', outline: 'solid 3px #6675b0'}}><h1 style={{color:'#6675b0', padding: '10px'}}>Saved Searches:</h1></div>
     {searches.map((search) =>(
           <div className = "card">
-			<Link style ={{textDecoration:'none', color: 'white'}} to={{
-				pathname: '/results',
-				saved: search
-				}}>
-            <div className="meta" style={{ width:'30%', margin: 'auto', borderRadius: '7px', backgroundColor: 'white', color: 'black'}}>
-				<h2>{search.name}</h2>
-				<p>Chart Type: {search.chart}</p>
-				<p>Searching For: {search.search}{search.anyWords}</p>
+			<div className="meta" style={{ width:'30%', margin: 'auto', borderRadius: '7px', backgroundColor: 'white', color: 'black'}}>
+				<Link style ={{textDecoration:'none', color: 'black'}} to={{
+					pathname: '/results',
+					saved: search
+					}}>
+					<div>
+						<h2>{search.name}</h2>
+						<p>Chart Type: {search.chart}</p>
+						<p>Searching For: {search.search}{search.anyWords}</p>
+					</div>
+				</Link>
+				<Button style= {{color:'white', backgroundColor:'#b32738', padding: '5px', borderRadius: '5px'}} onClick={() => deleteSearch(search.id)}>Delete</Button>
 			</div>
-			</Link>
-			<Button onClick={deleteSearch(search.id)}>Delete</Button>
           </div>
     ))}
 		<div className="button">

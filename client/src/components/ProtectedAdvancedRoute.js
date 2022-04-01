@@ -45,15 +45,17 @@ const ProtectedBasicRoute = (anyWords) => {
 	else {
 		return (
 			<Popup trigger={<button style={{borderRadius: '10px', padding: '5px', color: 'white', backgroundColor: '#6675b0'}}>Save Search</button>}>
+				{close => (
 				<div id="myForm" className="formPopup" style={formStyling}>
 					<form action ="/action_page.php" className= "form-container" >
 						<h3 style={{textAlign:"center"}}>Save Search</h3>
 						<label for="saveName" style={{padding:'5px'}}><b>Save Name:</b></label>
 						<input type = 'text' value={name} onChange={e => {setName(e.target.value)}} placeholder='enter name'></input>
-						<button type='submit' className="btn" onClick={() => {SaveBasicSearch(user.uid,name,anyWords.anyWords,anyWords.exactPhrase,anyWords.exclude,anyWords.author,
-						anyWords.title,anyWords.publisher,anyWords.startYear,anyWords.endYear,anyWords.languages,anyWords.regions,anyWords.chart)}} style={{marginLeft:'5px', borderRadius:'20px', color:'white', backgroundColor: '#6675b0'}}>Submit</button>
+						<button type='button' className="btn" onClick={() => {SaveBasicSearch(user.uid,name,anyWords.anyWords,anyWords.exactPhrase,anyWords.exclude,anyWords.author,
+						anyWords.title,anyWords.publisher,anyWords.startYear,anyWords.endYear,anyWords.languages,anyWords.regions,anyWords.chart); close();}} style={{marginLeft:'5px', borderRadius:'20px', color:'white', backgroundColor: '#6675b0'}}>Submit</button>
 					</form>
 				</div>
+				)}
 			</Popup>
 		)
 	}
