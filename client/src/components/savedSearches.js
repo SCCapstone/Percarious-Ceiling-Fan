@@ -36,11 +36,12 @@ const SavedSearches = () => {
 
   return (
 	<div>
-    <div className="containerWrapper">
+    <div className="containerWrapper" style={{overflowY: 'scroll', marginBottom: '200px'}}>
       <div style= {{backgroundColor:'white', width:'50%', margin: 'auto', borderRadius:'5px', outline: 'solid 3px #6675b0'}}><h1 style={{color:'#6675b0', padding: '10px'}}>Saved Searches:</h1></div>
+    <div className = "card-container" style={{height: '80%'}}>
     {searches.map((search) =>(
-          <div className = "card">
-			<div className="meta" style={{ width:'30%', margin: 'auto', borderRadius: '7px', backgroundColor: 'white', color: 'black'}}>
+          <div className = "card" >
+			<div className="meta" style={{ width:'20%', margin: 'auto', borderRadius: '7px', backgroundColor: 'white', color: 'black', flexDirection: 'row', flexWrap:'wrap'}}>
 				<Link style ={{textDecoration:'none', color: 'black'}} to={{
 					pathname: '/results',
 					saved: search
@@ -55,6 +56,7 @@ const SavedSearches = () => {
 			</div>
           </div>
     ))}
+    </div>
 		<div className="button">
 			<Button style= {{color:'white', backgroundColor:'#6675b0', padding: '10px', borderRadius: '5px'}} variant="primary" onClick={logoutHandler}>Log Out</Button>
 		</div>
