@@ -89,7 +89,6 @@ class HomePage extends React.Component{
 								</div>
 							</form>
 					</div>
-					{/*Change check marks to radio buttons*/}
 					<div style = {optionStyling }>
 					<form>
 					<p name="searchPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Search for:</p>

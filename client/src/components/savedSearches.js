@@ -57,7 +57,7 @@ const SavedSearches = () => {
           </div>
     ))}
     </div>
-		<div className="button">
+		<div className="button" style= {{paddingTop: '10px'}}>
 			<Button style= {{color:'white', backgroundColor:'#6675b0', padding: '10px', borderRadius: '5px'}} variant="primary" onClick={logoutHandler}>Log Out</Button>
 		</div>
     </div>

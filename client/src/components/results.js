@@ -1,8 +1,10 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
+import { Link } from 'react-router-dom';
 import { withRouter } from "react-router";
 import axios from "axios"; //for SQL command stuff
 import ScaleLoader from "react-spinners/ScaleLoader";
+import ProtectedBasicRoute from './ProtectedBasicRoute';
 class Results extends React.Component{
 
 	constructor(props){
@@ -136,27 +138,143 @@ class Results extends React.Component{
 		.then(response => {this.setState({results: response})}) //results from basicSearch
 	};
 
+	chartCheck = (e) =>{
+		this.setState({
+			chart: e.target.value
+		})
+	}
+
+	fieldCheck = (e) =>{
+		this.setState({
+			field: e.target.value
+		})
+	}
+
     render(){
+		let searchBarStyling = {
+			backgroundColor:  '#FFFFFF',
+			textAlign: 'center',
+			fontSize: '120',
+			height:'35px',
+			width:'50%',
+			outlineStyle:'none',
+			border: 'none',
+			borderRadius: '20px',
+			color: 'black',
+			marginTop:"5%",
+			border: 'solid 2px #6675b0'
+		}
+
+		let inputStylingAdvanced = {
+			padding: '7px',
+			margin: '5px',
+			width: '200px',
+			height: '30px',
+			borderRadius: '20px',
+			backgroundColor: '#6675b0',
+			marginTop:'10px',
+			textDecoration:'none',
+			color: 'white',
+			
+		}
+
+		let buttonStyling = {
+			padding: '10px',
+			color:'white',
+			margin: '10px',
+			backgroundColor: 'darkgrey',
+			borderRadius: '10px'
+		}
+
+		let optionStyling = {
+			padding:'10px'
+		}
+
+		let optionContainer = {
+			padding: '5px',
+			backgroundColor: 'white',
+			margin:'auto',
+			width: '40%',
+			textAlign: 'center',
+			borderRadius: '10px',
+			outline: '2px dotted #6675b0',
+			fontWeight: 'bolder',
+			marginBottom: '20px'
+		}
+
+		let left = {
+			width: '50%',
+			float: 'left'
+		}
+		let right = {
+			width: '50%',
+			float: 'right'
+		}
+
         return (
 			<>
-
-			<div> <h3>Search Output:</h3> </div>
-			<div id="loading" display="true"><ScaleLoader /> </div>
- 			<Plot
-			data={
-					[{
-						labels: Object.keys(this.state.results).map(function(item) {
-							return String(item);
-						}),
-						values: Object.values(this.state.results),
-						x: Object.keys(this.state.results),
-						y: Object.values(this.state.results),
-						type: this.state.chart,
-						marker: {color: 'blue'}
-					}]
-				}
-			layout={{title: 'Results'}}
-			/>
+			<div className='Container' style={{overflowY:'auto', marginBottom:'200px'}}>
+				<div className='SearchBarContainer' style={left}>
+					<input id='search' style= {searchBarStyling}></input>
+					<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button" value ={this.state.search} onChange={e => this.setState({search: e.target.value})} placeholder='Enter your search here'> Search</button>
+					<div style ={{padding:'10px'}}></div>
+					<div className='optionsContainer' style={optionContainer}>
+					<div style = {optionStyling}>
+						<form>
+							<p name="chartPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Graph Type:</p>
+								<div style={{display: 'flex', justifyContent: 'center'}}>
+									<label className='chartPrompt'>Bar:</label>
+									<input type="radio" name = "searchInput"  value="bar" defaultChecked={this.chartCheck} onChange={this.chartCheck}/> <br/>
+									<label className='chartPrompt'>Pie:</label>
+									<input type="radio" name = "searchInput" value="pie" onChange={this.chartCheck}/> <br/>
+									<label className='chartPrompt'>Line:</label>
+									<input type="radio" name = "searchInput"  value="line" onChange={this.chartCheck}/> <br/>
+								</div>
+						</form>
+					</div>
+					<div style = {optionStyling }>
+							<form>
+								<p name="searchPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Search for:</p>
+									<div onChange={e =>this.state.onChangeValue} style={{display: 'flex', justifyContent: 'center'}}>
+										<label className='searchPrompt'>Title:</label>
+										<input type="radio" name = "searchInput"  value="title" onChange={this.fieldCheck} /> <br/>
+										<label className='searchPrompt'>Author:</label>
+										<input type="radio" name = "searchInput" value="author" onChange={this.fieldCheck} /> <br/>
+										<label className='searchPrompt'>Year:</label>
+										<input type="radio" name = "searchInput"  value="year" onChange={this.fieldCheck} /> <br/>
+										<label className='searchPrompt'>Genre:</label>
+										<input type="radio" name = "searchInput" value="genre"onChange={this.fieldCheck} /> <br/>
+										<label className='searchPrompt'>Language:</label>
+										<input type="radio" name = "searchInput"  value="language"onChange={this.fieldCheck} /> <br/>
+									</div>
+								</form>
+						</div>
+						</div>
+						<div style ={{padding:'10px'}}></div>
+						<div className='LinksOut'><Link to="/advancedsearch" style ={inputStylingAdvanced}>Advanced Search</Link></div>
+				</div>
+					<div style ={{padding:'10px'}}></div>
+				<div className='GraphConatiner' style={right}>
+					<div style={{borderBottom:'solid 1px #6675b0', width: '30%', margin: 'auto'}}> <h3 style={{color: '#6675b0'}}>Search Output:</h3> </div>
+					<div style ={{padding:'10px'}}></div>
+					<div id="loading" display="true"><ScaleLoader/> </div>
+					<Plot
+						data={
+							[{
+								labels: Object.keys(this.state.results).map(function(item) {
+									return String(item);
+								}),
+								values: Object.values(this.state.results),
+								x: Object.keys(this.state.results),
+								y: Object.values(this.state.results),
+								type: this.state.chart,
+								marker: {color: 'blue'}
+							}]
+						}
+					layout={{title: 'Results'}}/>
+					<div className='Tips' style={{color:'black'}}><p>Tip: To save as PNG, hover over the right hand upper corner of the graph</p></div>
+				</div>
+			</div>
 			</>
 
 		)
