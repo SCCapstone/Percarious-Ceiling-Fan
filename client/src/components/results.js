@@ -234,6 +234,9 @@ class Results extends React.Component{
 		})
 	}
 
+	refreshPage = () => {
+		window.location.reload(false);
+	}
 
     render(){
 		let searchBarStyling = {
@@ -301,7 +304,7 @@ class Results extends React.Component{
 			<div className='Container' style={{ marginBottom:'100px'}}>
 				<div className='SearchBarContainer' style={left}>
 					<input id='search' style= {searchBarStyling} value ={this.state.search} onChange={e => this.setState({search: e.target.value})} placeholder= "Enter Search here..."></input>
-						<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button"  >
+						<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button" onClick={refreshPage} >
 						<Link style ={{textDecoration:'none', color: 'white'}} to={{
 									pathname: '/results',
 									search: this.state.search,
