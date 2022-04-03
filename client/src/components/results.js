@@ -9,9 +9,11 @@ class Results extends React.Component{
 		super(props);
 		this.state = {data: [], layout: {}, frames: [], config: {}, results: [], chart: ""};
 	}
-
+	
 	componentDidMount = () => {
+		
 		document.getElementById("loading").setAttribute("style","display: block;")
+		console.log(this.state.results)
 		if(this.props.location !== undefined) {
 			if(!this.props.location.saved){
 				console.log(this.props.location.chart);
@@ -62,6 +64,12 @@ class Results extends React.Component{
 		}
 		
 	}
+	componentDidUpdate() {
+		if( this.state.results != ""){
+			document.getElementById("loading").setAttribute("style","display: none;");
+		}
+
+	}
 
 	getAdvancedResults = () => {
 		axios.get('http://localhost:3001/advancedSearch',{
@@ -80,7 +88,7 @@ class Results extends React.Component{
 		})
 		.then((response) => response.data)
 		.then(response => {this.setState({results: response})}) //results from advancedSearch
-		.then(document.getElementById("loading").setAttribute("style","display: none;"))
+		
 	};
 
 	getBasicResults = () => {
@@ -93,7 +101,6 @@ class Results extends React.Component{
 		})
 		.then((response) => response.data)
 		.then(response => {this.setState({results: response})}) //results from basicSearch
-		.then(document.getElementById("loading").setAttribute("style","display: none;"))
 	};
 
 	getSavedAdvancedResults = () => {
@@ -113,7 +120,6 @@ class Results extends React.Component{
 		})
 		.then((response) => response.data)
 		.then(response => {this.setState({results: response})}) //results from advancedSearch
-		.then(document.getElementById("loading").setAttribute("style","display: none;"))
 	};
 
 	getSavedBasicResults = () => {
@@ -126,7 +132,6 @@ class Results extends React.Component{
 		})
 		.then((response) => response.data)
 		.then(response => {this.setState({results: response})}) //results from basicSearch
-		.then(document.getElementById("loading").setAttribute("style","display: none;"))
 	};
 
     render(){
