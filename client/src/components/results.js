@@ -20,8 +20,9 @@ class Results extends React.Component{
 				console.log(this.props.location.chart);
 				this.setState({chart: this.props.location.chart})
 				window.localStorage.setItem('state', JSON.stringify(this.state));
+				window.localStorage.setItem('chart',  this.props.location.chart);
 				console.log(JSON.parse(window.localStorage.getItem('state')));
-				console.log(JSON.parse(window.localStorage.getItem('state')).chart);
+				console.log(window.localStorage.getItem('chart'));
 				if(!this.props.location.search){
 					console.log(this.props.location.anyWords);
 					console.log(this.props.location.exactPhrase);
@@ -37,6 +38,7 @@ class Results extends React.Component{
 					console.log(this.props.location.search);
 					console.log(this.props.location.field);
 					window.localStorage.setItem('state', JSON.stringify(this.state));
+					window.localStorage.setItem('chart',  this.state.chart);
 					if(this.props.location.chart == 'bar') this.state.chart = 'bar';
 					if(this.props.location.chart == 'line') this.state.chart = 'scatter';
 					if(this.props.location.chart == 'pie') this.state.chart = 'pie';
@@ -47,6 +49,7 @@ class Results extends React.Component{
 			else {
 				console.log(this.props.location.saved.chart);
 				this.setState({chart: this.props.location.saved.chart})
+				window.localStorage.setItem('chart',  this.props.location.saved.chart);
 				window.localStorage.setItem('state', JSON.stringify(this.state));
 				if(!this.props.location.saved.search){
 					console.log(this.props.location.saved.anyWords);
@@ -64,6 +67,7 @@ class Results extends React.Component{
 					if(this.props.location.saved.chart == 'bar') this.state.chart = 'bar';
 					if(this.props.location.saved.chart == 'line') this.state.chart = 'scatter';
 					if(this.props.location.saved.chart == 'pie') this.state.chart = 'pie';
+					window.localStorage.setItem('chart',  this.state.chart);
 					this.getSavedBasicResults();
 				}
 			}
@@ -95,7 +99,7 @@ class Results extends React.Component{
 			 }
 		})
 		.then((response) => response.data)
-		.then(response => {this.setState({results: response}); window.localStorage.setItem('state', JSON.stringify(this.state));}) //results from advancedSearch
+		.then(response => {this.setState({results: response}); window.localStorage.setItem('state', JSON.stringify(this.state)); window.localStorage.setItem('chart', JSON.stringify(response.chart));}) //results from advancedSearch
 	};
 
 	getBasicResults = () => {
@@ -107,7 +111,7 @@ class Results extends React.Component{
 			 }
 		})
 		.then((response) => response.data)
-		.then(response => {this.setState({results: response}); window.localStorage.setItem('state', JSON.stringify(this.state));}) //results from basicSearch
+		.then(response => {this.setState({results: response}); window.localStorage.setItem('state', JSON.stringify(this.state)); window.localStorage.setItem('chart', JSON.stringify(response.chart));}) //results from basicSearch
 	};
 
 	getSavedAdvancedResults = () => {
@@ -126,8 +130,8 @@ class Results extends React.Component{
 			 }
 		})
 		.then((response) => response.data)
-		.then(response => {this.setState({results: response}); window.localStorage.setItem('state', JSON.stringify(this.state));}) //results from advancedSearch
-	
+		.then(response => {this.setState({results: response}); window.localStorage.setItem('state', JSON.stringify(this.state)); window.localStorage.setItem('chart', JSON.stringify(response.chart));}) //results from advancedSearch
+
 
 	};
 
@@ -140,7 +144,7 @@ class Results extends React.Component{
 			 }
 		})
 		.then((response) => response.data)
-		.then(response => {this.setState({results: response}); window.localStorage.setItem('state', JSON.stringify(this.state));}) //results from basicSearch
+		.then(response => {this.setState({results: response}); window.localStorage.setItem('state', JSON.stringify(this.state)); window.localStorage.setItem('chart', JSON.stringify(response.chart));}) //results from basicSearch
 	};
 
 
@@ -198,7 +202,7 @@ class Results extends React.Component{
 				<p>{this.props.location.saved.startYear}</p>
 				<p>{this.props.location.saved.endYear}</p>
 				<p>{this.props.location.saved.languages}</p>
-				<p>{this.props.location.saved.regions}</p> 
+				<p>{this.props.location.saved.regions}</p>
 			</div>)
 		}
 	};
@@ -256,7 +260,7 @@ class Results extends React.Component{
 			marginTop:'10px',
 			textDecoration:'none',
 			color: 'white',
-			
+
 		}
 
 		let buttonStyling = {
@@ -297,7 +301,7 @@ class Results extends React.Component{
 			<div className='Container' style={{ marginBottom:'100px'}}>
 				<div className='SearchBarContainer' style={left}>
 					<input id='search' style= {searchBarStyling} value ={this.state.search} onChange={e => this.setState({search: e.target.value})} placeholder= "Enter Search here..."></input>
-						<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button"  > 
+						<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button"  >
 						<Link style ={{textDecoration:'none', color: 'white'}} to={{
 									pathname: '/results',
 									search: this.state.search,
@@ -306,7 +310,7 @@ class Results extends React.Component{
 								}}>
 									Search
 								</Link>
-						</button> 
+						</button>
 						<div style ={{padding:'10px'}}></div>
 					<div className='optionsContainer' style={optionContainer}>
 							<div className='previousSearch'>
@@ -347,9 +351,9 @@ class Results extends React.Component{
 								</form>
 							</div>
 							</div>
-							
+
 							<div style ={{padding:'10px'}}></div>
-							<div className='LinksOut'><Link to="/advancedsearch" style ={inputStylingAdvanced}>Advanced Search</Link></div>				
+							<div className='LinksOut'><Link to="/advancedsearch" style ={inputStylingAdvanced}>Advanced Search</Link></div>
 				</div>
 					<div style ={{padding:'10px'}}></div>
 				<div className='GraphConatiner' style={right}>
@@ -365,7 +369,7 @@ class Results extends React.Component{
 								values: Object.values(this.state.results),
 								x: Object.keys(this.state.results),
 								y: Object.values(this.state.results),
-								type:JSON.parse(window.localStorage.getItem('state')).chart || this.state.chart,
+								type: window.localStorage.getItem('chart') || this.state.chart,
 								marker: {color: 'blue'}
 							}]
 						}
