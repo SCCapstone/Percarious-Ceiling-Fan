@@ -2,7 +2,7 @@ import React from 'react';
 import Plot from 'react-plotly.js';
 import { withRouter } from "react-router";
 import axios from "axios"; //for SQL command stuff
-
+import ScaleLoader from "react-spinners/ScaleLoader";
 class Results extends React.Component{
 
 	constructor(props){
@@ -11,6 +11,7 @@ class Results extends React.Component{
 	}
 
 	componentDidMount = () => {
+		
 		if(this.props.location !== undefined) {
 			console.log(this.props.location.chart);
 			this.setState({chart: this.props.location.chart})
@@ -55,6 +56,7 @@ class Results extends React.Component{
 				}
 			}
 		}
+		
 	}
 
 	getAdvancedResults = () => {
@@ -124,7 +126,8 @@ class Results extends React.Component{
 			<>
 
 			<div> <h3>Search Output:</h3> </div>
-			<Plot
+			<div id="loading" display="true"> jhhk<ScaleLoader /> </div>
+ 			<Plot
 			data={
 					[{
 						labels: Object.keys(this.state.results).map(function(item) {

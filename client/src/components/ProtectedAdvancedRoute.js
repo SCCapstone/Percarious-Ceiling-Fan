@@ -5,7 +5,7 @@ import { useAuthContext } from "../contexts/AuthContext";
 
 function SaveBasicSearch(uId,name, anyWords, exactPhrase,exclude,author,title,publisher,startYear,
 	endYear,languages,regions,chart) {
-	console.log("Running SaveBasicSearch ", uId, name, anyWords, exactPhrase,exclude,author,title,publisher,startYear,
+	console.log("Running SaveAdvancedSearch ", uId, name, anyWords, exactPhrase,exclude,author,title,publisher,startYear,
 	endYear,languages,regions,chart);
 	const newSearch = {
 		userId: uId, 
