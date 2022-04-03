@@ -13,9 +13,9 @@ class Results extends React.Component{
 	componentDidMount = () => {
 		
 		if(this.props.location !== undefined) {
-			console.log(this.props.location.chart);
-			this.setState({chart: this.props.location.chart})
 			if(!this.props.location.saved){
+				console.log(this.props.location.chart);
+				this.setState({chart: this.props.location.chart})
 				if(!this.props.location.search){
 					console.log(this.props.location.anyWords);
 					console.log(this.props.location.exactPhrase);
@@ -36,6 +36,8 @@ class Results extends React.Component{
 				}
 			}
 			else {
+				console.log(this.props.location.saved.chart);
+				this.setState({chart: this.props.location.saved.chart})
 				if(!this.props.location.saved.search){
 					console.log(this.props.location.saved.anyWords);
 					console.log(this.props.location.saved.exactPhrase);
