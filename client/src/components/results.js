@@ -9,7 +9,7 @@ class Results extends React.Component{
 	constructor(props){
 		super(props);
 		window.localStorage.clear();
-		this.state = JSON.parse(window.localStorage.getItem('state')) || {data: [], layout: {}, frames: [], config: {}, results: [], chart: "", search: "", field: ""};
+		this.state = JSON.parse(window.localStorage.getItem('state')) || {data: [], layout: {}, frames: [], config: {}, results: [], chart: "bar", search: "", field: "title"};
 	}
 
 	componentDidMount = () => {
@@ -114,6 +114,18 @@ class Results extends React.Component{
 		.then(response => {this.setState({results: response}); window.localStorage.setItem('state', JSON.stringify(this.state)); window.localStorage.setItem('chart', JSON.stringify(response.chart));}) //results from basicSearch
 	};
 
+	getBasicResultsResults = () => {
+		axios.get('http://localhost:3001/basicSearch',{
+			params: {
+				search: this.state.search,
+				field: this.state.field,
+				chart: this.state.chart
+			 }
+		})
+		.then((response) => response.data)
+		.then(response => {this.setState({results: response}); window.localStorage.setItem('state', JSON.stringify(this.state)); window.localStorage.setItem('chart', JSON.stringify(response.chart));}) //results from basicSearch on results page
+	};
+
 	getSavedAdvancedResults = () => {
 		axios.get('http://localhost:3001/advancedSearch',{
 			params: {
@@ -136,6 +148,7 @@ class Results extends React.Component{
 	};
 
 	getSavedBasicResults = () => {
+		window.location.reload(false)
 		axios.get('http://localhost:3001/basicSearch',{
 			params: {
 				search: this.props.location.saved.search,
@@ -300,7 +313,7 @@ class Results extends React.Component{
 			<div className='Container' style={{ marginBottom:'100px'}}>
 				<div className='SearchBarContainer' style={left}>
 					<input id='search' style= {searchBarStyling} value ={this.state.search} onChange={e => this.setState({search: e.target.value})} placeholder= "Enter Search here..."></input>
-						<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button" onClick={() => window.location.reload(false)}>
+						<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button" onClick={this.getBasicResultsResults}>
 						<Link style ={{textDecoration:'none', color: 'white'}} to={{
 									pathname: '/results',
 									search: this.state.search,
@@ -324,11 +337,11 @@ class Results extends React.Component{
 								<p name="chartPrompt" style={{marginTop: '0px', textDecoration:'underline', fontWeight:"bold"}}>Graph Type:</p>
 									<div style={{display: 'flex', justifyContent: 'center'}}>
 										<label className='chartPrompt'>Bar:</label>
-										<input type="radio" name = "searchInput"  value="bar"  onChange={this.chartCheck}/> <br/>
+										<input type="radio" name = "searchInput"  value="bar" onChange={this.chartCheck}/> <br/>
 										<label className='chartPrompt'>Pie:</label>
-										<input type="radio" name = "searchInput" value="pie"  onChange={this.chartCheck}/> <br/>
+										<input type="radio" name = "searchInput" value="pie" onChange={this.chartCheck}/> <br/>
 										<label className='chartPrompt'>Line:</label>
-										<input type="radio" name = "searchInput"  value="line"   onChange={this.chartCheck}/> <br/>
+										<input type="radio" name = "searchInput"  value="line"  onChange={this.chartCheck}/> <br/>
 									</div>
 							</form>
 						</div>
