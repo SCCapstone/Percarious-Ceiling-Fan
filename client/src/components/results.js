@@ -9,7 +9,7 @@ class Results extends React.Component{
 	constructor(props){
 		super(props);
 		window.localStorage.clear();
-		this.state = JSON.parse(window.localStorage.getItem('state')) || {data: [], layout: {}, frames: [], config: {}, results: [], chart: "bar", search: "", field: "title"};
+		this.state = JSON.parse(window.localStorage.getItem('state')) || {data: [], layout: {}, frames: [], config: {}, results: [], chart: "", search: "", field: "", nChart: "", nSearch: "", nField: ""};
 	}
 
 	componentDidMount = () => {
@@ -114,18 +114,6 @@ class Results extends React.Component{
 		.then(response => {this.setState({results: response}); window.localStorage.setItem('state', JSON.stringify(this.state)); window.localStorage.setItem('chart', JSON.stringify(response.chart));}) //results from basicSearch
 	};
 
-	getRerun = () => {
-		window.location.reload(false)
-		axios.get('http://localhost:3001/basicSearch',{
-			params: {
-				search: this.state.search,
-				field: this.state.field,
-				chart: this.state.chart
-			 }
-		})
-		.then((response) => response.data)
-		.then(response => {this.setState({results: response}); window.localStorage.setItem('state', JSON.stringify(this.state)); window.localStorage.setItem('chart', JSON.stringify(response.chart));}) //results from basicSearch on results page
-	};
 
 	getSavedAdvancedResults = () => {
 		axios.get('http://localhost:3001/advancedSearch',{
@@ -237,13 +225,13 @@ class Results extends React.Component{
 
 	chartCheck = (e) =>{
 		this.setState({
-			chart: e.target.value
+			nChart: e.target.value
 		})
 	}
 
 	fieldCheck = (e) =>{
 		this.setState({
-			field: e.target.value
+			nField: e.target.value
 		})
 	}
 
@@ -312,13 +300,13 @@ class Results extends React.Component{
 			<>
 			<div className='Container' style={{ marginBottom:'100px'}}>
 				<div className='SearchBarContainer' style={left}>
-					<input id='search' style= {searchBarStyling} value ={this.state.search} onChange={e => this.setState({search: e.target.value})} placeholder= "Enter Search here..."></input>
-						<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button" onClick={this.getreRun}>
+					<input id='search' style= {searchBarStyling} value ={this.state.nSearch} onChange={e => this.setState({nSearch: e.target.value})} placeholder= "Enter Search here..."></input>
+						<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button">
 						<Link style ={{textDecoration:'none', color: 'white'}} to={{
 									pathname: '/results',
-									search: this.state.search,
-									field: this.state.field,
-									chart: this.state.chart
+									search: this.state.nSearch,
+									field: this.state.nField,
+									chart: this.state.nChart
 								}}>
 									Search
 								</Link>
