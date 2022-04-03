@@ -11,7 +11,7 @@ class Results extends React.Component{
 	}
 
 	componentDidMount = () => {
-		
+		document.getElementById("loading").setAttribute("style","display: block;")
 		if(this.props.location !== undefined) {
 			if(!this.props.location.saved){
 				console.log(this.props.location.chart);
@@ -25,6 +25,7 @@ class Results extends React.Component{
 					console.log(this.props.location.languages);
 					console.log(this.props.location.regions);
 					this.getAdvancedResults();
+					
 				}
 				else {
 					console.log(this.props.location.search);
@@ -33,6 +34,7 @@ class Results extends React.Component{
 					if(this.props.location.chart == 'line') this.state.chart = 'scatter';
 					if(this.props.location.chart == 'pie') this.state.chart = 'pie';
 					this.getBasicResults();
+					
 				}
 			}
 			else {
@@ -78,6 +80,7 @@ class Results extends React.Component{
 		})
 		.then((response) => response.data)
 		.then(response => {this.setState({results: response})}) //results from advancedSearch
+		.then(document.getElementById("loading").setAttribute("style","display: none;"))
 	};
 
 	getBasicResults = () => {
@@ -90,6 +93,7 @@ class Results extends React.Component{
 		})
 		.then((response) => response.data)
 		.then(response => {this.setState({results: response})}) //results from basicSearch
+		.then(document.getElementById("loading").setAttribute("style","display: none;"))
 	};
 
 	getSavedAdvancedResults = () => {
@@ -109,6 +113,7 @@ class Results extends React.Component{
 		})
 		.then((response) => response.data)
 		.then(response => {this.setState({results: response})}) //results from advancedSearch
+		.then(document.getElementById("loading").setAttribute("style","display: none;"))
 	};
 
 	getSavedBasicResults = () => {
@@ -121,6 +126,7 @@ class Results extends React.Component{
 		})
 		.then((response) => response.data)
 		.then(response => {this.setState({results: response})}) //results from basicSearch
+		.then(document.getElementById("loading").setAttribute("style","display: none;"))
 	};
 
     render(){
@@ -128,7 +134,7 @@ class Results extends React.Component{
 			<>
 
 			<div> <h3>Search Output:</h3> </div>
-			<div id="loading" display="true"> jhhk<ScaleLoader /> </div>
+			<div id="loading" display="true"><ScaleLoader /> </div>
  			<Plot
 			data={
 					[{
