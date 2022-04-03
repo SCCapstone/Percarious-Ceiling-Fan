@@ -114,7 +114,8 @@ class Results extends React.Component{
 		.then(response => {this.setState({results: response}); window.localStorage.setItem('state', JSON.stringify(this.state)); window.localStorage.setItem('chart', JSON.stringify(response.chart));}) //results from basicSearch
 	};
 
-	getBasicResultsResults = () => {
+	getRerun = () => {
+		window.location.reload(false)
 		axios.get('http://localhost:3001/basicSearch',{
 			params: {
 				search: this.state.search,
@@ -148,7 +149,6 @@ class Results extends React.Component{
 	};
 
 	getSavedBasicResults = () => {
-		window.location.reload(false)
 		axios.get('http://localhost:3001/basicSearch',{
 			params: {
 				search: this.props.location.saved.search,
@@ -313,7 +313,7 @@ class Results extends React.Component{
 			<div className='Container' style={{ marginBottom:'100px'}}>
 				<div className='SearchBarContainer' style={left}>
 					<input id='search' style= {searchBarStyling} value ={this.state.search} onChange={e => this.setState({search: e.target.value})} placeholder= "Enter Search here..."></input>
-						<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button" onClick={this.getBasicResultsResults}>
+						<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button" onClick={this.getreRun}>
 						<Link style ={{textDecoration:'none', color: 'white'}} to={{
 									pathname: '/results',
 									search: this.state.search,
