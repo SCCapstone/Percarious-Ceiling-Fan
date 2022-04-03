@@ -4,12 +4,11 @@ import { Link } from 'react-router-dom';
 import { withRouter } from "react-router";
 import axios from "axios"; //for SQL command stuff
 import ScaleLoader from "react-spinners/ScaleLoader";
-import ProtectedBasicRoute from './ProtectedBasicRoute';
 class Results extends React.Component{
 
 	constructor(props){
 		super(props);
-		this.state = JSON.parse(window.localStorage.getItem('state')) || {data: [], layout: {}, frames: [], config: {}, results: [], chart: ""};
+		this.state = JSON.parse(window.localStorage.getItem('state')) || {data: [], layout: {}, frames: [], config: {}, results: [], chart: "", search: "", field: ""};
 	}
 
 	componentDidMount = () => {
@@ -97,7 +96,6 @@ class Results extends React.Component{
 		})
 		.then((response) => response.data)
 		.then(response => {this.setState({results: response}); window.localStorage.setItem('state', JSON.stringify(this.state));}) //results from advancedSearch
-
 	};
 
 	getBasicResults = () => {
@@ -129,6 +127,8 @@ class Results extends React.Component{
 		})
 		.then((response) => response.data)
 		.then(response => {this.setState({results: response}); window.localStorage.setItem('state', JSON.stringify(this.state));}) //results from advancedSearch
+	
+
 	};
 
 	getSavedBasicResults = () => {
@@ -143,6 +143,81 @@ class Results extends React.Component{
 		.then(response => {this.setState({results: response}); window.localStorage.setItem('state', JSON.stringify(this.state));}) //results from basicSearch
 	};
 
+
+	previousAdvancedSearchView = () => {
+		if(this.props.location == undefined )
+		{
+			return <div></div>
+		}
+		else
+		{
+			return(<div>
+				<p>{this.props.location.anyWords}</p>
+				<p>{this.props.location.exactPhrase}</p>
+				<p>{this.props.location.exclude}</p>
+				<p>{this.props.location.author}</p>
+				<p>{this.props.location.title}</p>
+				<p>{this.props.location.publisher}</p>
+				<p>{this.props.location.startYear}</p>
+				<p>{this.props.location.endYear}</p>
+				<p>{this.props.location.languages}</p>
+				<p>{this.props.location.regions}</p>
+			</div>)
+		}
+	};
+
+	previousBasicSearchView = () => {
+		if(this.props.location == undefined){
+			return <div></div>
+		}
+		else {
+			return(
+			<div>
+				<p>{this.props.location.chart}</p>
+				<p>{this.props.location.search.substring(1)}</p>
+				<p>{this.props.location.field}</p>
+			</div>
+			)
+		}
+	}
+
+	previousSavedAdvancedSearchView = () => {
+		if(this.props.location.saved == undefined )
+		{
+			return <div></div>
+		}
+		else
+		{
+			return(<div>
+				<p>{this.props.location.saved.anyWords}</p>
+				<p>{this.props.location.saved.exactPhrase}</p>
+				<p>{this.props.location.saved.exclude}</p>
+				<p>{this.props.location.saved.author}</p>
+				<p>{this.props.location.saved.title}</p>
+				<p>{this.props.location.saved.publisher}</p>
+				<p>{this.props.location.saved.startYear}</p>
+				<p>{this.props.location.saved.endYear}</p>
+				<p>{this.props.location.saved.languages}</p>
+				<p>{this.props.location.saved.regions}</p> 
+			</div>)
+		}
+	};
+
+	previousSavedBasicSearchView = () => {
+		if(this.props.location.saved == undefined){
+			return <div></div>
+		}
+		else {
+			return(
+			<div>
+				<p>{this.props.location.saved.chart}</p>
+				<p>{this.props.location.saved.search}</p>
+				<p>{this.props.location.saved.field}</p>
+			</div>
+			)
+		}
+	}
+
 	chartCheck = (e) =>{
 		this.setState({
 			chart: e.target.value
@@ -154,6 +229,7 @@ class Results extends React.Component{
 			field: e.target.value
 		})
 	}
+
 
     render(){
 		let searchBarStyling = {
@@ -218,45 +294,62 @@ class Results extends React.Component{
 
         return (
 			<>
-			<div className='Container' style={{overflowY:'auto', marginBottom:'200px'}}>
+			<div className='Container' style={{ marginBottom:'100px'}}>
 				<div className='SearchBarContainer' style={left}>
-					<input id='search' style= {searchBarStyling}></input>
-					<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button" value ={this.state.search} onChange={e => this.setState({search: e.target.value})} placeholder='Enter your search here'> Search</button>
-					<div style ={{padding:'10px'}}></div>
-					<div className='optionsContainer' style={optionContainer}>
-					<div style = {optionStyling}>
-						<form>
-							<p name="chartPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Graph Type:</p>
-								<div style={{display: 'flex', justifyContent: 'center'}}>
-									<label className='chartPrompt'>Bar:</label>
-									<input type="radio" name = "searchInput"  value="bar" defaultChecked={this.chartCheck} onChange={this.chartCheck}/> <br/>
-									<label className='chartPrompt'>Pie:</label>
-									<input type="radio" name = "searchInput" value="pie" onChange={this.chartCheck}/> <br/>
-									<label className='chartPrompt'>Line:</label>
-									<input type="radio" name = "searchInput"  value="line" onChange={this.chartCheck}/> <br/>
-								</div>
-						</form>
-					</div>
-					<div style = {optionStyling }>
-							<form>
-								<p name="searchPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Search for:</p>
-									<div onChange={e =>this.state.onChangeValue} style={{display: 'flex', justifyContent: 'center'}}>
-										<label className='searchPrompt'>Title:</label>
-										<input type="radio" name = "searchInput"  value="title" onChange={this.fieldCheck} /> <br/>
-										<label className='searchPrompt'>Author:</label>
-										<input type="radio" name = "searchInput" value="author" onChange={this.fieldCheck} /> <br/>
-										<label className='searchPrompt'>Year:</label>
-										<input type="radio" name = "searchInput"  value="year" onChange={this.fieldCheck} /> <br/>
-										<label className='searchPrompt'>Genre:</label>
-										<input type="radio" name = "searchInput" value="genre"onChange={this.fieldCheck} /> <br/>
-										<label className='searchPrompt'>Language:</label>
-										<input type="radio" name = "searchInput"  value="language"onChange={this.fieldCheck} /> <br/>
-									</div>
-								</form>
-						</div>
-						</div>
+					<input id='search' style= {searchBarStyling} value ={this.state.search} onChange={e => this.setState({search: e.target.value})} placeholder= "Enter Search here..."></input>
+						<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button"  > 
+						<Link style ={{textDecoration:'none', color: 'white'}} to={{
+									pathname: '/results',
+									search: this.state.search,
+									field: this.state.field,
+									chart: this.state.chart
+								}}>
+									Search
+								</Link>
+						</button> 
 						<div style ={{padding:'10px'}}></div>
-						<div className='LinksOut'><Link to="/advancedsearch" style ={inputStylingAdvanced}>Advanced Search</Link></div>
+					<div className='optionsContainer' style={optionContainer}>
+							<div className='previousSearch'>
+								<h3 style={{textDecoration:'underline'}}> Current Search:</h3>
+								<this.previousBasicSearchView></this.previousBasicSearchView>
+								<this.previousAdvancedSearchView></this.previousAdvancedSearchView>
+								<this.previousSavedBasicSearchView></this.previousSavedBasicSearchView>
+								<this.previousSavedAdvancedSearchView></this.previousSavedAdvancedSearchView>
+							</div>
+						<div style = {optionStyling}>
+							<form>
+								<p name="chartPrompt" style={{marginTop: '0px', textDecoration:'underline', fontWeight:"bold"}}>Graph Type:</p>
+									<div style={{display: 'flex', justifyContent: 'center'}}>
+										<label className='chartPrompt'>Bar:</label>
+										<input type="radio" name = "searchInput"  value="bar"  onChange={this.chartCheck}/> <br/>
+										<label className='chartPrompt'>Pie:</label>
+										<input type="radio" name = "searchInput" value="pie"  onChange={this.chartCheck}/> <br/>
+										<label className='chartPrompt'>Line:</label>
+										<input type="radio" name = "searchInput"  value="line"   onChange={this.chartCheck}/> <br/>
+									</div>
+							</form>
+						</div>
+						<div style = {optionStyling }>
+								<form>
+									<p name="searchPrompt" style={{marginTop: '0px', textDecoration:'underline', fontWeight:"bold"}}>Search for:</p>
+										<div onChange={e =>this.state.onChangeValue} style={{display: 'flex', justifyContent: 'center'}}>
+											<label className='searchPrompt'>Title:</label>
+											<input type="radio" name = "searchInput"  value="title"  onChange={this.fieldCheck} /> <br/>
+											<label className='searchPrompt'>Author:</label>
+											<input type="radio" name = "searchInput" value="author"  onChange={this.fieldCheck} /> <br/>
+											<label className='searchPrompt'>Year:</label>
+											<input type="radio" name = "searchInput"  value="year" onChange={this.fieldCheck} /> <br/>
+											<label className='searchPrompt'>Genre:</label>
+											<input type="radio" name = "searchInput" value="genre"  onChange={this.fieldCheck} /> <br/>
+											<label className='searchPrompt'>Language:</label>
+											<input type="radio" name = "searchInput"  value="language" onChange={this.fieldCheck} /> <br/>
+										</div>
+								</form>
+							</div>
+							</div>
+							
+							<div style ={{padding:'10px'}}></div>
+							<div className='LinksOut'><Link to="/advancedsearch" style ={inputStylingAdvanced}>Advanced Search</Link></div>				
 				</div>
 					<div style ={{padding:'10px'}}></div>
 				<div className='GraphConatiner' style={right}>
@@ -277,7 +370,7 @@ class Results extends React.Component{
 							}]
 						}
 					layout={{title: 'Results'}}/>
-					<div className='Tips' style={{color:'black'}}><p>Tip: To save as PNG, hover over the right hand upper corner of the graph</p></div>
+					<div className='Tips' style={{color:'black', fontWeight:'bold'}}><p>Tip: To save as PNG, hover over the right hand upper corner of the graph</p></div>
 				</div>
 			</div>
 			</>
