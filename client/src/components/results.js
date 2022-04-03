@@ -8,11 +8,11 @@ class Results extends React.Component{
 
 	constructor(props){
 		super(props);
+		window.localStorage.clear();
 		this.state = JSON.parse(window.localStorage.getItem('state')) || {data: [], layout: {}, frames: [], config: {}, results: [], chart: "", search: "", field: ""};
 	}
 
 	componentDidMount = () => {
-
 		document.getElementById("loading").setAttribute("style","display: block;")
 		console.log(this.state.results)
 		if(this.props.location !== undefined) {
