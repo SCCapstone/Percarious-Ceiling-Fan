@@ -7,17 +7,20 @@ class Results extends React.Component{
 
 	constructor(props){
 		super(props);
-		this.state = {data: [], layout: {}, frames: [], config: {}, results: [], chart: ""};
+		this.state = JSON.parse(window.localStorage.getItem('state')) || {data: [], layout: {}, frames: [], config: {}, results: [], chart: ""};
 	}
-	
+
 	componentDidMount = () => {
-		
+
 		document.getElementById("loading").setAttribute("style","display: block;")
 		console.log(this.state.results)
 		if(this.props.location !== undefined) {
 			if(!this.props.location.saved){
 				console.log(this.props.location.chart);
 				this.setState({chart: this.props.location.chart})
+				window.localStorage.setItem('state', JSON.stringify(this.state));
+				console.log(JSON.parse(window.localStorage.getItem('state')));
+				console.log(JSON.parse(window.localStorage.getItem('state')).chart);
 				if(!this.props.location.search){
 					console.log(this.props.location.anyWords);
 					console.log(this.props.location.exactPhrase);
@@ -27,7 +30,7 @@ class Results extends React.Component{
 					console.log(this.props.location.languages);
 					console.log(this.props.location.regions);
 					this.getAdvancedResults();
-					
+
 				}
 				else {
 					console.log(this.props.location.search);
@@ -36,12 +39,13 @@ class Results extends React.Component{
 					if(this.props.location.chart == 'line') this.state.chart = 'scatter';
 					if(this.props.location.chart == 'pie') this.state.chart = 'pie';
 					this.getBasicResults();
-					
+
 				}
 			}
 			else {
 				console.log(this.props.location.saved.chart);
 				this.setState({chart: this.props.location.saved.chart})
+				window.localStorage.setItem('state', JSON.stringify(this.state));
 				if(!this.props.location.saved.search){
 					console.log(this.props.location.saved.anyWords);
 					console.log(this.props.location.saved.exactPhrase);
@@ -89,8 +93,8 @@ class Results extends React.Component{
 			 }
 		})
 		.then((response) => response.data)
-		.then(response => {this.setState({results: response})}) //results from advancedSearch
-		
+		.then(response => {this.setState({results: response}); window.localStorage.setItem('state', JSON.stringify(this.state));}) //results from advancedSearch
+
 	};
 
 	getBasicResults = () => {
@@ -102,7 +106,7 @@ class Results extends React.Component{
 			 }
 		})
 		.then((response) => response.data)
-		.then(response => {this.setState({results: response})}) //results from basicSearch
+		.then(response => {this.setState({results: response}); window.localStorage.setItem('state', JSON.stringify(this.state));}) //results from basicSearch
 	};
 
 	getSavedAdvancedResults = () => {
@@ -121,7 +125,7 @@ class Results extends React.Component{
 			 }
 		})
 		.then((response) => response.data)
-		.then(response => {this.setState({results: response})}) //results from advancedSearch
+		.then(response => {this.setState({results: response}); window.localStorage.setItem('state', JSON.stringify(this.state));}) //results from advancedSearch
 	};
 
 	getSavedBasicResults = () => {
@@ -133,7 +137,7 @@ class Results extends React.Component{
 			 }
 		})
 		.then((response) => response.data)
-		.then(response => {this.setState({results: response})}) //results from basicSearch
+		.then(response => {this.setState({results: response}); window.localStorage.setItem('state', JSON.stringify(this.state));}) //results from basicSearch
 	};
 
     render(){
@@ -151,7 +155,7 @@ class Results extends React.Component{
 						values: Object.values(this.state.results),
 						x: Object.keys(this.state.results),
 						y: Object.values(this.state.results),
-						type: this.state.chart,
+						type: JSON.parse(window.localStorage.getItem('state')).chart || this.state.chart,
 						marker: {color: 'blue'}
 					}]
 				}
