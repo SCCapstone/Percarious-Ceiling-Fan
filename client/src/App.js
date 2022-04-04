@@ -5,6 +5,7 @@ import AdvancedSearch from './components/advancedSearch';
 import SignIn from './components/signIn';
 import SavedSearches from './components/savedSearches';
 import Results from './components/results';
+import ReResults from './components/reresults';
 import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
 						<Switch>
 							<Route path="/advancedSearch"> <AdvancedSearch /> </Route>
 							<Route path="/results"> <Results /> </Route>
+							<Route path="/reresults"> <ReResults /> </Route>
 							<Route path="/signIn"> <SignIn /> </Route>
 							<Route path="/savedSearches"> <SavedSearches /> </Route>
 							<Route path="/"> <HomePage /> </Route>

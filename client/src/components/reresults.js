@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { withRouter } from "react-router";
 import axios from "axios"; //for SQL command stuff
 import ScaleLoader from "react-spinners/ScaleLoader";
-class Results extends React.Component{
+class ReResults extends React.Component{
 
 	constructor(props){
 		super(props);
@@ -311,7 +311,7 @@ class Results extends React.Component{
 					<input id='search' style= {searchBarStyling} value ={this.state.nSearch} onChange={e => this.setState({nSearch: e.target.value})} placeholder= "Enter Search here..."></input>
 						<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button" onClick={this.statesPrint()}>
 						<Link style ={{textDecoration:'none', color: 'white'}} to={{
-									pathname: '/reresults',
+									pathname: '/results',
 									search: this.state.nSearch,
 									field: this.state.nField,
 									chart: this.state.nChart
@@ -390,4 +390,4 @@ class Results extends React.Component{
 		)
     }
 }
-export default withRouter(Results);
+export default withRouter(ReResults);
