@@ -1,0 +1,31 @@
+* {
+    margin: auto;
+    padding: auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+:link {
+    text-decoration: none;
+}
+#aboutHeader {
+    text-align: center;
+}
+#team {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.member {
+    text-align: center;
+    width: 10%;
+    flex: 1 1 auto;
+}
+.member-name {
+    margin-bottom: 5px;
+}
+
+.member-info {
+
+}
