@@ -1,4 +1,4 @@
-# Connect to the website [HERE](http://10.173.131.12:3000/) if you are on the school network!
+# Connect to the website [HERE](http://10.173.131.12:3000/) if you are on the UofSC school network!
 
 # OCLC Early Middle European Catalog Search
 
