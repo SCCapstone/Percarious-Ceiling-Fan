@@ -1,0 +1,13 @@
+.main-container {
+    
+}
+
+.images-container > img {
+    width: 30%;
+    transition: 1s ease;
+}
+
+.images-container > img:hover {
+    transform: scale(1.75);
+    transition: 1s ease;
+}
