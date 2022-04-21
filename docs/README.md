@@ -1,9 +1,15 @@
-# Connect to the website [HERE](http://10.173.131.12:3000/) if you are on the UofSC school network!
+# Percarious Ceiling Fan OCLC Search System
+
+![icon](media/Percarious-Ceiling-Fan.svg)
+
+## Connect to the website [HERE](http://10.173.131.12:3000/) if you are on the UofSC school network!
 
 # OCLC Early Middle European Catalog Search
 
 This project entails a graphical user interface to query the OCLC MARC21 data-set, allowing not only to get only the specific desired information out of a large and complex record, but also allowing for advanced search tools such as AND/OR operators, allowing for additional words to separate the words of a search string, and fuzzy matching, as well as being able to produce graphs of different aspects of the results such as graphing the number of results by the decade they were published, graphing the language distribution of results, etc. Time permitting, we may even be able to look into methods of search optimization and other higher-level problems that the unique data set provides, but these are more secondary to the main goal of creating a user friendly tool to get the desired information out of a dirty, expansive, and complicated data set.
 For a user trying to study this data set, access to an easy to use searching tool is imperative. It is far too expansive for any person to look over manually, and each record has an extensive amount of information about each publication, most of which is not pertinent to what a person will be looking for at any given time. By creating a tool to make accessing and using this information easier, our users will be able to perform research on this data far easier than they were able to in years past.
+
+# S
 
 ## External Requirements
 
@@ -14,8 +20,6 @@ In order to build this project you first have to install:
 
 ## Setup
 Once the repo is cloned, and Node.js is installed, run `npm i` inside both the client and server folders. This will install the npm dependencies.
-
-
 
 ## Running
 
