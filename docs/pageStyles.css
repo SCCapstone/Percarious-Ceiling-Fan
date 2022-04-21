@@ -25,15 +25,14 @@
 }
 .member-name {
     margin-bottom: 5px;
+    font-size: 1.75em;
 }
 
-.member-info {
-
+.member-info > h3 {
+    text-decoration: underline;
 }
 
-#main-content {
-    
-}
+
 
 #main-head {
     display: flex;
@@ -41,9 +40,6 @@
     background-color: rgb(93, 109, 152);
 }
 
-#header-text-wrapper {
-    
-}
 
 #repo-link {
     display: inline-block;
@@ -93,4 +89,8 @@
     display: block;
     flex-grow: 70;
     font-size:x-large;
+}
+
+.member-info > p > a {
+    color: rgb(93, 109, 152);
 }

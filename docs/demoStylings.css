@@ -22,14 +22,17 @@
     padding-left: 1%;
 }
 .body-container > h3{
+    padding-top: 10px;
     text-decoration: underline;
 }
 
 .body-container > h2 {
+    
     font-size: 1.6em;
 }
 
 .images-container{
+    padding-top: 1%;
     text-align: center;
 }
 .images-container > img {
@@ -40,4 +43,8 @@
 .images-container > img:hover {
     transform: scale(1.75);
     transition: 1s ease;
+}
+
+.spacer{
+    padding-top: 10px;
 }
