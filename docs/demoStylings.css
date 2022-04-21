@@ -1,7 +1,37 @@
-.main-container {
-    
+/*HEADER STYLES*/
+.header-container{
+    text-align: center;
+    padding-top: 10px;
 }
 
+.links-out{
+    padding-top: 10px;
+    
+    justify-content: space-between;
+}
+
+
+/* BODY STYLES */
+.body-container{
+    padding: 2%;
+}
+.body-container > h2,h3,p{
+    padding-bottom: 10px;
+}
+.body-container > p {
+    padding-left: 1%;
+}
+.body-container > h3{
+    text-decoration: underline;
+}
+
+.body-container > h2 {
+    font-size: 1.6em;
+}
+
+.images-container{
+    text-align: center;
+}
 .images-container > img {
     width: 30%;
     transition: 1s ease;

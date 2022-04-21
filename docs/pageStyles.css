@@ -5,6 +5,7 @@
 }
 :link {
     text-decoration: none;
+    color: white;
 }
 #aboutHeader {
     text-align: center;
@@ -28,4 +29,68 @@
 
 .member-info {
 
+}
+
+#main-content {
+    
+}
+
+#main-head {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(93, 109, 152);
+}
+
+#header-text-wrapper {
+    
+}
+
+#repo-link {
+    display: inline-block;
+    background-color: rgb(93, 109, 152);
+    padding: 10px;
+}
+
+#index-header {
+    color: white;
+    margin-bottom: 2%;
+}
+
+#main-nav {
+    display: flex;
+    justify-content: space-around
+}
+
+.link {
+    margin-top: 10px;
+    flex: 1 1 auto;
+    text-align: center;
+    
+}
+
+.link > a {
+    color: rgb(236, 236, 236);
+    padding: 5px;
+    border: solid lightgray;
+    border-radius: 3px;
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
+
+
+#content-wrapper {
+    display: flex;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+#icon {
+    flex-grow: 70;
+}
+#project-description {
+    margin-top: 5%;
+    display: block;
+    flex-grow: 70;
+    font-size:x-large;
 }
