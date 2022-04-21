@@ -72,9 +72,6 @@ class ReResults extends React.Component{
 				}
 			}
 		}
-		setTimeout(() => {
-			document.getElementById("loading").setAttribute("style", "display: none;")
-		}, 60000);
 	}
 	componentDidUpdate() {
 		if( this.state.results != ""){
