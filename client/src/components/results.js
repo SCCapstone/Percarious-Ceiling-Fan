@@ -319,7 +319,7 @@ class Results extends React.Component{
 
         return (
 			<>
-			<div className='Container' style={{ marginBottom:'100px'}}>
+			<div className='Container' style={{ marginBottom:'100px', overflow:'auto'}}>
 				<div className='SearchBarContainer' style={left}>
 					<form>
 					<input id='search' style= {searchBarStyling} value ={this.state.nSearch} onChange={e => this.setState({nSearch: e.target.value})} placeholder= "Enter Search here..." required></input>
@@ -361,10 +361,6 @@ class Results extends React.Component{
 											<input id="title-button" type="radio" name = "searchInput"  value="title"  onChange={this.fieldCheck} required/> <br/>
 											<label className='searchPrompt'>Author:</label>
 											<input id="author-button" type="radio" name = "searchInput" value="author"  onChange={this.fieldCheck} /> <br/>
-											<label className='searchPrompt'>Genre:</label>
-											<input id="genre-button" type="radio" name = "searchInput" value="genre"  onChange={this.fieldCheck} /> <br/>
-											<label className='searchPrompt'>Language:</label>
-											<input id="language-button" type="radio" name = "searchInput"  value="language" onChange={this.fieldCheck} /> <br/>
 										</div>
 								</form>
 							</div>

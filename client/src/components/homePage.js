@@ -98,20 +98,12 @@ class HomePage extends React.Component{
 									<input type="radio" name = "searchInput"  value="title" onChange={this.fieldCheck} /> <br/>
 									<label className='searchPrompt'>Author:</label>
 									<input type="radio" name = "searchInput" value="author" onChange={this.fieldCheck} /> <br/>
-									<label className='searchPrompt'>Year:</label>
-									<input type="radio" name = "searchInput"  value="year" onChange={this.fieldCheck} /> <br/>
-									
-									<label className='searchPrompt'>Genre:</label>
-									<input type="radio" name = "searchInput" value="genre"onChange={this.fieldCheck} /> <br/>
-									<label className='searchPrompt'>Language:</label>
-									<input type="radio" name = "searchInput"  value="language"onChange={this.fieldCheck} /> <br/>
 								</div>
 							</form>
 						</div>
 					</div>
 					<div className="ui-input">
 						<input id="search" style = {inputStylingBasic} value={this.state.search} onChange={e => this.setState({search: e.target.value})} placeholder="Enter your Search Here" required/> 
-							
 								<Link style ={{textDecoration:'none', color: 'white'}} to={{
 									pathname: '/results',
 									search: this.state.search,
