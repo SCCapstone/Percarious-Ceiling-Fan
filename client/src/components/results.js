@@ -305,7 +305,8 @@ class Results extends React.Component{
 			<>
 			<div className='Container' style={{ marginBottom:'100px'}}>
 				<div className='SearchBarContainer' style={left}>
-					<input id='search' style= {searchBarStyling} value ={this.state.nSearch} onChange={e => this.setState({nSearch: e.target.value})} placeholder= "Enter Search here..."></input>
+					<form>
+					<input id='search' style= {searchBarStyling} value ={this.state.nSearch} onChange={e => this.setState({nSearch: e.target.value})} placeholder= "Enter Search here..." required></input>
 						<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button" onClick={this.statesPrint()}>
 						<Link style ={{textDecoration:'none', color: 'white'}} to={{
 									pathname: '/reresults',
@@ -330,7 +331,7 @@ class Results extends React.Component{
 								<p name="chartPrompt" style={{marginTop: '0px', textDecoration:'underline', fontWeight:"bold"}}>Graph Type:</p>
 									<div style={{display: 'flex', justifyContent: 'center'}}>
 										<label className='chartPrompt'>Bar:</label>
-										<input type="radio" name = "searchInput"  value="bar" onChange={this.chartCheck}/> <br/>
+										<input type="radio" name = "searchInput"  value="bar" onChange={this.chartCheck} required/> <br/>
 										<label className='chartPrompt'>Pie:</label>
 										<input type="radio" name = "searchInput" value="pie" onChange={this.chartCheck}/> <br/>
 										<label className='chartPrompt'>Line:</label>
@@ -343,7 +344,7 @@ class Results extends React.Component{
 									<p name="searchPrompt" style={{marginTop: '0px', textDecoration:'underline', fontWeight:"bold"}}>Search for:</p>
 										<div onChange={e =>this.state.onChangeValue} style={{ justifyContent: 'center'}}>
 											<label className='searchPrompt'>Title:</label>
-											<input type="radio" name = "searchInput"  value="title"  onChange={this.fieldCheck} /> <br/>
+											<input type="radio" name = "searchInput"  value="title"  onChange={this.fieldCheck} required/> <br/>
 											<label className='searchPrompt'>Author:</label>
 											<input type="radio" name = "searchInput" value="author"  onChange={this.fieldCheck} /> <br/>
 											<label className='searchPrompt'>Year:</label>
@@ -359,6 +360,7 @@ class Results extends React.Component{
 
 							<div style ={{padding:'10px'}}></div>
 							<div className='LinksOut'><Link to="/advancedsearch" style ={inputStylingAdvanced}>Advanced Search</Link></div>
+							</form>
 				</div>
 					<div style ={{padding:'10px'}}></div>
 				<div className='GraphConatiner' style={right}>
