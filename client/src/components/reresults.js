@@ -391,7 +391,7 @@ class ReResults extends React.Component{
 								values: Object.values(this.state.results),
 								x: Object.keys(this.state.results),
 								y: Object.values(this.state.results),
-								type: window.localStorage.getItem('chart') || this.state.chart,
+								type: this.state.chart,
 								marker: {color: 'blue'}
 							}]
 						}
