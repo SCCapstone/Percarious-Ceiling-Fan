@@ -75,19 +75,20 @@ class HomePage extends React.Component{
 				<div className="main-body">
 							<h1>Welcome to The Precarious Search System</h1>
 				</div>
+				<form>
 					<div className="option-container" style = {optionContainer}>
 						<div style = {optionStyling}>
-							<form>
+							<div>
 								<p name="chartPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Graph Type:</p>
 								<div style={{display: 'flex', justifyContent: 'center'}}>
 									<label className='chartPrompt'>Bar:</label>
-									<input type="radio" name = "searchInput"  value="bar" defaultChecked={this.chartCheck} onChange={this.chartCheck}/> <br/>
+									<input type="radio" name = "searchInput"  value="bar" defaultChecked={this.chartCheck} onChange={this.chartCheck} required="required"/> <br/>
 									<label className='chartPrompt'>Pie:</label>
 									<input type="radio" name = "searchInput" value="pie" onChange={this.chartCheck}/> <br/>
 									<label className='chartPrompt'>Line:</label>
 									<input type="radio" name = "searchInput"  value="line" onChange={this.chartCheck}/> <br/>
 								</div>
-							</form>
+							</div>
 						</div>
 						<div style = {optionStyling }>
 							<form>
@@ -109,7 +110,7 @@ class HomePage extends React.Component{
 						</div>
 					</div>
 					<div className="ui-input">
-						<input id="search" style = {inputStylingBasic} value={this.state.search} onChange={e => this.setState({search: e.target.value})} placeholder="Enter your Search Here"/> 
+						<input id="search" style = {inputStylingBasic} value={this.state.search} onChange={e => this.setState({search: e.target.value})} placeholder="Enter your Search Here" required/> 
 							<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button">
 								<Link style ={{textDecoration:'none', color: 'white'}} to={{
 									pathname: '/results',
@@ -122,6 +123,7 @@ class HomePage extends React.Component{
 							</button>
 							<ProtectedBasicRoute search={this.state.search} field={this.state.field} chart={this.state.chart}></ProtectedBasicRoute> 
 					</div>
+					</form>
 					<div><h2>OR</h2></div>
 					<div className = "advanced-link" style = {inputStylingAdvanced}>
 					<Link to="/advancedsearch" style ={{textDecoration:'none', color: 'white'}}>Advanced Search</Link>

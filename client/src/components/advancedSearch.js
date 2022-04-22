@@ -93,12 +93,13 @@ class AdvancedSearch extends React.Component {
 				<body>
 					<h1 style={{fontSize: "2em"}}>Advanced Search</h1>
 					<div className = "advanced-search-body">
+					<form>
 					<div className="option-container" style = {optionContainer}>
 						<div style = {dropdownStyling}>
 						<p className="searchPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Graph Type:</p>
 								<div style={{display: 'flex', justifyContent: 'center', padding:'10px' }}>
 									<span className='searchPrompt'>Bar:</span>
-									<input type="radio" name = "searchInput"  value="bar" onChange={this.chartCheck} /> <br/>
+									<input type="radio" name = "searchInput"  value="bar" onChange={this.chartCheck} required/> <br/>
 									<span className='searchPrompt'>Pie:</span>
 									<input type="radio" name = "searchInput" value="pie" onChange={this.chartCheck}/> <br/>
 									<span className='searchPrompt'>Line:</span>
@@ -110,7 +111,7 @@ class AdvancedSearch extends React.Component {
 						<div id="search-list" style={containerStyling}>
 							<div className = "any-words searchTerms">
 								<p className="searchPrompt">Any of these words:</p>
-								<input className = "searchInput" id= "anyWords" value={this.state.anyWords} onChange={e => this.setState({ anyWords: e.target.value})}></input>
+								<input className = "searchInput" id= "anyWords" value={this.state.anyWords} onChange={e => this.setState({ anyWords: e.target.value}) }required></input>
 							</div> 
 							<div  className = "searchTerms exact-words">
 								<p className="searchPrompt">Exact words or phrases:</p>
@@ -185,6 +186,7 @@ class AdvancedSearch extends React.Component {
 									regions={this.state.regions}
 									chart={this.state.chart}></ProtectedAdvancedRoute> 
 						</div>
+						</form>
 					</div>
 				</body>
 			</div>

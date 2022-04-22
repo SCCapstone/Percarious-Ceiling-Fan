@@ -39,9 +39,18 @@ class ReResults extends React.Component{
 					console.log(this.props.location.field);
 					window.localStorage.setItem('state', JSON.stringify(this.state));
 					window.localStorage.setItem('chart',  this.state.chart);
-					if(this.props.location.chart == 'bar') this.state.chart = 'bar';
-					if(this.props.location.chart == 'line') this.state.chart = 'scatter';
-					if(this.props.location.chart == 'pie') this.state.chart = 'pie';
+					if(this.props.location.chart == 'bar') {
+						this.state.chart = 'bar';
+						document.getElementById("bar-button").checked = true;
+					}
+					if(this.props.location.chart == 'line') {
+						this.state.chart = 'scatter';
+						document.getElementById("line-button").checked = true;
+					}
+					if(this.props.location.chart == 'pie') {
+						this.state.chart = 'pie';
+						document.getElementById("pie-button").checked = true;
+					}
 					this.getBasicResults();
 
 				}
@@ -64,9 +73,18 @@ class ReResults extends React.Component{
 				else {
 					console.log(this.props.location.saved.search);
 					console.log(this.props.location.saved.field);
-					if(this.props.location.saved.chart == 'bar') this.state.chart = 'bar';
-					if(this.props.location.saved.chart == 'line') this.state.chart = 'scatter';
-					if(this.props.location.saved.chart == 'pie') this.state.chart = 'pie';
+					if(this.props.location.saved.chart == 'bar') {
+						this.state.chart = 'bar';
+						document.getElementById("bar-button").checked = true;
+					}
+					if(this.props.location.saved.chart == 'line') {
+						this.state.chart = 'scatter';
+						document.getElementById("line-button").checked = true;
+					}
+					if(this.props.location.saved.chart == 'pie') {
+						this.state.chart = 'pie';
+						document.getElementById("pie-button").checked = true;
+					}
 					window.localStorage.setItem('chart',  this.state.chart);
 					this.getSavedBasicResults();
 				}
@@ -251,8 +269,7 @@ class ReResults extends React.Component{
 			border: 'none',
 			borderRadius: '20px',
 			color: 'black',
-			marginTop:"5%",
-			border: 'solid 2px #6675b0'
+			marginTop:"5%"
 		}
 
 		let inputStylingAdvanced = {
@@ -305,7 +322,7 @@ class ReResults extends React.Component{
 			<>
 			<div className='Container' style={{ marginBottom:'100px'}}>
 				<div className='SearchBarContainer' style={left}>
-					<input id='search' style= {searchBarStyling} value ={this.state.nSearch} onChange={e => this.setState({nSearch: e.target.value})} placeholder= "Enter Search here..."></input>
+					<input id='search' style= {searchBarStyling} value ={this.state.nSearch} onChange={e => this.setState({nSearch: e.target.value})} placeholder= "Enter Search here..." required></input>
 						<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button" onClick={this.statesPrint()}>
 						<Link style ={{textDecoration:'none', color: 'white'}} to={{
 									pathname: '/results',
@@ -330,11 +347,11 @@ class ReResults extends React.Component{
 								<p name="chartPrompt" style={{marginTop: '0px', textDecoration:'underline', fontWeight:"bold"}}>Graph Type:</p>
 									<div style={{display: 'flex', justifyContent: 'center'}}>
 										<label className='chartPrompt'>Bar:</label>
-										<input type="radio" name = "searchInput"  value="bar" onChange={this.chartCheck}/> <br/>
+										<input id="bar-button" type="radio" name = "searchInput"  value="bar" onChange={this.chartCheck} required/> <br/>
 										<label className='chartPrompt'>Pie:</label>
-										<input type="radio" name = "searchInput" value="pie" onChange={this.chartCheck}/> <br/>
+										<input id="pie-button" type="radio" name = "searchInput" value="pie" onChange={this.chartCheck}/> <br/>
 										<label className='chartPrompt'>Line:</label>
-										<input type="radio" name = "searchInput"  value="line"  onChange={this.chartCheck}/> <br/>
+										<input id="line-button" type="radio" name = "searchInput"  value="line"  onChange={this.chartCheck}/> <br/>
 									</div>
 							</form>
 						</div>
@@ -343,7 +360,7 @@ class ReResults extends React.Component{
 									<p name="searchPrompt" style={{marginTop: '0px', textDecoration:'underline', fontWeight:"bold"}}>Search for:</p>
 										<div onChange={e =>this.state.onChangeValue} style={{justifyContent: 'center'}}>
 											<label className='searchPrompt'>Title:</label>
-											<input type="radio" name = "searchInput"  value="title"  onChange={this.fieldCheck} /> <br/>
+											<input type="radio" name = "searchInput"  value="title"  onChange={this.fieldCheck} required/> <br/>
 											<label className='searchPrompt'>Author:</label>
 											<input type="radio" name = "searchInput" value="author"  onChange={this.fieldCheck} /> <br/>
 											<label className='searchPrompt'>Year:</label>
