@@ -75,7 +75,7 @@ class HomePage extends React.Component{
 				<div className="main-body">
 							<h1>Welcome to The Precarious Search System</h1>
 				</div>
-				<form>
+				
 					<div className="option-container" style = {optionContainer}>
 						<div style = {optionStyling}>
 							<div>
@@ -111,19 +111,18 @@ class HomePage extends React.Component{
 					</div>
 					<div className="ui-input">
 						<input id="search" style = {inputStylingBasic} value={this.state.search} onChange={e => this.setState({search: e.target.value})} placeholder="Enter your Search Here" required/> 
-							<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button">
+							
 								<Link style ={{textDecoration:'none', color: 'white'}} to={{
 									pathname: '/results',
 									search: this.state.search,
 									field: this.state.field,
 									chart: this.state.chart
 								}}>
-									Search
+									<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button">Search</button>
 								</Link>
-							</button>
 							<ProtectedBasicRoute search={this.state.search} field={this.state.field} chart={this.state.chart}></ProtectedBasicRoute> 
 					</div>
-					</form>
+					
 					<div><h2>OR</h2></div>
 					<div className = "advanced-link" style = {inputStylingAdvanced}>
 					<Link to="/advancedsearch" style ={{textDecoration:'none', color: 'white'}}>Advanced Search</Link>
