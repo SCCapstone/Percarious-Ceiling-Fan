@@ -39,11 +39,19 @@ class Results extends React.Component{
 					console.log(this.props.location.field);
 					window.localStorage.setItem('state', JSON.stringify(this.state));
 					window.localStorage.setItem('chart',  this.state.chart);
-					if(this.props.location.chart == 'bar') this.state.chart = 'bar';
-					if(this.props.location.chart == 'line') this.state.chart = 'scatter';
-					if(this.props.location.chart == 'pie') this.state.chart = 'pie';
+					if(this.props.location.chart == 'bar') {
+						this.state.chart = 'bar';
+						document.getElementById("bar-button").checked = true;
+					}
+					if(this.props.location.chart == 'line') {
+						this.state.chart = 'scatter';
+						document.getElementById("line-button").checked = true;
+					}
+					if(this.props.location.chart == 'pie') {
+						this.state.chart = 'pie';
+						document.getElementById("pie-button").checked = true;
+					}
 					this.getBasicResults();
-
 				}
 			}
 			else {
@@ -64,9 +72,18 @@ class Results extends React.Component{
 				else {
 					console.log(this.props.location.saved.search);
 					console.log(this.props.location.saved.field);
-					if(this.props.location.saved.chart == 'bar') this.state.chart = 'bar';
-					if(this.props.location.saved.chart == 'line') this.state.chart = 'scatter';
-					if(this.props.location.saved.chart == 'pie') this.state.chart = 'pie';
+					if(this.props.location.saved.chart == 'bar') {
+						this.state.chart = 'bar';
+						document.getElementById("bar-button").checked = true;
+					}
+					if(this.props.location.saved.chart == 'line') {
+						this.state.chart = 'scatter';
+						document.getElementById("line-button").checked = true;
+					}
+					if(this.props.location.saved.chart == 'pie') {
+						this.state.chart = 'pie';
+						document.getElementById("pie-button").checked = true;
+					}
 					window.localStorage.setItem('chart',  this.state.chart);
 					this.getSavedBasicResults();
 				}
@@ -330,11 +347,11 @@ class Results extends React.Component{
 								<p name="chartPrompt" style={{marginTop: '0px', textDecoration:'underline', fontWeight:"bold"}}>Graph Type:</p>
 									<div style={{display: 'flex', justifyContent: 'center'}}>
 										<label className='chartPrompt'>Bar:</label>
-										<input type="radio" name = "searchInput"  value="bar" onChange={this.chartCheck}/> <br/>
+										<input id="bar-button" type="radio" name = "searchInput"  value="bar" onChange={this.chartCheck}/> <br/>
 										<label className='chartPrompt'>Pie:</label>
-										<input type="radio" name = "searchInput" value="pie" onChange={this.chartCheck}/> <br/>
+										<input type="radio" id="pie-button" name = "searchInput" value="pie" onChange={this.chartCheck}/> <br/>
 										<label className='chartPrompt'>Line:</label>
-										<input type="radio" name = "searchInput"  value="line"  onChange={this.chartCheck}/> <br/>
+										<input type="radio"  id="line-button"name = "searchInput"  value="line"  onChange={this.chartCheck}/> <br/>
 									</div>
 							</form>
 						</div>
