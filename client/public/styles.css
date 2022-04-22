@@ -83,7 +83,22 @@ body {
   border-left: 1px solid rgb(82, 81, 81);
   height: 90px;
 }
-
+@media only screen and (max-width: 1000px) {
+  .center {
+   display: none;
+   height: 0px;
+  }
+  .right {
+    display: none;
+    width: 0px;
+   }
+   .left {
+     float:none;
+     text-align: center;
+     border-right: 1px solid rgb(82, 81, 81);
+     width:75%
+   }
+}
 .home-link > link {
   color: whitesmoke !important;
 }

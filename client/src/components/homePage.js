@@ -62,7 +62,7 @@ class HomePage extends React.Component{
 			padding: '5px',
 			backgroundColor: 'white',
 			margin:'auto',
-			width: '40%',
+			width: "75%",
 			textAlign: 'center',
 			borderRadius: '10px',
 			outline: '2px dotted #6675b0',
@@ -72,13 +72,13 @@ class HomePage extends React.Component{
 
 		return (
 			<div>
-			<div className="main-body">
-						<h1>Welcome to The Precarious Search System</h1>
-					</div>
+				<div className="main-body">
+							<h1>Welcome to The Precarious Search System</h1>
+				</div>
 					<div className="option-container" style = {optionContainer}>
 						<div style = {optionStyling}>
-						<form>
-						<p name="chartPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Graph Type:</p>
+							<form>
+								<p name="chartPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Graph Type:</p>
 								<div style={{display: 'flex', justifyContent: 'center'}}>
 									<label className='chartPrompt'>Bar:</label>
 									<input type="radio" name = "searchInput"  value="bar" defaultChecked={this.chartCheck} onChange={this.chartCheck}/> <br/>
@@ -88,10 +88,10 @@ class HomePage extends React.Component{
 									<input type="radio" name = "searchInput"  value="line" onChange={this.chartCheck}/> <br/>
 								</div>
 							</form>
-					</div>
-					<div style = {optionStyling }>
-					<form>
-					<p name="searchPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Search for:</p>
+						</div>
+						<div style = {optionStyling }>
+							<form>
+								<p name="searchPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Search for:</p>
 								<div onChange={e =>this.state.onChangeValue} style={{display: 'flex', justifyContent: 'center'}}>
 									<label className='searchPrompt'>Title:</label>
 									<input type="radio" name = "searchInput"  value="title" onChange={this.fieldCheck} /> <br/>
@@ -104,9 +104,8 @@ class HomePage extends React.Component{
 									<label className='searchPrompt'>Language:</label>
 									<input type="radio" name = "searchInput"  value="language"onChange={this.fieldCheck} /> <br/>
 								</div>
-								</form>
-					</div>
-					
+							</form>
+						</div>
 					</div>
 					<div className="ui-input">
 						<input id="search" style = {inputStylingBasic} value={this.state.search} onChange={e => this.setState({search: e.target.value})} placeholder="Enter your Search Here"/> 
