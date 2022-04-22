@@ -323,16 +323,16 @@ class ReResults extends React.Component{
 			<div className='Container' style={{ marginBottom:'100px'}}>
 				<div className='SearchBarContainer' style={left}>
 					<input id='search' style= {searchBarStyling} value ={this.state.nSearch} onChange={e => this.setState({nSearch: e.target.value})} placeholder= "Enter Search here..." required></input>
-						<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button" onClick={this.statesPrint()}>
+						
 						<Link style ={{textDecoration:'none', color: 'white'}} to={{
 									pathname: '/results',
 									search: this.state.nSearch,
 									field: this.state.nField,
 									chart: this.state.nChart
 								}}>
-									Search
+									<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button" onClick={this.statesPrint()}>Search</button>
 								</Link>
-						</button>
+						
 						<div style ={{padding:'10px'}}></div>
 					<div className='optionsContainer' style={optionContainer}>
 							<div className='previousSearch'>

@@ -324,16 +324,14 @@ class Results extends React.Component{
 				<div className='SearchBarContainer' style={left}>
 					<form>
 					<input id='search' style= {searchBarStyling} value ={this.state.nSearch} onChange={e => this.setState({nSearch: e.target.value})} placeholder= "Enter Search here..." required></input>
-						<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button" onClick={this.statesPrint()}>
 						<Link style ={{textDecoration:'none', color: 'white'}} to={{
 									pathname: '/reresults',
 									search: this.state.nSearch,
 									field: this.state.nField,
 									chart: this.state.nChart
 								}}>
-									Search
+									<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button" onClick={this.statesPrint()}>Search</button>
 								</Link>
-						</button>
 						<div style ={{padding:'10px'}}></div>
 					<div className='optionsContainer' style={optionContainer}>
 							<div className='previousSearch'>
@@ -364,8 +362,6 @@ class Results extends React.Component{
 											<input id="title-button" type="radio" name = "searchInput"  value="title"  onChange={this.fieldCheck} required/> <br/>
 											<label className='searchPrompt'>Author:</label>
 											<input id="author-button" type="radio" name = "searchInput" value="author"  onChange={this.fieldCheck} /> <br/>
-											<label className='searchPrompt'>Year:</label>
-											<input id="year-button" type="radio" name = "searchInput"  value="year" onChange={this.fieldCheck} /> <br/>
 											<label className='searchPrompt'>Genre:</label>
 											<input id="genre-button" type="radio" name = "searchInput" value="genre"  onChange={this.fieldCheck} /> <br/>
 											<label className='searchPrompt'>Language:</label>

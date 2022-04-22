@@ -157,7 +157,7 @@ class AdvancedSearch extends React.Component {
 							</div>
 						</div>
 						<div id="search button">
-							<button  style={buttonStyling}>
+							
 							    <Link style= {{textDecoration: 'none', color: 'white', padding: '5px'}} to={{
 									pathname: '/results',
 									anyWords: this.state.anyWords,
@@ -171,9 +171,9 @@ class AdvancedSearch extends React.Component {
 									languages: this.state.languages,
 									regions: this.state.regions,
 									chart: this.state.chart
-								}}>Search
+								}}><button  style={buttonStyling}>Search</button>
 								</Link>
-							</button>
+							
 							<ProtectedAdvancedRoute anyWords={this.state.anyWords}
 									exactPhrase={this.state.exactPhrase}
 									exclude={this.state.exclude}
