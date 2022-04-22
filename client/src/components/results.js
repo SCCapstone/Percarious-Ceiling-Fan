@@ -265,7 +265,6 @@ class Results extends React.Component{
 			height:'35px',
 			width:'50%',
 			outlineStyle:'none',
-			border: 'none',
 			borderRadius: '20px',
 			color: 'black',
 			marginTop:"5%",

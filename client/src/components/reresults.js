@@ -266,7 +266,7 @@ class ReResults extends React.Component{
 			height:'35px',
 			width:'50%',
 			outlineStyle:'none',
-			border: 'none',
+			border: 'solid 2px #6675b0',
 			borderRadius: '20px',
 			color: 'black',
 			marginTop:"5%"
@@ -363,8 +363,6 @@ class ReResults extends React.Component{
 											<input type="radio" name = "searchInput"  value="title"  onChange={this.fieldCheck} required/> <br/>
 											<label className='searchPrompt'>Author:</label>
 											<input type="radio" name = "searchInput" value="author"  onChange={this.fieldCheck} /> <br/>
-											<label className='searchPrompt'>Year:</label>
-											<input type="radio" name = "searchInput"  value="year" onChange={this.fieldCheck} /> <br/>
 											<label className='searchPrompt'>Genre:</label>
 											<input type="radio" name = "searchInput" value="genre"  onChange={this.fieldCheck} /> <br/>
 											<label className='searchPrompt'>Language:</label>
