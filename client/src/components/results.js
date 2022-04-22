@@ -341,7 +341,7 @@ class Results extends React.Component{
 						<div style = {optionStyling }>
 								<form>
 									<p name="searchPrompt" style={{marginTop: '0px', textDecoration:'underline', fontWeight:"bold"}}>Search for:</p>
-										<div onChange={e =>this.state.onChangeValue} style={{display: 'flex', justifyContent: 'center'}}>
+										<div onChange={e =>this.state.onChangeValue} style={{ justifyContent: 'center'}}>
 											<label className='searchPrompt'>Title:</label>
 											<input type="radio" name = "searchInput"  value="title"  onChange={this.fieldCheck} /> <br/>
 											<label className='searchPrompt'>Author:</label>

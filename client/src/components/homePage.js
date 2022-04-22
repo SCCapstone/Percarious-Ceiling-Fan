@@ -62,7 +62,7 @@ class HomePage extends React.Component{
 			padding: '5px',
 			backgroundColor: 'white',
 			margin:'auto',
-			width: "75%",
+			width: "55%",
 			textAlign: 'center',
 			borderRadius: '10px',
 			outline: '2px dotted #6675b0',
@@ -92,13 +92,14 @@ class HomePage extends React.Component{
 						<div style = {optionStyling }>
 							<form>
 								<p name="searchPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Search for:</p>
-								<div onChange={e =>this.state.onChangeValue} style={{display: 'flex', justifyContent: 'center'}}>
+								<div onChange={e =>this.state.onChangeValue} style={{ justifyContent: 'center'}}>
 									<label className='searchPrompt'>Title:</label>
 									<input type="radio" name = "searchInput"  value="title" onChange={this.fieldCheck} /> <br/>
 									<label className='searchPrompt'>Author:</label>
 									<input type="radio" name = "searchInput" value="author" onChange={this.fieldCheck} /> <br/>
 									<label className='searchPrompt'>Year:</label>
 									<input type="radio" name = "searchInput"  value="year" onChange={this.fieldCheck} /> <br/>
+									
 									<label className='searchPrompt'>Genre:</label>
 									<input type="radio" name = "searchInput" value="genre"onChange={this.fieldCheck} /> <br/>
 									<label className='searchPrompt'>Language:</label>
