@@ -4,6 +4,7 @@ import HomePage from "./components/homePage";
 import AdvancedSearch from './components/advancedSearch';
 import SignIn from './components/signIn';
 import SavedSearches from './components/savedSearches';
+import ReSavedSearches from './components/reSavedSearches';
 import Results from './components/results';
 import ReResults from './components/reresults';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -26,6 +27,7 @@ function App() {
 							<Route path="/reresults"> <ReResults /> </Route>
 							<Route path="/signIn"> <SignIn /> </Route>
 							<Route path="/savedSearches"> <SavedSearches /> </Route>
+							<Route path="/ReSavedSearches"> <ReSavedSearches /> </Route>
 							<Route path="/"> <HomePage /> </Route>
 						</Switch>
 						<div className= "bottom-nav-bar">
