@@ -36,7 +36,7 @@ const ProtectedBasicRoute = (search) => {
 				field: search.field,
 				chart: search.chart
 			}}>
-				<button id="searchbutton" className = "ui-large-primary-button">Search</button> 
+				<button  style= {{backgroundColor:"#6675b0"}} id="searchbutton" className = "ui-large-primary-button">Search</button> 
 			</Link>
 			)
 	   }
@@ -54,10 +54,10 @@ const ProtectedBasicRoute = (search) => {
 						field: search.field,
 						chart: search.chart
 					}}>
-					<button id="searchbutton" className = "ui-large-primary-button">Search</button>
+					<button style={{marginLeft:'5px', borderRadius:'20px', color:'white', backgroundColor: '#6675b0'}} id="searchbutton" className = "ui-large-primary-button">Search</button>
 				</Link>
 
-				<Popup trigger={<button style={{borderRadius: '10px', padding: '5px', color: 'white', backgroundColor: '#6675b0'}}>Save Search</button>}>
+				<Popup trigger={<button style={{marginLeft:'5px', borderRadius: '10px', color: 'white', backgroundColor: '#6675b0'}}>Save Search</button>}>
 				{close => (
 				<div id="myForm" className="formPopup" style={formStyling}>
 					<form action ="/action_page.php" className= "form-container" >
@@ -75,8 +75,8 @@ const ProtectedBasicRoute = (search) => {
 		   }
 		else {
 			return(<div>
-					<button id="searchbutton" className = "ui-large-primary-button">Enter Required Fields to Search</button>
-					<button id="searchbutton" className = "ui-large-primary-button">Enter Required Fields to Save Search</button>
+					<button style={{marginLeft:'5px', borderRadius:'20px', color:'white', backgroundColor: 'darkGrey'}}  id="searchbutton" className = "ui-large-primary-button">Enter Required Fields to Search</button>
+					<button style={{marginLeft:'5px', borderRadius:'20px', color:'white', backgroundColor: 'darkGrey'}}  id="searchbutton" className = "ui-large-primary-button">Enter Required Fields to Save Search</button>
 				</div>)
 		}
 	}

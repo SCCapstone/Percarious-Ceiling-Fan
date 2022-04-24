@@ -58,7 +58,7 @@ const ProtectedAdvancedRoute = (anyWords) => {
 						languages: anyWords.languages,
 						regions: anyWords.regions,
 						chart: anyWords.chart
-					}}><button>Search</button>
+					}}><button >Search</button>
 					</Link>
 				   )
 		}
@@ -85,9 +85,9 @@ const ProtectedAdvancedRoute = (anyWords) => {
 							languages: anyWords.languages,
 							regions: anyWords.regions,
 							chart: anyWords.chart
-						}}><button>Search</button>
+						}}><button style={{borderRadius: '10px', color: 'white', backgroundColor: '#6675b0'}}>Search</button>
 						</Link>
-						<Popup trigger={<button style={{borderRadius: '10px', padding: '5px', color: 'white', backgroundColor: '#6675b0'}}>Save Search</button>}>
+						<Popup trigger={<button style={{borderRadius: '10px', color: 'white', backgroundColor: '#6675b0'}}>Save Search</button>}>
 								{close => (
 								<div id="myForm" className="formPopup" style={formStyling}>
 									<form action ="/action_page.php" className= "form-container" >
@@ -105,8 +105,8 @@ const ProtectedAdvancedRoute = (anyWords) => {
 			}
 			else {
 				return(<div>
-					<button id="searchbutton" className = "ui-large-primary-button">Enter Required Fields to Search</button>
-					<button id="searchbutton" className = "ui-large-primary-button">Enter Required Fields to Save Search</button>
+					<button style={{borderRadius: '10px', color: 'white', backgroundColor: 'darkGrey'}} id="searchbutton" className = "ui-large-primary-button">Enter Required Fields to Search</button>
+					<button style={{borderRadius: '10px', color: 'white', backgroundColor: 'darkGrey'}} id="searchbutton" className = "ui-large-primary-button">Enter Required Fields to Save Search</button>
 				</div>)
 			}
 	}

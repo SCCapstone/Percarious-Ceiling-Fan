@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import ProtectedBasicRoute from './ProtectedBasicRoute';
 
 class HomePage extends React.Component{
+	
+	/*State management and required variables to perform search */
 	state = {
 		connection: "",
 		search: "",
@@ -11,12 +13,18 @@ class HomePage extends React.Component{
 		name: ""
 	} 
 
+	/*
+	 	Sets the graph type state value when clicked 
+	*/
 	chartCheck = (e) =>{
 		this.setState({
 			chart: e.target.value
 		})
 	}
 
+	/*
+		Sets the field state value the user would like to search by when clicked
+	*/
 	fieldCheck = (e) =>{
 		this.setState({
 			field: e.target.value
@@ -25,6 +33,9 @@ class HomePage extends React.Component{
 	
 
 	render() {
+		/*
+			Styling presets to use in the render of the website
+		*/
 		let inputStylingBasic = {
 			backgroundColor:  '#FFFFFF',
 			textAlign: 'center',
@@ -46,13 +57,6 @@ class HomePage extends React.Component{
 			backgroundColor: '#6675b0',
 			marginTop:'10px'
 		}
-		let buttonStyling = {
-			padding: '10px',
-			color:'white',
-			margin: '10px',
-			backgroundColor: 'darkgrey',
-			borderRadius: '10px'
-		}
 
 		let optionStyling = {
 			padding:'10px'
@@ -70,16 +74,19 @@ class HomePage extends React.Component{
 			marginBottom: '20px'
 		}
 
+		/* 
+			The body of the website rendering
+			Protected route brings in search and save buttons
+			Link allows user to enter advanced search
+		*/
 		return (
 			<div>
 				<div className="main-body">
-							<h1>Welcome to The Precarious Search System</h1>
-				</div>
-				
+					<h1>Welcome to The Precarious Search System</h1>
 					<div className="option-container" style = {optionContainer}>
 						<div style = {optionStyling}>
 							<div>
-								<p name="chartPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Graph Type:</p>
+								<p name="chartPrompt" style={{marginTop: '0px'}}><span style={{color:'red'}}> *</span> <span style={{textDecoration:'underline'}}>Graph Type:</span></p>
 								<div style={{display: 'flex', justifyContent: 'center'}}>
 									<label className='chartPrompt'>Bar:</label>
 									<input type="radio" name = "searchInput"  value="bar" defaultChecked={this.chartCheck} onChange={this.chartCheck} required="required"/> <br/>
@@ -92,7 +99,7 @@ class HomePage extends React.Component{
 						</div>
 						<div style = {optionStyling }>
 							<form>
-								<p name="searchPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Search for:</p>
+								<p name="searchPrompt" style={{marginTop: '0px'}}> <span style={{color:'red'}}> *</span> <span style={{textDecoration:'underline'}}>Search for:</span></p>
 								<div onChange={e =>this.state.onChangeValue} style={{ justifyContent: 'center'}}>
 									<label className='searchPrompt'>Title:</label>
 									<input type="radio" name = "searchInput"  value="title" onChange={this.fieldCheck} /> <br/>
@@ -102,16 +109,20 @@ class HomePage extends React.Component{
 							</form>
 						</div>
 					</div>
-					<div className="ui-input">
+					<div className="ui-input" >
+						<div style ={{paddingBottom: '10px', display:"-webkit-inline-flex"}}>
+						<p style={{paddingRight:'5px', color: 'red'}}>*</p>
 						<input id="search" style = {inputStylingBasic} value={this.state.search} onChange={e => this.setState({search: e.target.value})} placeholder="Enter your Search Here" required/> 
-							<ProtectedBasicRoute search={this.state.search} field={this.state.field} chart={this.state.chart}></ProtectedBasicRoute> 
+						</div>
+						<ProtectedBasicRoute search={this.state.search} field={this.state.field} chart={this.state.chart}></ProtectedBasicRoute> 
+						<p style={{color: 'red'}}>* indicates a required field</p>
 					</div>
-					
 					<div><h2>OR</h2></div>
 					<div className = "advanced-link" style = {inputStylingAdvanced}>
 					<Link to="/advancedsearch" style ={{textDecoration:'none', color: 'white'}}>Advanced Search</Link>
 					</div>
 			</div>
+		</div>
 		)
 	}
 };
