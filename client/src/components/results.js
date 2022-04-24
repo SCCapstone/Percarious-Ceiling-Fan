@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { withRouter } from "react-router";
 import axios from "axios"; //for SQL command stuff
 import ScaleLoader from "react-spinners/ScaleLoader";
+import ProtectedResultsRoute from './ProtectedResultsRoute';
 class Results extends React.Component{
 
 	constructor(props){
@@ -95,12 +96,6 @@ class Results extends React.Component{
 			document.getElementById("loading").setAttribute("style","display: none;");
 		}
 
-	}
-
-	statesPrint() {
-		console.log(this.state.nSearch);
-		console.log(this.state.nField);
-		console.log(this.state.nChart);
 	}
 
 	getAdvancedResults = () => {
@@ -371,19 +366,14 @@ class Results extends React.Component{
 											<input id="title-button" type="radio" name = "searchInput"  value="title"  onChange={this.fieldCheck} required/> <br/>
 											<label className='searchPrompt'>Author:</label>
 											<input id="author-button" type="radio" name = "searchInput" value="author"  onChange={this.fieldCheck} /> <br/>
+											<label className='searchPrompt'>Publisher:</label>
+											<input id="publisher-button" type="radio" name = "searchInput" value="pubname" onChange={this.fieldCheck} /> <br/>
 										</div>
 								</form>
 							</div>
 							</div>
 							<input id='search' style= {searchBarStyling} value ={this.state.nSearch} onChange={e => this.setState({nSearch: e.target.value})} placeholder= "Enter Search here..." required></input>
-						<Link style ={{textDecoration:'none', color: 'white'}} to={{
-									pathname: '/reresults',
-									search: this.state.nSearch,
-									field: this.state.nField,
-									chart: this.state.nChart
-								}}>
-									<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button" onClick={this.statesPrint()}>Search</button>
-								</Link>
+							<ProtectedResultsRoute search={this.state.nSearch} field={this.state.nField} chart={this.state.nChart}></ProtectedResultsRoute> 
 							<div className='LinksOut'><Link to="/advancedsearch" style ={inputStylingAdvanced}>Advanced Search</Link></div>
 				</div>
 				<div style ={{padding:'10px'}}></div>
