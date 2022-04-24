@@ -105,6 +105,8 @@ class HomePage extends React.Component{
 									<input type="radio" name = "searchInput"  value="title" onChange={this.fieldCheck} /> <br/>
 									<label className='searchPrompt'>Author:</label>
 									<input type="radio" name = "searchInput" value="author" onChange={this.fieldCheck} /> <br/>
+									<label className='searchPrompt'>Author:</label>
+									<input type="radio" name = "searchInput" value="publisher" onChange={this.fieldCheck} /> <br/>
 								</div>
 							</form>
 						</div>

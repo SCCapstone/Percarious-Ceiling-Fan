@@ -343,7 +343,7 @@ class Results extends React.Component{
 						<div style = {optionStyling}>
 							<form>
 								<p name="chartPrompt" style={{marginTop: '0px', textDecoration:'underline', fontWeight:"bold"}}>Graph Type:</p>
-									<div style={{display: 'flex', justifyContent: 'center'}}>
+									<div style={{ justifyContent: 'center'}}>
 										<label className='chartPrompt'>Bar:</label>
 										<input id="bar-button" type="radio" name = "searchInput"  value="bar" onChange={this.chartCheck} required/> <br/>
 										<label className='chartPrompt'>Pie:</label>
