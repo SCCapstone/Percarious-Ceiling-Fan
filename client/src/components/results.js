@@ -367,6 +367,8 @@ class Results extends React.Component{
 				</div>
 				<div style ={{padding:'10px'}}></div>
 				<div className='GraphConatiner' style={right}>
+				<div style={{borderBottom:'solid 1px #6675b0', width: '30%', margin: 'auto'}}> <h3 style={{color: '#6675b0'}}>Search Output:</h3> </div>
+					<div style ={{padding:'10px'}}></div>
 					<div id="loading" display="true"><ScaleLoader/> </div>
 					<Plot
 						data={
