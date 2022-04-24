@@ -74,15 +74,15 @@ class Results extends React.Component{
 					console.log(this.props.location.saved.field);
 					if(this.props.location.saved.chart == 'bar') {
 						this.state.chart = 'bar';
-						document.getElementById("bar-button").checked = true;
+						
 					}
 					if(this.props.location.saved.chart == 'line') {
 						this.state.chart = 'scatter';
-						document.getElementById("line-button").checked = true;
+						
 					}
 					if(this.props.location.saved.chart == 'pie') {
 						this.state.chart = 'pie';
-						document.getElementById("pie-button").checked = true;
+						
 					}
 					window.localStorage.setItem('chart',  this.state.chart);
 					this.getSavedBasicResults();
@@ -316,11 +316,8 @@ class Results extends React.Component{
 
         return (
 			<>
-			<div className='Container' style={{ marginBottom:'100px'}}>
+			<div className='Container' style={{ marginBottom:'100px', overflow: "auto"}}>
 				<div className='SearchBarContainer' style={left}>
-					<form>
-
-
 							<div style ={{padding:'10px'}}></div>
 							<div className='previousSearch' style={optionContainer}>
 								<h3 style={{textDecoration:'underline'}}> Current Search:</h3>
@@ -329,8 +326,6 @@ class Results extends React.Component{
 								<this.previousSavedBasicSearchView></this.previousSavedBasicSearchView>
 								<this.previousSavedAdvancedSearchView></this.previousSavedAdvancedSearchView>
 							</div>
-
-
 					<div className='optionsContainer' style={optionContainer}>
 						<h3 style={{textDecoration: 'underline'}}>New Search:</h3>
 						<div style = {optionStyling}>
@@ -369,9 +364,8 @@ class Results extends React.Component{
 									<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button" onClick={this.statesPrint()}>Search</button>
 								</Link>
 							<div className='LinksOut'><Link to="/advancedsearch" style ={inputStylingAdvanced}>Advanced Search</Link></div>
-							</form>
 				</div>
-					<div style ={{padding:'10px'}}></div>
+				<div style ={{padding:'10px'}}></div>
 				<div className='GraphConatiner' style={right}>
 					<div id="loading" display="true"><ScaleLoader/> </div>
 					<Plot
