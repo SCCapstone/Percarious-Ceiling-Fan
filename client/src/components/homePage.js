@@ -40,7 +40,7 @@ class HomePage extends React.Component{
 			backgroundColor:  '#FFFFFF',
 			textAlign: 'center',
 			fontSize: '120',
-			height:'50px',
+			height:'30px',
 			width:'300px',
 			outlineStyle:'none',
 			border: 'none',
@@ -59,7 +59,7 @@ class HomePage extends React.Component{
 		}
 
 		let optionStyling = {
-			padding:'10px'
+			padding:'5px'
 		}
 
 		let optionContainer = {
@@ -109,15 +109,15 @@ class HomePage extends React.Component{
 							</form>
 						</div>
 					</div>
-					<div className="ui-input" >
-						<div style ={{paddingBottom: '10px', display:"-webkit-inline-flex"}}>
-						<p style={{paddingRight:'5px', color: 'red'}}>*</p>
-						<input id="search" style = {inputStylingBasic} value={this.state.search} onChange={e => this.setState({search: e.target.value})} placeholder="Enter your Search Here" required/> 
+					<div className="ui-input" style={{display:'-webkit-inline-flex'}}>
+						<div style ={{ display:"-webkit-inline-flex"}}>
+							<p style={{paddingRight:'5px', color: 'red'}}>*</p>
+							<input id="search" style = {inputStylingBasic} value={this.state.search} onChange={e => this.setState({search: e.target.value})} placeholder="Enter your Search Here" required/> 
 						</div>
 						<ProtectedBasicRoute search={this.state.search} field={this.state.field} chart={this.state.chart}></ProtectedBasicRoute> 
-						<p style={{color: 'red'}}>* indicates a required field</p>
 					</div>
-					<div><h2>OR</h2></div>
+					<p style={{color: 'red', fontSize:'small'}}>* indicates a required field</p>
+					<h2>OR</h2>
 					<div className = "advanced-link" style = {inputStylingAdvanced}>
 					<Link to="/advancedsearch" style ={{textDecoration:'none', color: 'white'}}>Advanced Search</Link>
 					</div>
