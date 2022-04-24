@@ -323,7 +323,7 @@ class ReResults extends React.Component{
 			<div className='Container' style={{ marginBottom:'100px', overflow:'auto'}}>
 				<div className='SearchBarContainer' style={left}>
 					<input id='search' style= {searchBarStyling} value ={this.state.nSearch} onChange={e => this.setState({nSearch: e.target.value})} placeholder= "Enter Search here..." required></input>
-						
+
 						<Link style ={{textDecoration:'none', color: 'white'}} to={{
 									pathname: '/results',
 									search: this.state.nSearch,
@@ -332,7 +332,7 @@ class ReResults extends React.Component{
 								}}>
 									<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button" onClick={this.statesPrint()}>Search</button>
 								</Link>
-						
+
 						<div style ={{padding:'10px'}}></div>
 					<div className='optionsContainer' style={optionContainer}>
 							<div className='previousSearch'>
@@ -389,7 +389,14 @@ class ReResults extends React.Component{
 								marker: {color: 'blue'}
 							}]
 						}
-					layout={{title: 'Results'}}/>
+					layout={{title: 'Results',
+					 	xaxis: {
+                 		title: 'Year'
+                 		},
+                 		yaxis: {
+                 		 title: 'Books'
+                 		 }
+                 		 }}/>
 					<div className='Tips' style={{color:'black', fontWeight:'bold'}}><p>Tip: To save as PNG, hover over the right hand upper corner of the graph</p></div>
 				</div>
 			</div>

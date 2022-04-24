@@ -319,8 +319,8 @@ class Results extends React.Component{
 			<div className='Container' style={{ marginBottom:'100px'}}>
 				<div className='SearchBarContainer' style={left}>
 					<form>
-						
-						
+
+
 							<div style ={{padding:'10px'}}></div>
 							<div className='previousSearch' style={optionContainer}>
 								<h3 style={{textDecoration:'underline'}}> Current Search:</h3>
@@ -329,8 +329,8 @@ class Results extends React.Component{
 								<this.previousSavedBasicSearchView></this.previousSavedBasicSearchView>
 								<this.previousSavedAdvancedSearchView></this.previousSavedAdvancedSearchView>
 							</div>
-						
-						
+
+
 					<div className='optionsContainer' style={optionContainer}>
 						<h3 style={{textDecoration: 'underline'}}>New Search:</h3>
 						<div style = {optionStyling}>
@@ -387,7 +387,14 @@ class Results extends React.Component{
 								marker: {color: 'blue'}
 							}]
 						}
-					layout={{title: 'Results'}}/>
+					layout={{title: 'Results',
+					 	xaxis: {
+                 		title: 'Year'
+                 		},
+                 		yaxis: {
+                 		 title: 'Books'
+                 		 }
+                 		 }}/>
 					<div className='Tips' style={{color:'black', fontWeight:'bold'}}><p>Tip: To save as PNG, hover over the right hand upper corner of the graph</p></div>
 				</div>
 			</div>
