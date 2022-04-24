@@ -1,6 +1,5 @@
 //import '../../public/styles.css'
 import React from 'react';
-import { Link } from 'react-router-dom';
 import ProtectedAdvancedRoute from './ProtectedAdvancedRoute';
 
 class AdvancedSearch extends React.Component {
@@ -13,14 +12,14 @@ class AdvancedSearch extends React.Component {
 		startYear: "",
 		tags:{
 			author: false,
-			title: true,
+			title: false,
 			publisher: false
 		  },
 		endYear: "",
 		languages: "",
 		regions: "",
 		genre: "", 
-		chart: "bar"
+		chart: ""
 	}
 
 	  
@@ -157,23 +156,7 @@ class AdvancedSearch extends React.Component {
 							</div>
 						</div>
 						<div id="search button">
-							
-							    <Link style= {{textDecoration: 'none', color: 'white', padding: '5px'}} to={{
-									pathname: '/results',
-									anyWords: this.state.anyWords,
-									exactPhrase: this.state.exactPhrase,
-									exclude: this.state.exclude,
-									author: this.state.tags.author,
-									title: this.state.tags.title,
-									publisher: this.state.tags.publisher,
-									startYear: this.state.startYear,
-									endYear: this.state.endYear,
-									languages: this.state.languages,
-									regions: this.state.regions,
-									chart: this.state.chart
-								}}><button  style={buttonStyling}>Search</button>
-								</Link>
-							
+
 							<ProtectedAdvancedRoute anyWords={this.state.anyWords}
 									exactPhrase={this.state.exactPhrase}
 									exclude={this.state.exclude}
