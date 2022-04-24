@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import Popup from 'reactjs-popup';
+import { Link } from 'react-router-dom';
 import FirebaseService from "../services/firebase.service";
 import { useAuthContext } from "../contexts/AuthContext";
 
@@ -28,11 +29,35 @@ const ProtectedBasicRoute = (search) => {
 	}
 
    if(!user) {
-        return <div></div>
+	   if (search.search != "" && search.field != "" && search.chart != ""){
+		return ( <Link style ={{textDecoration:'none', color: 'white'}} to={{
+				pathname: '/results',
+				search: search.search,
+				field: search.field,
+				chart: search.chart
+			}}>
+				<button id="searchbutton" className = "ui-large-primary-button">Search</button> 
+			</Link>
+			)
+	   }
+	   else {
+        return <div><button id="searchbutton" className = "ui-large-primary-button">Enter Required Fields to Search</button></div>
+		}
     }
 	else {
-		return (
-			<Popup trigger={<button style={{borderRadius: '10px', padding: '5px', color: 'white', backgroundColor: '#6675b0'}}>Save Search</button>}>
+		if (search.search != "" && search.field != "" && search.chart != ""){
+			return (
+				<div>
+				<Link style ={{textDecoration:'none', color: 'white'}} to={{
+						pathname: '/results',
+						search: search.search,
+						field: search.field,
+						chart: search.chart
+					}}>
+					<button id="searchbutton" className = "ui-large-primary-button">Search</button>
+				</Link>
+
+				<Popup trigger={<button style={{borderRadius: '10px', padding: '5px', color: 'white', backgroundColor: '#6675b0'}}>Save Search</button>}>
 				{close => (
 				<div id="myForm" className="formPopup" style={formStyling}>
 					<form action ="/action_page.php" className= "form-container" >
@@ -40,11 +65,20 @@ const ProtectedBasicRoute = (search) => {
 						<label for="saveName" style={{padding:'5px'}}><b>Save Name:</b></label>
 						<input type = 'text' value={name} onChange={e => {setName(e.target.value)}} placeholder='enter name'></input>
 						<button type='button' onClick={() => {SaveBasicSearch(user.uid,name,search.search,search.field,search.chart); close();}} className="btn" style={{marginLeft:'5px', borderRadius:'20px', color:'white', backgroundColor: '#6675b0'}}>Submit</button>
-					</form>
+						</form>
+					</div>
+					)}
+				</Popup>
 				</div>
-				 )}
-			</Popup>
-		)
+			)
+				
+		   }
+		else {
+			return(<div>
+					<button id="searchbutton" className = "ui-large-primary-button">Enter Required Fields to Search</button>
+					<button id="searchbutton" className = "ui-large-primary-button">Enter Required Fields to Save Search</button>
+				</div>)
+		}
 	}
 };
 

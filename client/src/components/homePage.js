@@ -104,14 +104,6 @@ class HomePage extends React.Component{
 					</div>
 					<div className="ui-input">
 						<input id="search" style = {inputStylingBasic} value={this.state.search} onChange={e => this.setState({search: e.target.value})} placeholder="Enter your Search Here" required/> 
-								<Link style ={{textDecoration:'none', color: 'white'}} to={{
-									pathname: '/results',
-									search: this.state.search,
-									field: this.state.field,
-									chart: this.state.chart
-								}}>
-									<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button">Search</button>
-								</Link>
 							<ProtectedBasicRoute search={this.state.search} field={this.state.field} chart={this.state.chart}></ProtectedBasicRoute> 
 					</div>
 					
