@@ -8,8 +8,8 @@ class HomePage extends React.Component{
 	state = {
 		connection: "",
 		search: "",
-		field: "title",
-		chart: "bar",
+		field: "",
+		chart: "",
 		name: ""
 	} 
 
