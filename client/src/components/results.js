@@ -267,15 +267,12 @@ class Results extends React.Component{
 			outlineStyle:'none',
 			borderRadius: '20px',
 			color: 'black',
-			marginTop:"5%",
+			marginTop:"2%",
 			border: 'solid 2px #6675b0'
 		}
 
 		let inputStylingAdvanced = {
-			padding: '7px',
-			margin: '5px',
-			width: '200px',
-			height: '30px',
+			padding: '5px',
 			borderRadius: '20px',
 			backgroundColor: '#6675b0',
 			marginTop:'10px',
@@ -305,7 +302,7 @@ class Results extends React.Component{
 			borderRadius: '10px',
 			outline: '2px dotted #6675b0',
 			fontWeight: 'bolder',
-			marginBottom: '20px'
+			marginBottom: '5px'
 		}
 
 		let left = {
@@ -319,31 +316,27 @@ class Results extends React.Component{
 
         return (
 			<>
-			<div className='Container' style={{ marginBottom:'100px', overflow:'auto'}}>
+			<div className='Container' style={{ marginBottom:'100px'}}>
 				<div className='SearchBarContainer' style={left}>
 					<form>
-					<input id='search' style= {searchBarStyling} value ={this.state.nSearch} onChange={e => this.setState({nSearch: e.target.value})} placeholder= "Enter Search here..." required></input>
-						<Link style ={{textDecoration:'none', color: 'white'}} to={{
-									pathname: '/reresults',
-									search: this.state.nSearch,
-									field: this.state.nField,
-									chart: this.state.nChart
-								}}>
-									<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button" onClick={this.statesPrint()}>Search</button>
-								</Link>
-						<div style ={{padding:'10px'}}></div>
-					<div className='optionsContainer' style={optionContainer}>
-							<div className='previousSearch'>
+						
+						
+							<div style ={{padding:'10px'}}></div>
+							<div className='previousSearch' style={optionContainer}>
 								<h3 style={{textDecoration:'underline'}}> Current Search:</h3>
 								<this.previousBasicSearchView></this.previousBasicSearchView>
 								<this.previousAdvancedSearchView></this.previousAdvancedSearchView>
 								<this.previousSavedBasicSearchView></this.previousSavedBasicSearchView>
 								<this.previousSavedAdvancedSearchView></this.previousSavedAdvancedSearchView>
 							</div>
+						
+						
+					<div className='optionsContainer' style={optionContainer}>
+						<h3 style={{textDecoration: 'underline'}}>New Search:</h3>
 						<div style = {optionStyling}>
 							<form>
-								<p name="chartPrompt" style={{marginTop: '0px', textDecoration:'underline', fontWeight:"bold"}}>Graph Type:</p>
-									<div style={{ justifyContent: 'center'}}>
+								<p name="chartPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Graph Type:</p>
+									<div style={{justifyContent: 'center'}}>
 										<label className='chartPrompt'>Bar:</label>
 										<input id="bar-button" type="radio" name = "searchInput"  value="bar" onChange={this.chartCheck} required/> <br/>
 										<label className='chartPrompt'>Pie:</label>
@@ -353,9 +346,10 @@ class Results extends React.Component{
 									</div>
 							</form>
 						</div>
+						<div style={{height:'10px'}}></div>
 						<div style = {optionStyling }>
 								<form>
-									<p name="searchPrompt" style={{marginTop: '0px', textDecoration:'underline', fontWeight:"bold"}}>Search for:</p>
+									<p name="searchPrompt" style={{marginTop: '0px', textDecoration:'underline'}}>Search for:</p>
 										<div onChange={e =>this.state.onChangeValue} style={{ justifyContent: 'center'}}>
 											<label className='searchPrompt'>Title:</label>
 											<input id="title-button" type="radio" name = "searchInput"  value="title"  onChange={this.fieldCheck} required/> <br/>
@@ -365,15 +359,20 @@ class Results extends React.Component{
 								</form>
 							</div>
 							</div>
-
-							<div style ={{padding:'10px'}}></div>
+							<input id='search' style= {searchBarStyling} value ={this.state.nSearch} onChange={e => this.setState({nSearch: e.target.value})} placeholder= "Enter Search here..." required></input>
+						<Link style ={{textDecoration:'none', color: 'white'}} to={{
+									pathname: '/reresults',
+									search: this.state.nSearch,
+									field: this.state.nField,
+									chart: this.state.nChart
+								}}>
+									<button id="searchbutton" style= {buttonStyling} className = "ui-large-primary-button" onClick={this.statesPrint()}>Search</button>
+								</Link>
 							<div className='LinksOut'><Link to="/advancedsearch" style ={inputStylingAdvanced}>Advanced Search</Link></div>
 							</form>
 				</div>
 					<div style ={{padding:'10px'}}></div>
 				<div className='GraphConatiner' style={right}>
-					<div style={{borderBottom:'solid 1px #6675b0', width: '30%', margin: 'auto'}}> <h3 style={{color: '#6675b0'}}>Search Output:</h3> </div>
-					<div style ={{padding:'10px'}}></div>
 					<div id="loading" display="true"><ScaleLoader/> </div>
 					<Plot
 						data={
