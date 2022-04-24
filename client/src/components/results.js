@@ -169,80 +169,104 @@ class Results extends React.Component{
 	};
 
 
-	previousAdvancedSearchView = () => {
-		if(this.props.location == undefined )
+	previousSearchView = () => {
+		if(this.props.location == undefined && this.props.location.saved == undefined)
 		{
 			return <div></div>
+		}
+		else if (this.props.location.saved == undefined)
+		{
+			if(!this.props.location.search){
+				let anyS = ""; let exactS = ""; let exclS = ""; let tagsS = "Querying: ";
+				let yearS = ""; let langS = ""; let regS = "";
+				if(this.props.location.anyWords != "") { anyS = "Any: " }
+				if(this.props.location.exactPhrase != "") { exactS = "Exact: " }
+				if(this.props.location.exclude != "") { exclS = "Exclude: " }
+				if(this.props.location.author != "") { tagsS = tagsS+"Author " }
+				if(this.props.location.title != "") { tagsS = tagsS+"Title " }
+				if(this.props.location.publisher != "") { tagsS = tagsS+"Publisher " }
+				if(this.props.location.startYear != "") { yearS = "From: "+this.props.location.startYear+" to: "+this.props.location.endYear }
+				if(this.props.location.languages != "") { langS = "Language(s): " }
+				if(this.props.location.regions != "") { regS = "Region(s): " }
+				return(<div>
+					<p>Chart: {this.props.location.chart}</p>
+					<p>{anyS}{this.props.location.anyWords}</p>
+					<p>{exactS}{this.props.location.exactPhrase}</p>
+					<p>{exclS}{this.props.location.exclude}</p>
+					<p>{tagsS}</p>
+					<p>{yearS}</p>
+					<p>{langS}{this.props.location.languages}</p>
+					<p>{regS}{this.props.location.regions}</p>
+				</div>)
+			}
+			else {
+				if(this.props.location.field == "pubname"){
+					return(
+						<div>
+							<p>Chart: {this.props.location.chart}</p>
+							<p>Field: publisher</p>
+							<p>Search: {this.props.location.search.substring(1)}</p>
+						</div>
+						)
+				}
+				else{
+					return(
+						<div>
+							<p>Chart: {this.props.location.chart}</p>
+							<p>Field: {this.props.location.field}</p>
+							<p>Search: {this.props.location.search.substring(1)}</p>
+						</div>
+						)
+				 }
+			}
 		}
 		else
 		{
-			return(<div>
-				<p>{this.props.location.anyWords}</p>
-				<p>{this.props.location.exactPhrase}</p>
-				<p>{this.props.location.exclude}</p>
-				<p>{this.props.location.author}</p>
-				<p>{this.props.location.title}</p>
-				<p>{this.props.location.publisher}</p>
-				<p>{this.props.location.startYear}</p>
-				<p>{this.props.location.endYear}</p>
-				<p>{this.props.location.languages}</p>
-				<p>{this.props.location.regions}</p>
-			</div>)
+			if(!this.props.location.saved.search){
+				let anyS = ""; let exactS = ""; let exclS = ""; let tagsS = "Querying: ";
+				let yearS = ""; let langS = ""; let regS = "";
+				if(this.props.location.saved.anyWords != "") { anyS = "Any: " }
+				if(this.props.location.saved.exactPhrase != "") { exactS = "Exact: " }
+				if(this.props.location.saved.exclude != "") { exclS = "Exclude: " }
+				if(this.props.location.saved.author != "") { tagsS = tagsS+"Author " }
+				if(this.props.location.saved.title != "") { tagsS = tagsS+"Title " }
+				if(this.props.location.saved.publisher != "") { tagsS = tagsS+"Publisher " }
+				if(this.props.location.saved.startYear != "") { yearS = "From: "+this.props.location.saved.startYear+" to: "+this.props.location.saved.endYear }
+				if(this.props.location.saved.languages != "") { langS = "Language(s): " }
+				if(this.props.location.saved.regions != "") { regS = "Region(s): " }
+				return(<div>
+					<p>Chart: {this.props.location.saved.chart}</p>
+					<p>{anyS}{this.props.location.saved.anyWords}</p>
+					<p>{exactS}{this.props.location.saved.exactPhrase}</p>
+					<p>{exclS}{this.props.location.saved.exclude}</p>
+					<p>{tagsS}</p>
+					<p>{yearS}</p>
+					<p>{langS}{this.props.location.saved.languages}</p>
+					<p>{regS}{this.props.location.saved.regions}</p>
+				</div>)
+			}
+			else {
+				if(this.props.location.saved.field == "pubname"){
+					return(
+						<div>
+							<p>Chart: {this.props.location.saved.chart}</p>
+							<p>Field: publisher</p>
+							<p>Search: {this.props.location.saved.search}</p>
+						</div>
+						)
+				}
+				else{
+					return(
+						<div>
+							<p>Chart: {this.props.location.saved.chart}</p>
+							<p>Field: {this.props.location.saved.field}</p>
+							<p>Search: {this.props.location.saved.search}</p>
+						</div>
+						)
+				 }
+			}
 		}
 	};
-
-	previousBasicSearchView = () => {
-		if(this.props.location == undefined){
-			return <div></div>
-		}
-		else {
-			return(
-			<div>
-				<p>{this.props.location.chart}</p>
-				<p>{this.props.location.search.substring(1)}</p>
-				<p>{this.props.location.field}</p>
-			</div>
-			)
-		}
-	}
-
-	previousSavedAdvancedSearchView = () => {
-		if(this.props.location.saved == undefined )
-		{
-			return <div></div>
-		}
-		else
-		{
-			return(<div>
-				<p>{this.props.location.saved.anyWords}</p>
-				<p>{this.props.location.saved.exactPhrase}</p>
-				<p>{this.props.location.saved.exclude}</p>
-				<p>{this.props.location.saved.author}</p>
-				<p>{this.props.location.saved.title}</p>
-				<p>{this.props.location.saved.publisher}</p>
-				<p>{this.props.location.saved.startYear}</p>
-				<p>{this.props.location.saved.endYear}</p>
-				<p>{this.props.location.saved.languages}</p>
-				<p>{this.props.location.saved.regions}</p>
-			</div>)
-		}
-	};
-
-	previousSavedBasicSearchView = () => {
-		if(this.props.location.saved == undefined){
-			return <div></div>
-		}
-		else {
-			return(
-			<div>
-				<p>{this.props.location.saved.chart}</p>
-				<p>{this.props.location.saved.search}</p>
-				<p>{this.props.location.saved.field}</p>
-			</div>
-			)
-		}
-	}
-
 	chartCheck = (e) =>{
 		this.setState({
 			nChart: e.target.value
@@ -321,10 +345,7 @@ class Results extends React.Component{
 							<div style ={{padding:'10px'}}></div>
 							<div className='previousSearch' style={optionContainer}>
 								<h3 style={{textDecoration:'underline'}}> Current Search:</h3>
-								<this.previousBasicSearchView></this.previousBasicSearchView>
-								<this.previousAdvancedSearchView></this.previousAdvancedSearchView>
-								<this.previousSavedBasicSearchView></this.previousSavedBasicSearchView>
-								<this.previousSavedAdvancedSearchView></this.previousSavedAdvancedSearchView>
+								<this.previousSearchView></this.previousSearchView>
 							</div>
 					<div className='optionsContainer' style={optionContainer}>
 						<h3 style={{textDecoration: 'underline'}}>New Search:</h3>
