@@ -42,7 +42,7 @@ const ReSavedSearches = () => {
 					</div>
 				</Link>
 				<Button style= {{color:'white', backgroundColor:'#b32738', padding: '5px', borderRadius: '5px'}} onClick={() => deleteSearch(search.id)}>
-					<Link to="/savedSearches" style = {{textDecoration: 'none', color: 'white', float: 'left', marginTop: '15px', marginLeft: '35px', textTransform: 'uppercase'}}>Delete</Link>
+					<Link to="/savedSearches" style = {{textDecoration: 'none', color: 'white', float: 'left', textTransform: 'uppercase'}}>Delete</Link>
 				</Button>
 			</div>
           </div>

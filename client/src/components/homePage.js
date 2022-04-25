@@ -105,7 +105,7 @@ class HomePage extends React.Component{
 									<input type="radio" name = "searchInput"  value="title" onChange={this.fieldCheck} /> <br/>
 									<label className='searchPrompt'>Author:</label>
 									<input type="radio" name = "searchInput" value="author" onChange={this.fieldCheck} /> <br/>
-									<label className='searchPrompt'>Publisher:</label>
+									<label className='searchPrompt'>Pub:</label>
 									<input type="radio" name = "searchInput" value="pubname" onChange={this.fieldCheck} /> <br/>
 								</div>
 							</form>
@@ -120,9 +120,11 @@ class HomePage extends React.Component{
 					</div>
 					<p style={{color: 'red', fontSize:'small'}}>* indicates a required field</p>
 					<h2>OR</h2>
-					<div className = "advanced-link" style = {inputStylingAdvanced}>
-					<Link to="/advancedsearch" style ={{textDecoration:'none', color: 'white'}}>Advanced Search</Link>
-					</div>
+					<Link to="/advancedsearch" style ={{textDecoration:'none', color: 'white'}}>
+						<div className = "advanced-link" style = {inputStylingAdvanced}>
+							Advanced Search
+						</div>
+					</Link>
 			</div>
 		</div>
 		)
