@@ -336,7 +336,7 @@ class ReResults extends React.Component{
 
         return (
 			<>
-			<div className='Container' style={{ marginBottom:'100px', overflow: "auto"}}>
+			<div className='Container' style={{ marginBottom:'100px', overflow: "hidden"}}>
 				<div className='SearchBarContainer' style={left}>
 							<div style ={{padding:'10px'}}></div>
 							<div className='previousSearch' style={optionContainer}>
