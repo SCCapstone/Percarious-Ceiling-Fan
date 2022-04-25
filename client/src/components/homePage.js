@@ -49,6 +49,7 @@ class HomePage extends React.Component{
 		}
 
 		let inputStylingAdvanced = {
+			textAlign: 'center',
 			padding: '10px',
 			margin: 'auto',
 			width: '350px',
@@ -105,7 +106,7 @@ class HomePage extends React.Component{
 									<input type="radio" name = "searchInput"  value="title" onChange={this.fieldCheck} /> <br/>
 									<label className='searchPrompt'>Author:</label>
 									<input type="radio" name = "searchInput" value="author" onChange={this.fieldCheck} /> <br/>
-									<label className='searchPrompt'>Pub:</label>
+									<label className='searchPrompt'>Publisher:</label>
 									<input type="radio" name = "searchInput" value="pubname" onChange={this.fieldCheck} /> <br/>
 								</div>
 							</form>
@@ -120,11 +121,13 @@ class HomePage extends React.Component{
 					</div>
 					<p style={{color: 'red', fontSize:'small'}}>* indicates a required field</p>
 					<h2>OR</h2>
+					<div style= {inputStylingAdvanced}>
 					<Link to="/advancedsearch" style ={{textDecoration:'none', color: 'white'}}>
-						<div className = "advanced-link" style = {inputStylingAdvanced}>
+						<div className = "advanced-link" >
 							Advanced Search
 						</div>
 					</Link>
+					</div>
 			</div>
 		</div>
 		)

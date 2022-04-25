@@ -77,7 +77,7 @@ const ReSavedSearches = () => {
 						<p>Any: {aSearch.anyWords}</p>
 						<p>Exact: {aSearch.exactPhrase}</p>
 						<p>Exclude: {aSearch.exclude}</p>
-						<p>Title: {aSearch.title} Author: {aSearch.author} Publisher: {aSearch.publisher}</p>
+						<p>Title: {aSearch.title.toString()} | Author: {aSearch.author.toString()} | Publisher: {aSearch.publisher.toString()}</p>
 						<p>Year Range: {aSearch.startYear} to {aSearch.endYear}</p>
 						<p>Language(s): {aSearch.languages}</p>
 						<p>Regions: {aSearch.regions}</p>
