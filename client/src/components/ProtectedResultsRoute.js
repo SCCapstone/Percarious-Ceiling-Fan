@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const ProtectedResultsRoute = (search) => {
 
+	console.log(search.search + " "+search.chart+search.field)
 	   if (search.search != "" && search.field != "" && search.chart != ""){
 		return (
 				<Link style ={{textDecoration:'none', color: 'white'}} to={{

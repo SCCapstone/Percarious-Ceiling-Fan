@@ -1,7 +1,7 @@
 body {
   background-color: #efefef;
   margin: auto;
-  overflow: auto;
+  
 }
 
 .content-wrapper {
@@ -42,9 +42,9 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 90px;
+  height: 80px;
   background-color: rgb(63, 62, 62);
-  padding: 5px;
+  padding: 4px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
