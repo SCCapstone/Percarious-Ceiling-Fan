@@ -42,15 +42,15 @@ class Results extends React.Component{
 					window.localStorage.setItem('chart',  this.state.chart);
 					if(this.props.location.chart == 'bar') {
 						this.state.chart = 'bar';
-						document.getElementById("bar-button").checked = true;
+						
 					}
 					if(this.props.location.chart == 'line') {
 						this.state.chart = 'scatter';
-						document.getElementById("line-button").checked = true;
+						
 					}
 					if(this.props.location.chart == 'pie') {
 						this.state.chart = 'pie';
-						document.getElementById("pie-button").checked = true;
+						
 					}
 					this.getBasicResults();
 				}
@@ -287,6 +287,7 @@ class Results extends React.Component{
 			borderRadius: '20px',
 			color: 'black',
 			marginTop:"2%",
+			marginBottom: "2%",
 			border: 'solid 2px #6675b0'
 		}
 
@@ -370,8 +371,8 @@ class Results extends React.Component{
 											<input id="publisher-button" type="radio" name = "searchInput" value="pubname" onChange={this.fieldCheck} /> <br/>
 										</div>
 								</form>
-							</div>
-							</div>
+						</div>
+					</div>
 							<input id='search' style= {searchBarStyling} value ={this.state.nSearch} onChange={e => this.setState({nSearch: e.target.value})} placeholder= "Enter Search here..." required></input>
 							<ProtectedResultsRoute search={this.state.nSearch} field={this.state.nField} chart={this.state.nChart}></ProtectedResultsRoute> 
 							<div className='LinksOut'><Link to="/advancedsearch" style ={inputStylingAdvanced}>Advanced Search</Link></div>

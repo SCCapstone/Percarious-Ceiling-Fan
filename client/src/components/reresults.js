@@ -42,15 +42,15 @@ class ReResults extends React.Component{
 					window.localStorage.setItem('chart',  this.state.chart);
 					if(this.props.location.chart == 'bar') {
 						this.state.chart = 'bar';
-						document.getElementById("bar-button").checked = true;
+						
 					}
 					if(this.props.location.chart == 'line') {
 						this.state.chart = 'scatter';
-						document.getElementById("line-button").checked = true;
+						
 					}
 					if(this.props.location.chart == 'pie') {
 						this.state.chart = 'pie';
-						document.getElementById("pie-button").checked = true;
+						
 					}
 					this.getBasicResults();
 				}
@@ -287,6 +287,7 @@ class ReResults extends React.Component{
 			borderRadius: '20px',
 			color: 'black',
 			marginTop:"2%",
+			marginBottom: "2%",
 			border: 'solid 2px #6675b0'
 		}
 
