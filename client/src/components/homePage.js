@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import ProtectedBasicRoute from './ProtectedBasicRoute';
 
 class HomePage extends React.Component{
-	
+
 	/*State management and required variables to perform search */
 	state = {
 		connection: "",
@@ -11,10 +11,10 @@ class HomePage extends React.Component{
 		field: "",
 		chart: "",
 		name: ""
-	} 
+	}
 
 	/*
-	 	Sets the graph type state value when clicked 
+	 	Sets the graph type state value when clicked
 	*/
 	chartCheck = (e) =>{
 		this.setState({
@@ -30,7 +30,7 @@ class HomePage extends React.Component{
 			field: e.target.value
 		})
 	}
-	
+
 
 	render() {
 		/*
@@ -75,7 +75,7 @@ class HomePage extends React.Component{
 			marginBottom: '20px'
 		}
 
-		/* 
+		/*
 			The body of the website rendering
 			Protected route brings in search and save buttons
 			Link allows user to enter advanced search
@@ -90,11 +90,11 @@ class HomePage extends React.Component{
 								<p name="chartPrompt" style={{marginTop: '0px'}}><span style={{color:'red'}}> *</span> <span style={{textDecoration:'underline'}}>Graph Type:</span></p>
 								<div style={{display: 'flex', justifyContent: 'center'}}>
 									<label className='chartPrompt'>Bar:</label>
-									<input type="radio" name = "searchInput"  value="bar" defaultChecked={this.chartCheck} onChange={this.chartCheck} required="required"/> <br/>
+									<input type="radio" id="bar" name = "searchInput"  value="bar" defaultChecked={this.chartCheck} onChange={this.chartCheck} required="required"/> <br/>
 									<label className='chartPrompt'>Pie:</label>
-									<input type="radio" name = "searchInput" value="pie" onChange={this.chartCheck}/> <br/>
+									<input type="radio" id="pie" name = "searchInput" value="pie" onChange={this.chartCheck}/> <br/>
 									<label className='chartPrompt'>Line:</label>
-									<input type="radio" name = "searchInput"  value="line" onChange={this.chartCheck}/> <br/>
+									<input type="radio" id="line" name = "searchInput"  value="line" onChange={this.chartCheck}/> <br/>
 								</div>
 							</div>
 						</div>
@@ -103,11 +103,11 @@ class HomePage extends React.Component{
 								<p name="searchPrompt" style={{marginTop: '0px'}}> <span style={{color:'red'}}> *</span> <span style={{textDecoration:'underline'}}>Search for:</span></p>
 								<div onChange={e =>this.state.onChangeValue} style={{ justifyContent: 'center'}}>
 									<label className='searchPrompt'>Title:</label>
-									<input type="radio" name = "searchInput"  value="title" onChange={this.fieldCheck} /> <br/>
+									<input type="radio" id="title" name = "searchInput"  value="title" onChange={this.fieldCheck} /> <br/>
 									<label className='searchPrompt'>Author:</label>
-									<input type="radio" name = "searchInput" value="author" onChange={this.fieldCheck} /> <br/>
+									<input type="radio" id="author" name = "searchInput" value="author" onChange={this.fieldCheck} /> <br/>
 									<label className='searchPrompt'>Publisher:</label>
-									<input type="radio" name = "searchInput" value="pubname" onChange={this.fieldCheck} /> <br/>
+									<input type="radio" id="pubname" name = "searchInput" value="pubname" onChange={this.fieldCheck} /> <br/>
 								</div>
 							</form>
 						</div>
@@ -115,9 +115,9 @@ class HomePage extends React.Component{
 					<div className="ui-input" style={{display:'-webkit-inline-flex'}}>
 						<div style ={{ display:"-webkit-inline-flex"}}>
 							<p style={{paddingRight:'5px', color: 'red'}}>*</p>
-							<input id="search" style = {inputStylingBasic} value={this.state.search} onChange={e => this.setState({search: e.target.value})} placeholder="Enter your Search Here" required/> 
+							<input id="search" style = {inputStylingBasic} value={this.state.search} onChange={e => this.setState({search: e.target.value})} placeholder="Enter your Search Here" required/>
 						</div>
-						<ProtectedBasicRoute search={this.state.search} field={this.state.field} chart={this.state.chart}></ProtectedBasicRoute> 
+						<ProtectedBasicRoute search={this.state.search} field={this.state.field} chart={this.state.chart}></ProtectedBasicRoute>
 					</div>
 					<p style={{color: 'red', fontSize:'small'}}>* indicates a required field</p>
 					<h2>OR</h2>
