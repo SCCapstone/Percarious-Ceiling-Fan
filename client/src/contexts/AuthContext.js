@@ -3,24 +3,23 @@ import { signInWithEmailAndPassword, signOut, onAuthStateChanged} from 'firebase
 import { auth } from "../firebase";
 import { useState } from 'react';
 
-//This is a helper file that does most of the authentication and allows us to access the current user throughout the entire site
 const authContext = createContext();
-
+//This is a helper file that does most of the authentication and allows us to access the current user throughout the entire site
 export function AuthContextProvider({ children }) {
 	const [user, setUser] = useState({});
-
+	//this function logs the user in through firebase
 	function logIn(email,password) {
 		return signInWithEmailAndPassword(auth, email, password);
 	}
-
+	//this function logs the user out through firebase
 	function logOut() {
 		return signOut(auth);
 	  }
-
+	//this function returns the current set user
 	function getCurrUser() {
 		return user;
 	}
-
+	//This does the work of setting the user for apps purpose as the current firebase user
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
 			console.log("Auth ", currentUser);
