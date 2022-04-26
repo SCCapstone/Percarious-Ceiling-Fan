@@ -3,7 +3,9 @@ import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuthContext } from "../contexts/AuthContext"
 import { useHistory } from "react-router-dom"
 
+/* This page looks different due to the firebase service that we use to handle user login information */
 const SignIn = () => {
+  /* This information is used to work with firebase */
   const usernameRef = useRef()
   const passwordRef = useRef()
   const  { logIn }  = useAuthContext();
@@ -16,7 +18,7 @@ const SignIn = () => {
     setError("");
     try {
 		setLoading(true)
-		console.log(usernameRef.current.value+"@percariouscielingfan.com"+" "+passwordRef.current.value);
+		
 		await logIn(usernameRef.current.value+"@percariouscielingfan.com", passwordRef.current.value)
 		history.push("/")
     } catch (err) {
@@ -25,6 +27,7 @@ const SignIn = () => {
 	setLoading(false)
   };
   
+  /*Sign in requires username and password, so we use a Card component to handle the information and send it to firebase to process*/
   return (
     <>
       

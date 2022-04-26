@@ -117,6 +117,7 @@ class HomePage extends React.Component{
 							<p style={{paddingRight:'5px', color: 'red'}}>*</p>
 							<input id="search" style = {inputStylingBasic} value={this.state.search} onChange={e => this.setState({search: e.target.value})} placeholder="Enter your Search Here" required/> 
 						</div>
+						{/* The protected route below only activates when all required fields are filled */}
 						<ProtectedBasicRoute search={this.state.search} field={this.state.field} chart={this.state.chart}></ProtectedBasicRoute> 
 					</div>
 					<p style={{color: 'red', fontSize:'small'}}>* indicates a required field</p>

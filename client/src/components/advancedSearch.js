@@ -22,7 +22,7 @@ class AdvancedSearch extends React.Component {
 		chart: ""
 	}
 
-	  
+	  /* This handles the check boxes for tags */
 	checkChange = (e) =>{
         var {name, checked} = e.target ;
 
@@ -32,6 +32,7 @@ class AdvancedSearch extends React.Component {
         });
     };
 
+	  /* This sets the graph to be what the user clicks */
 	chartCheck = (e) =>{
 		this.setState({
 			chart: e.target.value
@@ -145,6 +146,7 @@ class AdvancedSearch extends React.Component {
 								<input className = "searchInput" id="regions" value={this.state.regions} onChange={e => this.setState({ regions: e.target.value})}></input>
 							</div>
 						</div>
+						{/* The protected route below makes the button clickable when the user fills out the required fields */}
 						<div id="search button">
 							<ProtectedAdvancedRoute anyWords={this.state.anyWords}
 									exactPhrase={this.state.exactPhrase}

@@ -1,6 +1,7 @@
 import { db } from "../firebase"
 import { collection, query, where, getDocs, addDoc, doc, deleteDoc} from "firebase/firestore"
 
+//This file is needed for firebase, the service that stores user data and user searches
 const searchCollectionRef = collection(db, "searches");
 class FirebaseService {
 

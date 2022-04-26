@@ -3,6 +3,7 @@ import 'firebase/compat/auth';
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
+//These are just things to set up firebase, there is no need to touch this unless changing project owners
 const firebaseConfig = {
   apiKey: "AIzaSyApxySs35Gvjx5ImJpPsi5YQgLGUIGuA9Q",
   authDomain: "oclc-advanced-search-system.firebaseapp.com",

@@ -9,6 +9,7 @@ import Results from './components/results';
 import ReResults from './components/reresults';
 import ProtectedRoute from './components/ProtectedRoute';
 
+//This is where the single page application structure is built, it has all the routing and the nav bar at the top of the page, all pages are shown in the Switch below
 function App() {
   return (
 	  <Router>
@@ -17,6 +18,7 @@ function App() {
 				<div className="content-wrapper">
 					<div className="nav-bar-wrapper">
 					<nav className= "home-link"><Link to="/" style = {{textDecoration: 'none', color: 'white', float: 'left', marginTop: '15px', marginLeft: '25px', textTransform: 'uppercase'}}>Home</Link></nav>
+					{/*This ProtectedRoute swaps between the "sign in" and "searches" button depending on whether there is a person signed in or not*/}
 					<ProtectedRoute>
 					</ProtectedRoute> 
 						<div className="menu-icon"></div>

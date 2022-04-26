@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { AuthContextProvider } from './contexts/AuthContext';
 
+//This is where the actual web page runs, so we wrap it in the AuthContextProvider so that we can access user accounts throughout the site
 ReactDOM.render(
   <React.StrictMode>
 	  <AuthContextProvider>

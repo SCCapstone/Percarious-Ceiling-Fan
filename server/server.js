@@ -234,6 +234,7 @@ app.get("/advancedSearch", async(req, res) => {
 		})
   })
 
+//sets up the port to then communicate with react
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);

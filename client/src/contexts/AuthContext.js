@@ -3,6 +3,7 @@ import { signInWithEmailAndPassword, signOut, onAuthStateChanged} from 'firebase
 import { auth } from "../firebase";
 import { useState } from 'react';
 
+//This is a helper file that does most of the authentication and allows us to access the current user throughout the entire site
 const authContext = createContext();
 
 export function AuthContextProvider({ children }) {
