@@ -17,6 +17,30 @@ describe('GET /', function() {
         });
         done()
     })
+    it('check if basic search is on', function(done) {
+
+        test.httpAgent('httm://localhost:3001')
+        .get('/basicSearch')
+        .expect(!"anything useful")
+        .end(function(err,res) {
+            if(err) {
+                test.fail(err.message);
+            }
+        });
+        done()
+    })
+    it('check if advanced search is on', function(done) {
+
+        test.httpAgent('httm://localhost:3001')
+        .get('/advancedSearch')
+        .expect(!"anything useful")
+        .end(function(err,res) {
+            if(err) {
+                test.fail(err.message);
+            }
+        });
+        done()
+    })
 })
 //test app.get (??)
 //test app.listen (??)
