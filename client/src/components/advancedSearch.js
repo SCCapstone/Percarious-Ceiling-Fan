@@ -1,4 +1,3 @@
-//import '../../public/styles.css'
 import React from 'react';
 import ProtectedAdvancedRoute from './ProtectedAdvancedRoute';
 
@@ -18,7 +17,7 @@ class AdvancedSearch extends React.Component {
 		endYear: "",
 		languages: "",
 		regions: "",
-		genre: "", 
+		genre: "",
 		chart: ""
 	}
 
@@ -92,12 +91,12 @@ class AdvancedSearch extends React.Component {
 						<p className="searchPrompt" style={{marginTop: '0px'}}><span style={{color:'red'}}> *</span> <span style={{textDecoration:'underline'}}>Graph Type:</span></p>
 								<div style={{display: 'flex', justifyContent: 'center', padding:'10px' }}>
 									<span className='searchPrompt'>Bar:</span>
-									<input type="radio" name = "searchInput"  value="bar" onChange={this.chartCheck} required/> <br/>
+									<input type="radio" id="bar" name = "searchInput"  value="bar" onChange={this.chartCheck} required/> <br/>
 									<span className='searchPrompt'>Pie:</span>
-									<input type="radio" name = "searchInput" value="pie" onChange={this.chartCheck}/> <br/>
+									<input type="radio" id="pie" name = "searchInput" value="pie" onChange={this.chartCheck}/> <br/>
 									<span className='searchPrompt'>Line:</span>
-									<input type="radio" name = "searchInput"  value="line" onChange={this.chartCheck}/> <br/>
-									
+									<input type="radio" id="line" name = "searchInput"  value="line" onChange={this.chartCheck}/> <br/>
+
 								</div>
 					</div>
 					</div>
@@ -105,7 +104,7 @@ class AdvancedSearch extends React.Component {
 							<div className = "any-words searchTerms">
 								<p className="searchPrompt"><span style={{color:'darkBlue'}}> **</span>Any of these words:</p>
 								<input className = "searchInput" id= "anyWords" value={this.state.anyWords} onChange={e => this.setState({ anyWords: e.target.value}) }required></input>
-							</div> 
+							</div>
 							<div  className = "searchTerms exact-words">
 								<p className="searchPrompt"><span style={{color:'darkBlue'}}> **</span>Exact words or phrases:</p>
 								<input className = "searchInput" id="exactPhrase" value={this.state.exactPhrase} onChange={e => this.setState({ exactPhrase: e.target.value})}></input>
@@ -119,11 +118,11 @@ class AdvancedSearch extends React.Component {
 								<p className="searchPrompt" ><span style={{color:'red'}}> *</span> <span style={{textDecoration:'underline'}}>Tags to Query:</span></p>
 								<div>
 									<span className='searchPrompt'>Author:</span>
-									<input type="checkbox" className = "searchInput" id='author' name="author" onChange={this.checkChange}/> <br/>
+									<input type="checkbox" id="author" className = "searchInput"  name="author" onChange={this.checkChange}/> <br/>
 									<span className='searchPrompt'>Title:</span>
-									<input type="checkbox" className = "searchInput" name="title" defaultChecked={this.state.tags.title} onChange={this.checkChange}/> <br/>
+									<input type="checkbox" id="title" className = "searchInput" name="title" defaultChecked={this.state.tags.title} onChange={this.checkChange}/> <br/>
 									<span className='searchPrompt'>Publisher:</span>
-									<input type="checkbox" className = "searchInput" name="publisher"onChange={this.checkChange}/> <br/>
+									<input type="checkbox" id="publisher" className = "searchInput" name="publisher"onChange={this.checkChange}/> <br/>
 								</div>
 								</form>
 							</div>
@@ -158,7 +157,7 @@ class AdvancedSearch extends React.Component {
 									endYear={this.state.endYear}
 									languages={this.state.languages}
 									regions={this.state.regions}
-									chart={this.state.chart}></ProtectedAdvancedRoute> 
+									chart={this.state.chart}></ProtectedAdvancedRoute>
 						</div>
 					</div>
 				</body>
