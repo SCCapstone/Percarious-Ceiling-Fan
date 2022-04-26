@@ -6,7 +6,7 @@ driver = webdriver.Chrome()
 
 #initial address
 
-driver.get("http://localhost:3000/") #http://10.173.131.12:3000/
+driver.get("http://10.173.131.12:3000/") #http://10.173.131.12:3000/
 elem = driver.find_element_by_xpath('//a[@href="'+"/advancedsearch"+'"]')
 elem.click()
 elem = driver.find_element_by_id("line")
