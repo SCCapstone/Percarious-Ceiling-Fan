@@ -21,12 +21,15 @@ function fander(ander, out){
 	return ander,out;
 }
 
+//Function to build sql quries
 function build(anyWords, exactPhrase, exclude, author, title, publisher, startYear, endYear, languages, regions){
 	fields = [];
 	if(title == "true") fields[fields.length] = "title";
 	if(author == "true") fields[fields.length] = "author";
 	if(publisher == "true") fields[fields.length] = "pubname";
+	//initialize query
 	out = "SELECT * from bookdata WHERE ((";
+	//iterate over anywords
 	for(f = 0; f < fields.length; f++){
 		field = fields[f];
 		any = anyWords.split(",");
@@ -38,6 +41,7 @@ function build(anyWords, exactPhrase, exclude, author, title, publisher, startYe
 			if(word != any.length-1)
 				out+= ") OR ("
 		}
+			//iterate over exactwords
 		if(exactPhrase.length > 0){
 			exac = exactPhrase.split(",");
 			ander,out = fander(ander,out);
@@ -48,6 +52,7 @@ function build(anyWords, exactPhrase, exclude, author, title, publisher, startYe
 					out+= ") AND ("
 			}
 		}
+			//iterate over excluded words
 		if(exclude.length > 0){
 			exc = exclude.split(",");
 			ander,out = fander(ander,out);
@@ -63,6 +68,7 @@ function build(anyWords, exactPhrase, exclude, author, title, publisher, startYe
 		if(f != fields.length-1) out+= ") OR ((";
 	}
 	out+=")"
+		//Add restrictions
 	sy = 0
 	if(startYear.length > 1) sy=parseInt(startYear);
 	ey = 0
@@ -199,6 +205,7 @@ app.get("/basicSearch", async(req, res) => {
 
 //advanced search query
 app.get("/advancedSearch", async(req, res) => {
+	//Exttract vars from response
 	var anyWords = (`${req.query.anyWords}`);
 	var exactPhrase = (`${req.query.exactPhrase}`);
 	var exclude = (`${req.query.exclude}`);
@@ -210,6 +217,7 @@ app.get("/advancedSearch", async(req, res) => {
 	var languages = (`${req.query.languages}`);
 	var regions = (`${req.query.regions}`);
 	console.log(anyWords, exactPhrase, exclude, author, title, publisher, startYear, endYear, languages, regions)
+	//Build sql string
 	const GET_QUERY = build(anyWords, exactPhrase, exclude, author, title, publisher, startYear, endYear, languages, regions);
 	console.log(GET_QUERY);
 
