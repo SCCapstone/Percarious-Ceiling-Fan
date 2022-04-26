@@ -8,10 +8,17 @@ const ReSavedSearches = () => {
   const { user } = useAuthContext();
   const [searchesA, setSearchesA] = useState([]);
   const [searchesB, setSearchesB] = useState([]);
+
+  //runs to call the getsearches method when page is loaded
   useEffect(() => {
     getSearches();
   }, []);
 
+/* 
+pulls saved searches that match userID from firebase service for visual display 
+basA includes all saved basic searches
+advA includes all saved advanced searches
+*/
   const getSearches = async () => {
     const data = await FirebaseService.getSearches(user.uid);
 	if(data){
@@ -30,11 +37,13 @@ const ReSavedSearches = () => {
 	}
   };
 
+  //used to delete a firebase saved search based on an on-click button call
   const deleteSearch = async (id) => {
 	  console.log(id);
 	  FirebaseService.deleteSearch(id);
   };
 
+//returns saved searches render, links are used to make each card runable again
   return (
 	<div>
     <div className="containerWrapper" style={{overflowY: 'scroll', marginBottom: '200px'}}>
