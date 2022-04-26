@@ -7,12 +7,16 @@ import ScaleLoader from "react-spinners/ScaleLoader";
 import ProtectedResultsRoute from './ProtectedResultsRoute';
 class Results extends React.Component{
 
+	//sets up the variables needed for graphical display, like results and the new versions to run the next search
 	constructor(props){
 		super(props);
 		window.localStorage.clear();
 		this.state = JSON.parse(window.localStorage.getItem('state')) || {data: [], layout: {}, frames: [], config: {}, results: [], chart: "", search: "", field: "", nChart: "", nSearch: "", nField: ""};
 	}
 
+	/*
+	 Ran as the file is loaded onto the screen to make sure that the variables from other pages have mounted to this page for display
+	*/
 	componentDidMount = () => {
 		document.getElementById("loading").setAttribute("style","display: block;")
 		console.log(this.state.results)
@@ -36,6 +40,7 @@ class Results extends React.Component{
 
 				}
 				else {
+					//This also sets the exact type of graph type for plotly
 					console.log(this.props.location.search);
 					console.log(this.props.location.field);
 					window.localStorage.setItem('state', JSON.stringify(this.state));
@@ -55,7 +60,7 @@ class Results extends React.Component{
 					this.getBasicResults();
 				}
 			}
-			else {
+			else { //console logs if saved searches have been loaded in for testing
 				console.log(this.props.location.saved.chart);
 				this.setState({chart: this.props.location.saved.chart})
 				window.localStorage.setItem('chart',  this.props.location.saved.chart);
@@ -70,20 +75,17 @@ class Results extends React.Component{
 					console.log(this.props.location.saved.regions);
 					this.getSavedAdvancedResults();
 				}
-				else {
+				else { //sets bar type
 					console.log(this.props.location.saved.search);
 					console.log(this.props.location.saved.field);
 					if(this.props.location.saved.chart == 'bar') {
-						this.state.chart = 'bar';
-						
+						this.state.chart = 'bar';	
 					}
 					if(this.props.location.saved.chart == 'line') {
 						this.state.chart = 'scatter';
-						
 					}
 					if(this.props.location.saved.chart == 'pie') {
 						this.state.chart = 'pie';
-						
 					}
 					window.localStorage.setItem('chart',  this.state.chart);
 					this.getSavedBasicResults();
@@ -91,6 +93,8 @@ class Results extends React.Component{
 			}
 		}
 	}
+
+	//Runs constantly to check if results has populated the graph, if so; it'll remove the loading bar
 	componentDidUpdate() {
 		if( this.state.results != ""){
 			document.getElementById("loading").setAttribute("style","display: none;");
@@ -98,6 +102,7 @@ class Results extends React.Component{
 
 	}
 
+	//Receives the advanced search parameters from the advanced search
 	getAdvancedResults = () => {
 		axios.get('http://localhost:3001/advancedSearch',{
 			params: {
@@ -117,6 +122,7 @@ class Results extends React.Component{
 		.then(response => {this.setState({results: response}); window.localStorage.setItem('state', JSON.stringify(this.state)); window.localStorage.setItem('chart', JSON.stringify(response.chart));}) //results from advancedSearch
 	};
 
+	//receives the basic search parameters 
 	getBasicResults = () => {
 		axios.get('http://localhost:3001/basicSearch',{
 			params: {
@@ -130,6 +136,7 @@ class Results extends React.Component{
 	};
 
 
+	//Receives previously saved advanced search parameters
 	getSavedAdvancedResults = () => {
 		axios.get('http://localhost:3001/advancedSearch',{
 			params: {
@@ -151,6 +158,7 @@ class Results extends React.Component{
 
 	};
 
+	//Receives previously saved basic search parameters
 	getSavedBasicResults = () => {
 		axios.get('http://localhost:3001/basicSearch',{
 			params: {
@@ -164,13 +172,14 @@ class Results extends React.Component{
 	};
 
 
+	//Sets the view for previous search reults when populated, changes based on if the variable is filled
 	previousSearchView = () => {
 		if(this.props.location == undefined && this.props.location.saved == undefined)
 		{
 			return <div></div>
 		}
 		else if (this.props.location.saved == undefined)
-		{
+		{ //checks for if the variable of a search is filled for display
 			if(!this.props.location.search){
 				let anyS = ""; let exactS = ""; let exclS = ""; let tagsS = "Querying: ";
 				let yearS = ""; let langS = ""; let regS = "";
@@ -194,7 +203,7 @@ class Results extends React.Component{
 					<p>{regS}{this.props.location.regions}</p>
 				</div>)
 			}
-			else {
+			else { //checks if searching by publisher
 				if(this.props.location.field == "pubname"){
 					return(
 						<div>
@@ -205,7 +214,7 @@ class Results extends React.Component{
 						)
 				}
 				else{
-					return(
+					return( //returns base basic search 
 						<div>
 							<p>Chart: {this.props.location.chart}</p>
 							<p>Field: {this.props.location.field}</p>
@@ -217,7 +226,7 @@ class Results extends React.Component{
 		}
 		else
 		{
-			if(!this.props.location.saved.search){
+			if(!this.props.location.saved.search){ //checks for if the variable of a saved search is filled for display
 				let anyS = ""; let exactS = ""; let exclS = ""; let tagsS = "Querying: ";
 				let yearS = ""; let langS = ""; let regS = "";
 				if(this.props.location.saved.anyWords != "") { anyS = "Any: " }
@@ -240,7 +249,7 @@ class Results extends React.Component{
 					<p>{regS}{this.props.location.saved.regions}</p>
 				</div>)
 			}
-			else {
+			else { //checks if searching by publisher
 				if(this.props.location.saved.field == "pubname"){
 					return(
 						<div>
@@ -251,7 +260,7 @@ class Results extends React.Component{
 						)
 				}
 				else{
-					return(
+					return( //returns base basic search 
 						<div>
 							<p>Chart: {this.props.location.saved.chart}</p>
 							<p>Field: {this.props.location.saved.field}</p>
@@ -262,6 +271,8 @@ class Results extends React.Component{
 			}
 		}
 	};
+
+	//sets the chart variable when clicked for future graphing
 	chartCheck = (e) =>{
 		this.setState({
 			nChart: e.target.value
@@ -269,6 +280,7 @@ class Results extends React.Component{
 		console.log(this.state.nChart);
 	}
 
+	// Sets the field to search for when clicked
 	fieldCheck = (e) =>{
 		this.setState({
 			nField: e.target.value
@@ -276,7 +288,9 @@ class Results extends React.Component{
 		console.log(this.state.nField);
 	}
 
+	//Handles rendering all results page html and plotly graphical input
     render(){
+		//various preset styling guidelines
 		let searchBarStyling = {
 			backgroundColor:  '#FFFFFF',
 			textAlign: 'center',
@@ -299,14 +313,6 @@ class Results extends React.Component{
 			textDecoration:'none',
 			color: 'white',
 
-		}
-
-		let buttonStyling = {
-			padding: '10px',
-			color:'white',
-			margin: '10px',
-			backgroundColor: 'darkgrey',
-			borderRadius: '10px'
 		}
 
 		let optionStyling = {
